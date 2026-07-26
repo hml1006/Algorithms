@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 400" width="750" height="400">
+<rect width="750" height="400" fill="#ffffff" rx="8"/>
+
+<text x="375" y="30" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Dijkstra 最短路径 (最短路径: S→A→C→T)</text>
+<!-- Nodes -->
+<defs>
+  <marker id="arrow5" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#888"/></marker>
+</defs>
+<circle cx="80" cy="200" r="30" fill="#4CAF50" stroke="#2E7D32" stroke-width="3"/>
+<text x="80" y="205" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">S</text>
+<circle cx="680" cy="200" r="30" fill="#f44336" stroke="#b71C1C" stroke-width="3"/>
+<text x="680" y="205" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">T</text>
+<circle cx="250" cy="100" r="28" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+<text x="250" y="105" font-size="15" fill="#1565C0" text-anchor="middle" font-weight="bold">A</text>
+<circle cx="250" cy="320" r="28" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+<text x="250" y="325" font-size="15" fill="#1565C0" text-anchor="middle" font-weight="bold">B</text>
+<circle cx="460" cy="100" r="28" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+<text x="460" y="105" font-size="15" fill="#1565C0" text-anchor="middle" font-weight="bold">C</text>
+<circle cx="460" cy="320" r="28" fill="#e3f2fd" stroke="#2196F3" stroke-width="2"/>
+<text x="460" y="325" font-size="15" fill="#1565C0" text-anchor="middle" font-weight="bold">D</text>
+<!-- Edges - shortest path in green bold -->
+<line x1="110" y1="185" x2="222" y2="115" stroke="#4CAF50" stroke-width="5"/>
+<text x="160" y="140" font-size="14" fill="#4CAF50" font-weight="bold" text-anchor="middle">4</text>
+<line x1="110" y1="215" x2="222" y2="305" stroke="#ccc" stroke-width="2"/>
+<text x="160" y="270" font-size="14" fill="#888" text-anchor="middle">2</text>
+<line x1="278" y1="115" x2="432" y2="115" stroke="#4CAF50" stroke-width="5"/>
+<text x="355" y="105" font-size="14" fill="#4CAF50" font-weight="bold" text-anchor="middle">3</text>
+<line x1="278" y1="305" x2="432" y2="305" stroke="#ccc" stroke-width="2"/>
+<text x="355" y="320" font-size="14" fill="#888" text-anchor="middle">1</text>
+<line x1="250" y1="128" x2="250" y2="292" stroke="#ccc" stroke-width="2"/>
+<text x="240" y="215" font-size="14" fill="#888" text-anchor="end">5</text>
+<line x1="460" y1="128" x2="460" y2="292" stroke="#ccc" stroke-width="2"/>
+<text x="470" y="215" font-size="14" fill="#888" text-anchor="start">6</text>
+<line x1="488" y1="115" x2="650" y2="185" stroke="#4CAF50" stroke-width="5"/>
+<text x="570" y="140" font-size="14" fill="#4CAF50" font-weight="bold" text-anchor="middle">5</text>
+<line x1="488" y1="305" x2="650" y2="215" stroke="#ccc" stroke-width="2"/>
+<text x="570" y="270" font-size="14" fill="#888" text-anchor="middle">7</text>
+<!-- Dist labels -->
+<text x="250" y="80" font-size="12" fill="#4CAF50" font-weight="bold" text-anchor="middle">dist=4</text>
+<text x="250" y="355" font-size="12" fill="#888" text-anchor="middle">dist=2</text>
+<text x="460" y="80" font-size="12" fill="#4CAF50" font-weight="bold" text-anchor="middle">dist=7</text>
+<text x="460" y="355" font-size="12" fill="#888" text-anchor="middle">dist=3</text>
+<text x="680" y="245" font-size="12" fill="#f44336" font-weight="bold" text-anchor="middle">dist=12</text>
+<!-- Legend -->
+<text x="375" y="380" font-size="12" fill="#4CAF50" text-anchor="middle" font-weight="bold">S→A→C→T = 4+3+5 = 12</text>
+</svg>

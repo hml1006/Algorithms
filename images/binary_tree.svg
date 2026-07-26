@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 400" width="700" height="400">
+<rect width="700" height="400" fill="#ffffff" rx="8"/>
+
+<text x="350" y="30" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">二叉树 (Binary Tree)</text>
+<!-- Root -->
+<circle cx="350" cy="80" r="30" fill="#4CAF50" stroke="#2E7D32" stroke-width="2"/>
+<text x="350" y="85" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">1</text>
+<!-- Edges root→left, root→right -->
+<line x1="325" y1="105" x2="220" y2="190" stroke="#888" stroke-width="2"/>
+<line x1="375" y1="105" x2="480" y2="190" stroke="#888" stroke-width="2"/>
+<!-- Left child -->
+<circle cx="220" cy="220" r="28" fill="#2196F3" stroke="#1565C0" stroke-width="2"/>
+<text x="220" y="225" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">2</text>
+<!-- Right child -->
+<circle cx="480" cy="220" r="28" fill="#2196F3" stroke="#1565C0" stroke-width="2"/>
+<text x="480" y="225" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">3</text>
+<!-- Edges level 2 -->
+<line x1="195" y1="245" x2="120" y2="320" stroke="#888" stroke-width="2"/>
+<line x1="245" y1="245" x2="300" y2="320" stroke="#888" stroke-width="2"/>
+<line x1="455" y1="245" x2="400" y2="320" stroke="#888" stroke-width="2"/>
+<line x1="505" y1="245" x2="560" y2="320" stroke="#888" stroke-width="2"/>
+<!-- Grandchildren -->
+<circle cx="120" cy="350" r="25" fill="#FF9800" stroke="#E65100" stroke-width="2"/>
+<text x="120" y="355" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">4</text>
+<circle cx="300" cy="350" r="25" fill="#FF9800" stroke="#E65100" stroke-width="2"/>
+<text x="300" y="355" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">5</text>
+<circle cx="400" cy="350" r="25" fill="#FF9800" stroke="#E65100" stroke-width="2"/>
+<text x="400" y="355" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">6</text>
+<circle cx="560" cy="350" r="25" fill="#FF9800" stroke="#E65100" stroke-width="2"/>
+<text x="560" y="355" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">7</text>
+<!-- Null children -->
+<line x1="95" y1="375" x2="75" y2="395" stroke="#ccc" stroke-width="1"/>
+<line x1="105" y1="375" x2="85" y2="395" stroke="#ccc" stroke-width="1"/>
+<text x="100" y="395" font-size="11" fill="#999" text-anchor="middle">null</text>
+<!-- Legend -->
+<text x="350" y="390" font-size="12" fill="#666" text-anchor="middle">根节点 1 · 左子树 {2,4,5} · 右子树 {3,6,7}</text>
+</svg>

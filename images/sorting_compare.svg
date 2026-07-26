@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect width="800" height="450" fill="#ffffff" rx="8"/>
+
+<text x="400" y="30" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">排序算法复杂度对比</text>
+<!-- Bar chart -->
+<g transform="translate(40, 60)">
+  <!-- Y axis -->
+  <line x1="0" y1="0" x2="0" y2="340" stroke="#555" stroke-width="2"/>
+  <line x1="0" y1="340" x2="720" y2="340" stroke="#555" stroke-width="2"/>
+  <text x="-10" y="345" font-size="11" fill="#999" text-anchor="end">0</text>
+  <text x="-10" y="170" font-size="11" fill="#999" text-anchor="end">O(n²)</text>
+  <text x="-10" y="0" font-size="11" fill="#999" text-anchor="end">O(n)</text>
+  <!-- Bars: each group has 3 bars (best, avg, worst) -->
+  <!-- Bubble: O(n), O(n²), O(n²) -->
+  <rect x="20" y="280" width="18" height="60" rx="2" fill="#4CAF50"/>
+  <rect x="42" y="170" width="18" height="170" rx="2" fill="#FF9800"/>
+  <rect x="64" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <text x="47" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,47,360)">冒泡</text>
+  <!-- Insertion: O(n), O(n²), O(n²) -->
+  <rect x="90" y="280" width="18" height="60" rx="2" fill="#4CAF50"/>
+  <rect x="112" y="170" width="18" height="170" rx="2" fill="#FF9800"/>
+  <rect x="134" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <text x="117" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,117,360)">插入</text>
+  <!-- Selection: O(n²), O(n²), O(n²) -->
+  <rect x="160" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <rect x="182" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <rect x="204" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <text x="187" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,187,360)">选择</text>
+  <!-- Merge: O(n log n), O(n log n), O(n log n) -->
+  <rect x="230" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="252" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="274" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <text x="257" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,257,360)">归并</text>
+  <!-- Quick: O(n log n), O(n log n), O(n²) -->
+  <rect x="300" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="322" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="344" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <text x="327" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,327,360)">快速</text>
+  <!-- Heap: O(n log n), O(n log n), O(n log n) -->
+  <rect x="370" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="392" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="414" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <text x="397" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,397,360)">堆</text>
+  <!-- Counting: O(n+k) -->
+  <rect x="440" y="60" width="18" height="280" rx="2" fill="#9C27B0"/>
+  <rect x="462" y="60" width="18" height="280" rx="2" fill="#9C27B0"/>
+  <rect x="484" y="60" width="18" height="280" rx="2" fill="#9C27B0"/>
+  <text x="467" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,467,360)">计数</text>
+  <!-- Timsort: O(n), O(n log n), O(n log n) -->
+  <rect x="510" y="280" width="18" height="60" rx="2" fill="#4CAF50"/>
+  <rect x="532" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <rect x="554" y="100" width="18" height="240" rx="2" fill="#2196F3"/>
+  <text x="537" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,537,360)">Timsort</text>
+  <!-- Radix: O(nk) -->
+  <rect x="580" y="60" width="18" height="280" rx="2" fill="#9C27B0"/>
+  <rect x="602" y="60" width="18" height="280" rx="2" fill="#9C27B0"/>
+  <rect x="624" y="60" width="18" height="280" rx="2" fill="#9C27B0"/>
+  <text x="607" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,607,360)">基数</text>
+  <!-- Shell -->
+  <rect x="650" y="170" width="18" height="170" rx="2" fill="#FF9800"/>
+  <rect x="672" y="130" width="18" height="210" rx="2" fill="#FF9800"/>
+  <rect x="694" y="170" width="18" height="170" rx="2" fill="#f44336"/>
+  <text x="677" y="360" font-size="10" fill="#333" text-anchor="middle" transform="rotate(-30,677,360)">希尔</text>
+</g>
+<!-- Legend -->
+<rect x="340" y="410" width="12" height="12" rx="2" fill="#4CAF50"/> <text x="356" y="421" font-size="11" fill="#666">最佳</text>
+<rect x="400" y="410" width="12" height="12" rx="2" fill="#2196F3"/> <text x="416" y="421" font-size="11" fill="#666">平均</text>
+<rect x="460" y="410" width="12" height="12" rx="2" fill="#f44336"/> <text x="476" y="421" font-size="11" fill="#666">最差</text>
+</svg>

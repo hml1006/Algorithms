@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 350" width="750" height="350">
+<rect width="750" height="350" fill="#ffffff" rx="8"/>
+
+<text x="375" y="30" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">位运算 (Bit Manipulation)</text>
+<!-- Basic ops table -->
+<g transform="translate(40, 60)">
+  <rect x="0" y="0" width="180" height="30" rx="3" fill="#333"/>
+  <text x="90" y="20" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">运算</text>
+  <rect x="185" y="0" width="150" height="30" rx="3" fill="#333"/>
+  <text x="260" y="20" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">符号</text>
+  <rect x="340" y="0" width="300" height="30" rx="3" fill="#333"/>
+  <text x="490" y="20" font-size="13" fill="#fff" text-anchor="middle" font-weight="bold">示例 (a=5=0101, b=3=0011)</text>
+  
+  <rect x="0" y="33" width="180" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="90" y="52" font-size="12" fill="#333" text-anchor="middle">按位与</text>
+  <rect x="185" y="33" width="150" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="52" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">&amp;</text>
+  <rect x="340" y="33" width="300" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="490" y="52" font-size="12" fill="#666" text-anchor="middle">0101 &amp; 0011 = 0001 (1)</text>
+  
+  <rect x="0" y="64" width="180" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="90" y="83" font-size="12" fill="#333" text-anchor="middle">按位或</text>
+  <rect x="185" y="64" width="150" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="83" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">|</text>
+  <rect x="340" y="64" width="300" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="490" y="83" font-size="12" fill="#666" text-anchor="middle">0101 | 0011 = 0111 (7)</text>
+  
+  <rect x="0" y="95" width="180" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="90" y="114" font-size="12" fill="#333" text-anchor="middle">按位异或</text>
+  <rect x="185" y="95" width="150" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="114" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">^</text>
+  <rect x="340" y="95" width="300" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="490" y="114" font-size="12" fill="#666" text-anchor="middle">0101 ^ 0011 = 0110 (6)</text>
+  
+  <rect x="0" y="126" width="180" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="90" y="145" font-size="12" fill="#333" text-anchor="middle">按位取反</text>
+  <rect x="185" y="126" width="150" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="145" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">~</text>
+  <rect x="340" y="126" width="300" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="490" y="145" font-size="12" fill="#666" text-anchor="middle">~0101 = 1010 (-6)</text>
+  
+  <rect x="0" y="157" width="180" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="90" y="176" font-size="12" fill="#333" text-anchor="middle">左移</text>
+  <rect x="185" y="157" width="150" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="176" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">&lt;&lt;</text>
+  <rect x="340" y="157" width="300" height="28" rx="2" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+  <text x="490" y="176" font-size="12" fill="#666" text-anchor="middle">0101 &lt;&lt; 1 = 1010 (10)</text>
+  
+  <rect x="0" y="188" width="180" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="90" y="207" font-size="12" fill="#333" text-anchor="middle">右移</text>
+  <rect x="185" y="188" width="150" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="260" y="207" font-size="12" fill="#333" text-anchor="middle" font-weight="bold">&gt;&gt;</text>
+  <rect x="340" y="188" width="300" height="28" rx="2" fill="#e8e8e8" stroke="#ddd" stroke-width="1"/>
+  <text x="490" y="207" font-size="12" fill="#666" text-anchor="middle">0101 &gt;&gt; 1 = 0010 (2)</text>
+</g>
+<!-- Common tricks -->
+<text x="375" y="270" font-size="14" font-weight="bold" fill="#1565C0" text-anchor="middle">常用技巧 (Common Tricks)</text>
+<text x="375" y="295" font-size="12" fill="#666" text-anchor="middle">lowbit(x) = x &amp; -x  → 提取最低位的 1</text>
+<text x="375" y="315" font-size="12" fill="#666" text-anchor="middle">x &amp; (x-1)  → 消除最低位的 1 · 判断 2 的幂: x &gt; 0 and (x &amp; (x-1)) == 0</text>
+<text x="375" y="335" font-size="12" fill="#666" text-anchor="middle">XOR 性质: a^a=0, 0^a=a, a^b^a=b · 交换律: a^=b; b^=a; a^=b</text>
+</svg>
