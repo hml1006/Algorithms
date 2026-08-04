@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" font-family="Microsoft YaHei, Arial, sans-serif">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#43e97b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#38f9d7;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="g6" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a18cd1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbc2eb;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="900" fill="#f8f9ff" rx="10"/>
+
+  <!-- Title -->
+  <text x="400" y="45" text-anchor="middle" font-size="24" font-weight="bold" fill="#333">人工智能发展历程 AI Development History</text>
+  <line x1="150" y1="60" x2="650" y2="60" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Central Timeline -->
+  <line x1="400" y1="90" x2="400" y2="850" stroke="#667eea" stroke-width="3" stroke-dasharray="8,4"/>
+
+  <!-- Node 1: 1943-1956 理论奠基 -->
+  <circle cx="400" cy="120" r="12" fill="url(#g1)" filter="url(#shadow)"/>
+  <text x="400" y="125" text-anchor="middle" font-size="10" fill="white" font-weight="bold">1</text>
+
+  <text x="200" y="115" text-anchor="end" font-size="13" font-weight="bold" fill="#667eea">理论奠基期 (1940s-1950s)</text>
+  <text x="200" y="135" text-anchor="end" font-size="11" fill="#555">1943 神经元模型 · 1950 图灵测试</text>
+  <text x="200" y="150" text-anchor="end" font-size="11" fill="#555">1956 达特茅斯会议 · AI 正式命名</text>
+
+  <rect x="530" y="105" width="12" height="12" rx="2" fill="url(#g1)" opacity="0.7"/>
+  <text x="545" y="115" font-size="10" fill="#555">符号主义 · 逻辑推理</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="132" x2="400" y2="168" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 2: 1960s-1970s 第一次繁荣 -->
+  <circle cx="400" cy="185" r="12" fill="url(#g2)" filter="url(#shadow)"/>
+  <text x="400" y="190" text-anchor="middle" font-size="10" fill="white" font-weight="bold">2</text>
+
+  <text x="610" y="180" text-anchor="start" font-size="13" font-weight="bold" fill="#f5576c">早期繁荣 (1956-1960s)</text>
+  <text x="610" y="198" text-anchor="start" font-size="11" fill="#555">1966 ELIZA 聊天机器人</text>
+  <text x="610" y="212" text-anchor="start" font-size="11" fill="#555">专家系统 · 感知机</text>
+
+  <rect x="160" y="170" width="12" height="12" rx="2" fill="url(#g2)" opacity="0.7"/>
+  <text x="175" y="180" font-size="10" fill="#555">过于乐观 · 算力不足</text>
+
+  <line x1="400" y1="197" x2="400" y2="233" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 3: 1970s-1980s 寒冬 -->
+  <circle cx="400" cy="250" r="12" fill="#999" filter="url(#shadow)"/>
+  <text x="400" y="255" text-anchor="middle" font-size="10" fill="white" font-weight="bold">3</text>
+
+  <text x="200" y="245" text-anchor="end" font-size="13" font-weight="bold" fill="#999">第一次 AI 寒冬 (1970s-1980s)</text>
+  <text x="200" y="263" text-anchor="end" font-size="11" fill="#555">1973 莱特希尔报告 · 经费削减</text>
+  <text x="200" y="278" text-anchor="end" font-size="11" fill="#555">感知机局限性证明 · 神经网络研究停滞</text>
+
+  <rect x="530" y="235" width="12" height="12" rx="2" fill="#999" opacity="0.7"/>
+  <text x="545" y="245" font-size="10" fill="#555">寒冬中火种未灭</text>
+
+  <line x1="400" y1="262" x2="400" y2="298" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 4: 1986-2006 连接主义复兴 -->
+  <circle cx="400" cy="315" r="12" fill="url(#g3)" filter="url(#shadow)"/>
+  <text x="400" y="320" text-anchor="middle" font-size="10" fill="white" font-weight="bold">4</text>
+
+  <text x="610" y="310" text-anchor="start" font-size="13" font-weight="bold" fill="#4facfe">连接主义复兴 (1986-2006)</text>
+  <text x="610" y="328" text-anchor="start" font-size="11" fill="#555">1986 反向传播算法 · Hinton</text>
+  <text x="610" y="343" text-anchor="start" font-size="11" fill="#555">1997 深蓝击败卡斯帕罗夫</text>
+  <text x="610" y="358" text-anchor="start" font-size="11" fill="#555">2006 深度学习概念正式提出</text>
+
+  <rect x="160" y="300" width="12" height="12" rx="2" fill="url(#g3)" opacity="0.7"/>
+  <text x="175" y="310" font-size="10" fill="#555">统计学习崛起</text>
+
+  <line x1="400" y1="327" x2="400" y2="363" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 5: 2012-2020 深度学习爆发 -->
+  <circle cx="400" cy="380" r="12" fill="url(#g4)" filter="url(#shadow)"/>
+  <text x="400" y="385" text-anchor="middle" font-size="10" fill="white" font-weight="bold">5</text>
+
+  <text x="200" y="375" text-anchor="end" font-size="13" font-weight="bold" fill="#43e97b">深度学习爆发 (2012-2020)</text>
+  <text x="200" y="393" text-anchor="end" font-size="11" fill="#555">2012 AlexNet 引爆深度学习革命</text>
+  <text x="200" y="408" text-anchor="end" font-size="11" fill="#555">2014 GAN · DQN 深度强化学习</text>
+  <text x="200" y="423" text-anchor="end" font-size="11" fill="#555">2016 AlphaGo 击败李世石</text>
+  <text x="200" y="438" text-anchor="end" font-size="11" fill="#555">2017 Transformer 架构诞生</text>
+
+  <rect x="530" y="365" width="12" height="12" rx="2" fill="url(#g4)" opacity="0.7"/>
+  <text x="545" y="375" font-size="10" fill="#555">CNN · RNN · RL</text>
+
+  <line x1="400" y1="392" x2="400" y2="428" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 6: 2018-2020 预训练时代 -->
+  <circle cx="400" cy="445" r="12" fill="url(#g5)" filter="url(#shadow)"/>
+  <text x="400" y="450" text-anchor="middle" font-size="10" fill="white" font-weight="bold">6</text>
+
+  <text x="610" y="440" text-anchor="start" font-size="13" font-weight="bold" fill="#fa709a">预训练时代 (2018-2020)</text>
+  <text x="610" y="458" text-anchor="start" font-size="11" fill="#555">2018 BERT · GPT-1 预训练范式确立</text>
+  <text x="610" y="473" text-anchor="start" font-size="11" fill="#555">2019 GPT-2 零样本多任务生成</text>
+  <text x="610" y="488" text-anchor="start" font-size="11" fill="#555">2020 GPT-3 1750亿参数</text>
+
+  <rect x="160" y="430" width="12" height="12" rx="2" fill="url(#g5)" opacity="0.7"/>
+  <text x="175" y="440" font-size="10" fill="#555">涌现能力验证</text>
+
+  <line x1="400" y1="457" x2="400" y2="493" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 7: 2022-2023 大模型爆发 -->
+  <circle cx="400" cy="510" r="14" fill="url(#g1)" filter="url(#shadow)"/>
+  <text x="400" y="515" text-anchor="middle" font-size="11" fill="white" font-weight="bold">7</text>
+
+  <text x="200" y="500" text-anchor="end" font-size="13" font-weight="bold" fill="#667eea">大模型爆发 (2022-2023) ⭐</text>
+  <text x="200" y="518" text-anchor="end" font-size="11" fill="#555">2022.11 ChatGPT 上线 · 2月用户破亿</text>
+  <text x="200" y="533" text-anchor="end" font-size="11" fill="#555">GPT-4 多模态 · LLaMA 开源</text>
+  <text x="200" y="548" text-anchor="end" font-size="11" fill="#555">国产大模型密集发布</text>
+
+  <rect x="530" y="495" width="12" height="12" rx="2" fill="url(#g1)" opacity="0.7"/>
+  <text x="545" y="505" font-size="10" fill="#555">RLHF · 对齐</text>
+
+  <line x1="400" y1="524" x2="400" y2="560" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 8: 2024-2026 百花齐放 -->
+  <circle cx="400" cy="577" r="14" fill="url(#g2)" filter="url(#shadow)"/>
+  <text x="400" y="582" text-anchor="middle" font-size="11" fill="white" font-weight="bold">8</text>
+
+  <text x="610" y="567" text-anchor="start" font-size="13" font-weight="bold" fill="#f5576c">百花齐放 (2024-2026) ⭐</text>
+  <text x="610" y="585" text-anchor="start" font-size="11" fill="#555">GPT-4o · Claude 3 · Gemini 1.5</text>
+  <text x="610" y="600" text-anchor="start" font-size="11" fill="#555">Sora 文生视频 · DeepSeek R1/V4</text>
+  <text x="610" y="615" text-anchor="start" font-size="11" fill="#555">开源模型逼近闭源</text>
+  <text x="610" y="630" text-anchor="start" font-size="11" fill="#555">AI Agent · 具身智能</text>
+
+  <rect x="160" y="562" width="12" height="12" rx="2" fill="url(#g2)" opacity="0.7"/>
+  <text x="175" y="572" font-size="10" fill="#555">多模态融合</text>
+
+  <line x1="400" y1="591" x2="400" y2="627" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Node 9: Future -->
+  <circle cx="400" cy="645" r="12" fill="url(#g6)" filter="url(#shadow)"/>
+  <text x="400" y="650" text-anchor="middle" font-size="10" fill="white" font-weight="bold">?</text>
+
+  <text x="200" y="640" text-anchor="end" font-size="13" font-weight="bold" fill="#a18cd1">未来趋势</text>
+  <text x="200" y="658" text-anchor="end" font-size="11" fill="#666">AGI 探索 · 世界模型</text>
+  <text x="200" y="673" text-anchor="end" font-size="11" fill="#666">具身智能 · AI Agent</text>
+  <text x="200" y="688" text-anchor="end" font-size="11" fill="#666">端侧大模型 · 隐私计算</text>
+
+  <rect x="530" y="630" width="12" height="12" rx="2" fill="url(#g6)" opacity="0.7"/>
+  <text x="545" y="640" font-size="10" fill="#666">通往 AGI 之路</text>
+
+  <!-- Legend Box -->
+  <rect x="50" y="730" width="700" height="150" rx="10" fill="white" stroke="#ddd" stroke-width="1" filter="url(#shadow)"/>
+  <text x="400" y="755" text-anchor="middle" font-size="14" font-weight="bold" fill="#333">AI 发展的三大驱动力</text>
+
+  <circle cx="120" cy="785" r="8" fill="url(#g3)"/>
+  <text x="135" y="789" font-size="12" fill="#555"><tspan font-weight="bold">算法</tspan> — 从符号规则到Transformer</text>
+
+  <circle cx="350" cy="785" r="8" fill="url(#g4)"/>
+  <text x="365" y="789" font-size="12" fill="#555"><tspan font-weight="bold">算力</tspan> — 从CPU到GPU/NPU/TPU</text>
+
+  <circle cx="580" cy="785" r="8" fill="url(#g5)"/>
+  <text x="595" y="789" font-size="12" fill="#555"><tspan font-weight="bold">数据</tspan> — 从人工标注到互联网海量数据</text>
+
+  <text x="400" y="820" text-anchor="middle" font-size="11" fill="#999">没有一夜爆发的技术，只有长期量变积累的质变</text>
+  <text x="400" y="840" text-anchor="middle" font-size="11" fill="#999">从 1943 到 2026，AI 用了 80 年走到今天</text>
+  <text x="400" y="860" text-anchor="middle" font-size="11" fill="#999">数据来源：Wikipedia · 公开学术资料</text>
+</svg>
