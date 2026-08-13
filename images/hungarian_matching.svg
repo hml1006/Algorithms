@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="628.2pt" height="369.36pt" viewBox="0 0 628.2 369.36" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:58:47.600010</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 369.36 
+L 628.2 369.36 
+L 628.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 135.54 84.96 
+L 492.66 84.96 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #cccccc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 135.54 84.96 
+L 492.66 168.12 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #cccccc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 135.54 168.12 
+L 492.66 168.12 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #cccccc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 135.54 168.12 
+L 492.66 251.28 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #cccccc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 135.54 251.28 
+L 492.66 84.96 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #cccccc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 135.54 251.28 
+L 492.66 251.28 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #cccccc; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 135.54 84.96 
+L 492.66 168.12 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #06a77d; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 135.54 168.12 
+L 492.66 251.28 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke: #06a77d; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 104.555 94.31 
+L 133.045 94.31 
+Q 136.895 94.31 136.895 90.46 
+L 136.895 79.46 
+Q 136.895 75.61 133.045 75.61 
+L 104.555 75.61 
+Q 100.705 75.61 100.705 79.46 
+L 100.705 90.46 
+Q 100.705 94.31 104.555 94.31 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="118.8" y="89.14" transform="rotate(-0 118.8 89.14)">任务1</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 104.555 177.47 
+L 133.045 177.47 
+Q 136.895 177.47 136.895 173.62 
+L 136.895 162.62 
+Q 136.895 158.77 133.045 158.77 
+L 104.555 158.77 
+Q 100.705 158.77 100.705 162.62 
+L 100.705 173.62 
+Q 100.705 177.47 104.555 177.47 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="118.8" y="172.3" transform="rotate(-0 118.8 172.3)">任务2</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_4">
+     <path d="M 104.555 260.63 
+L 133.045 260.63 
+Q 136.895 260.63 136.895 256.78 
+L 136.895 245.78 
+Q 136.895 241.93 133.045 241.93 
+L 104.555 241.93 
+Q 100.705 241.93 100.705 245.78 
+L 100.705 256.78 
+Q 100.705 260.63 104.555 260.63 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="118.8" y="255.46" transform="rotate(-0 118.8 255.46)">任务3</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_5">
+     <path d="M 495.155 94.31 
+L 523.645 94.31 
+Q 527.495 94.31 527.495 90.46 
+L 527.495 79.46 
+Q 527.495 75.61 523.645 75.61 
+L 495.155 75.61 
+Q 491.305 75.61 491.305 79.46 
+L 491.305 90.46 
+Q 491.305 94.31 495.155 94.31 
+z
+" style="fill: #f1faee; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="509.4" y="89.14" transform="rotate(-0 509.4 89.14)">工人1</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_6">
+     <path d="M 495.155 177.47 
+L 523.645 177.47 
+Q 527.495 177.47 527.495 173.62 
+L 527.495 162.62 
+Q 527.495 158.77 523.645 158.77 
+L 495.155 158.77 
+Q 491.305 158.77 491.305 162.62 
+L 491.305 173.62 
+Q 491.305 177.47 495.155 177.47 
+z
+" style="fill: #f1faee; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="509.4" y="172.3" transform="rotate(-0 509.4 172.3)">工人2</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_7">
+     <path d="M 495.155 260.63 
+L 523.645 260.63 
+Q 527.495 260.63 527.495 256.78 
+L 527.495 245.78 
+Q 527.495 241.93 523.645 241.93 
+L 495.155 241.93 
+Q 491.305 241.93 491.305 245.78 
+L 491.305 256.78 
+Q 491.305 260.63 495.155 260.63 
+z
+" style="fill: #f1faee; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="509.4" y="255.46" transform="rotate(-0 509.4 255.46)">工人3</text>
+   </g>
+   <g id="line2d_9">
+    <path d="M 135.54 251.28 
+L 492.66 84.96 
+" clip-path="url(#p6977999e5a)" style="fill: none; stroke-dasharray: 11.1,4.8; stroke-dashoffset: 0; stroke: #e63946; stroke-width: 3"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="314.1" y="51.696" transform="rotate(-0 314.1 51.696)">增广路径：连接一个未匹配点的交替路径</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_8">
+     <path d="M 155.189063 344.184 
+L 473.010938 344.184 
+Q 476.010938 344.184 476.010938 341.184 
+L 476.010938 331.184 
+Q 476.010938 328.184 473.010938 328.184 
+L 155.189063 328.184 
+Q 152.189063 328.184 152.189063 331.184 
+L 152.189063 341.184 
+Q 152.189063 344.184 155.189063 344.184 
+z
+" style="fill: #ffffff; stroke: #2e86ab; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="314.1" y="339.984" transform="rotate(-0 314.1 339.984)">沿增广路径翻转匹配边 → 匹配数 +1，直到不存在增广路径即达最大匹配</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="314.1" y="19.52" transform="rotate(-0 314.1 19.52)">匈牙利算法：通过增广路径扩大最大匹配</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p6977999e5a">
+   <rect x="7.2" y="29.52" width="613.8" height="332.64"/>
+  </clipPath>
+ </defs>
+</svg>

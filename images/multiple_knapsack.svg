@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="686.155469pt" height="341.64pt" viewBox="0 0 686.155469 341.64" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:58:47.777760</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 341.64 
+L 686.155469 341.64 
+L 686.155469 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 65.155469 115.452 
+L 93.055469 115.452 
+L 93.055469 87.732 
+L 65.155469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 95.845469 115.452 
+L 123.745469 115.452 
+L 123.745469 87.732 
+L 95.845469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 126.535469 115.452 
+L 154.435469 115.452 
+L 154.435469 87.732 
+L 126.535469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 157.225469 115.452 
+L 185.125469 115.452 
+L 185.125469 87.732 
+L 157.225469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 187.915469 115.452 
+L 215.815469 115.452 
+L 215.815469 87.732 
+L 187.915469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 218.605469 115.452 
+L 246.505469 115.452 
+L 246.505469 87.732 
+L 218.605469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 249.295469 115.452 
+L 277.195469 115.452 
+L 277.195469 87.732 
+L 249.295469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 279.985469 115.452 
+L 307.885469 115.452 
+L 307.885469 87.732 
+L 279.985469 87.732 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 65.155469 237.42 
+L 93.055469 237.42 
+L 93.055469 209.7 
+L 65.155469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #e63946; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 118.165469 237.42 
+L 146.065469 237.42 
+L 146.065469 209.7 
+L 118.165469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #f4a261; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 148.855469 237.42 
+L 176.755469 237.42 
+L 176.755469 209.7 
+L 148.855469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #f4a261; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 201.865469 237.42 
+L 229.765469 237.42 
+L 229.765469 209.7 
+L 201.865469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #06a77d; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 232.555469 237.42 
+L 260.455469 237.42 
+L 260.455469 209.7 
+L 232.555469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #06a77d; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 263.245469 237.42 
+L 291.145469 237.42 
+L 291.145469 209.7 
+L 263.245469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #06a77d; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 293.935469 237.42 
+L 321.835469 237.42 
+L 321.835469 209.7 
+L 293.935469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #06a77d; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 324.625469 237.42 
+L 352.525469 237.42 
+L 352.525469 209.7 
+L 324.625469 209.7 
+z
+" clip-path="url(#pd0cefe7e14)" style="fill: #06a77d; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="93.055469" y="134.856" transform="rotate(-0 93.055469 134.856)">8 件相同物品（每件一样的价值/重量）</text>
+   </g>
+   <g id="patch_18">
+    <path d="M 93.055469 153.488496 
+Q 93.055469 162.573876 93.055469 169.423188 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 95.055469 165.423188 
+L 93.055469 169.423188 
+L 91.055469 165.423188 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="243.715469" y="256.824" transform="rotate(-0 243.715469 256.824)">拆成 1 组 + 2 组 + 5 组（尽可能大的 2 的幂）</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_19">
+     <path d="M 433.308125 172.74 
+L 534.002813 172.74 
+Q 537.302812 172.74 537.302812 169.44 
+L 537.302812 136.44 
+Q 537.302812 133.14 534.002813 133.14 
+L 433.308125 133.14 
+Q 430.008125 133.14 430.008125 136.44 
+L 430.008125 169.44 
+Q 430.008125 172.74 433.308125 172.74 
+z
+" style="fill: #f1faee; stroke: #2e86ab; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; fill: #2e86ab" transform="translate(450.170781 146.12)">8 件 → 3 个组</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; fill: #2e86ab" transform="translate(433.308125 157.12)">每个组可"选或不选"</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; fill: #2e86ab" transform="translate(445.133125 168.12)">转化为 0-1 背包</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; fill: #6c757d" transform="translate(431.825 256.612)">复杂度 O(n·m·log c)</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; fill: #6c757d" transform="translate(438.030469 267.912)"> vs 朴素 O(n·m·c)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="372.055469" y="323.352" transform="rotate(-0 372.055469 323.352)">最大 2 的幂依次提取：c → 1,2,4,...,剩余</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="344.155469" y="19.52" transform="rotate(-0 344.155469 19.52)">多重背包二进制优化：把 8 件拆成 1+2+5</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd0cefe7e14">
+   <rect x="9.355469" y="29.52" width="669.6" height="304.92"/>
+  </clipPath>
+ </defs>
+</svg>

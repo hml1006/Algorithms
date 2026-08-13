@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="687.448359pt" height="341.64pt" viewBox="0 0 687.448359 341.64" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:58:47.965311</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 341.64 
+L 687.448359 341.64 
+L 687.448359 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 60.868359 107.136 
+L 127.828359 107.136 
+L 127.828359 73.872 
+L 60.868359 73.872 
+z
+" clip-path="url(#p504a710fed)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 144.568359 107.136 
+L 211.528359 107.136 
+L 211.528359 73.872 
+L 144.568359 73.872 
+z
+" clip-path="url(#p504a710fed)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 228.268359 107.136 
+L 295.228359 107.136 
+L 295.228359 73.872 
+L 228.268359 73.872 
+z
+" clip-path="url(#p504a710fed)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 311.968359 107.136 
+L 378.928359 107.136 
+L 378.928359 73.872 
+L 311.968359 73.872 
+z
+" clip-path="url(#p504a710fed)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 395.668359 107.136 
+L 462.628359 107.136 
+L 462.628359 73.872 
+L 395.668359 73.872 
+z
+" clip-path="url(#p504a710fed)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 479.368359 107.136 
+L 546.328359 107.136 
+L 546.328359 73.872 
+L 479.368359 73.872 
+z
+" clip-path="url(#p504a710fed)" style="fill: #a8dadc; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 60.868359 206.928 
+L 127.828359 206.928 
+L 127.828359 173.664 
+L 60.868359 173.664 
+z
+" clip-path="url(#p504a710fed)" style="fill: #f1faee; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 144.568359 206.928 
+L 211.528359 206.928 
+L 211.528359 173.664 
+L 144.568359 173.664 
+z
+" clip-path="url(#p504a710fed)" style="fill: #f1faee; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 228.268359 206.928 
+L 295.228359 206.928 
+L 295.228359 173.664 
+L 228.268359 173.664 
+z
+" clip-path="url(#p504a710fed)" style="fill: #f1faee; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 311.968359 206.928 
+L 378.928359 206.928 
+L 378.928359 173.664 
+L 311.968359 173.664 
+z
+" clip-path="url(#p504a710fed)" style="fill: #f1faee; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 395.668359 206.928 
+L 462.628359 206.928 
+L 462.628359 173.664 
+L 395.668359 173.664 
+z
+" clip-path="url(#p504a710fed)" style="fill: #f1faee; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 479.368359 206.928 
+L 546.328359 206.928 
+L 546.328359 173.664 
+L 479.368359 173.664 
+z
+" clip-path="url(#p504a710fed)" style="fill: #f1faee; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="94.348359" y="76.644" transform="rotate(-0 94.348359 76.644)">a[1]</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="94.348359" y="95.064" transform="rotate(-0 94.348359 95.064)">1</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="178.048359" y="76.644" transform="rotate(-0 178.048359 76.644)">a[2]</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="178.048359" y="95.064" transform="rotate(-0 178.048359 95.064)">3</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="261.748359" y="76.644" transform="rotate(-0 261.748359 76.644)">a[3]</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="261.748359" y="95.064" transform="rotate(-0 261.748359 95.064)">3</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="345.448359" y="76.644" transform="rotate(-0 345.448359 76.644)">a[4]</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="345.448359" y="95.064" transform="rotate(-0 345.448359 95.064)">5</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="429.148359" y="76.644" transform="rotate(-0 429.148359 76.644)">a[5]</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="429.148359" y="95.064" transform="rotate(-0 429.148359 95.064)">8</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="512.848359" y="76.644" transform="rotate(-0 512.848359 76.644)">a[6]</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="512.848359" y="95.064" transform="rotate(-0 512.848359 95.064)">6</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="94.348359" y="48.924" transform="rotate(-0 94.348359 48.924)">原数组 a</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="94.348359" y="176.436" transform="rotate(-0 94.348359 176.436)">a[1]</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="94.348359" y="194.476" transform="rotate(-0 94.348359 194.476)">1</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="178.048359" y="176.436" transform="rotate(-0 178.048359 176.436)">a[2]</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="178.048359" y="194.476" transform="rotate(-0 178.048359 194.476)">3</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="261.748359" y="176.436" transform="rotate(-0 261.748359 176.436)">a[3]</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="261.748359" y="194.476" transform="rotate(-0 261.748359 194.476)">3</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="345.448359" y="176.436" transform="rotate(-0 345.448359 176.436)">a[4]</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="345.448359" y="194.476" transform="rotate(-0 345.448359 194.476)">5</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="429.148359" y="176.436" transform="rotate(-0 429.148359 176.436)">a[5]</text>
+   </g>
+   <g id="text_23">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="429.148359" y="194.476" transform="rotate(-0 429.148359 194.476)">8</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="512.848359" y="176.436" transform="rotate(-0 512.848359 176.436)">a[6]</text>
+   </g>
+   <g id="text_25">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="512.848359" y="194.476" transform="rotate(-0 512.848359 194.476)">6</text>
+   </g>
+   <g id="text_26">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="94.348359" y="148.716" transform="rotate(-0 94.348359 148.716)">差分数组 diff（diff[i]=a[i]-a[i-1]）</text>
+   </g>
+   <g id="patch_14">
+    <path d="M 458.39328 107.136 
+Q 345.450471 107.136 232.507662 107.136 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 454.39328 105.136 
+L 458.39328 107.136 
+L 454.39328 109.136 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 236.507662 109.136 
+L 232.507662 107.136 
+L 236.507662 105.136 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #06a77d" x="345.448359" y="143.172" transform="rotate(-0 345.448359 143.172)">区间 [2,4] 加 2</text>
+   </g>
+   <g id="text_28">
+    <g id="patch_15">
+     <path d="M 237.838984 306.076 
+L 508.857734 306.076 
+Q 511.857734 306.076 511.857734 303.076 
+L 511.857734 292.376 
+Q 511.857734 289.376 508.857734 289.376 
+L 237.838984 289.376 
+Q 234.838984 289.376 234.838984 292.376 
+L 234.838984 303.076 
+Q 234.838984 306.076 237.838984 306.076 
+z
+" style="fill: #ffffff; stroke: #06a77d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="373.348359" y="301.176" transform="rotate(-0 373.348359 301.176)">区间加 [l,r] +v：只需 diff[l]+=v, diff[r+1]-=v，最后前缀和还原</text>
+   </g>
+   <g id="text_29">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="345.448359" y="19.52" transform="rotate(-0 345.448359 19.52)">差分数组：一次 O(1) 区间加，O(n) 还原</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p504a710fed">
+   <rect x="10.648359" y="29.52" width="669.6" height="304.92"/>
+  </clipPath>
+ </defs>
+</svg>
