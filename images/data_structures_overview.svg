@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="628.2pt" height="397.08pt" viewBox="0 0 628.2 397.08" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T15:32:39.180506</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 397.08 
+L 628.2 397.08 
+L 628.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 77.337422 109.260281 
+L 121.202578 109.260281 
+Q 123.902578 109.260281 123.902578 106.560281 
+L 123.902578 96.623719 
+Q 123.902578 93.923719 121.202578 93.923719 
+L 77.337422 93.923719 
+Q 74.637422 93.923719 74.637422 96.623719 
+L 74.637422 106.560281 
+Q 74.637422 109.260281 77.337422 109.260281 
+z
+" style="fill: #2e86ab; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="99.27" y="104.543719" transform="rotate(-0 99.27 104.543719)">数组 Array</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 239.195859 108.792 
+L 307.164141 108.792 
+Q 309.864141 108.792 309.864141 106.092 
+L 309.864141 97.092 
+Q 309.864141 94.392 307.164141 94.392 
+L 239.195859 94.392 
+Q 236.495859 94.392 236.495859 97.092 
+L 236.495859 106.092 
+Q 236.495859 108.792 239.195859 108.792 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="273.18" y="105.012" transform="rotate(-0 273.18 105.012)">链表 Linked List</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_4">
+     <path d="M 429.359297 108.792 
+L 464.820703 108.792 
+Q 467.520703 108.792 467.520703 106.092 
+L 467.520703 97.092 
+Q 467.520703 94.392 464.820703 94.392 
+L 429.359297 94.392 
+Q 426.659297 94.392 426.659297 97.092 
+L 426.659297 106.092 
+Q 426.659297 108.792 429.359297 108.792 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="447.09" y="105.012" transform="rotate(-0 447.09 105.012)">栈 Stack</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_5">
+     <path d="M 74.821641 191.524219 
+L 123.718359 191.524219 
+Q 126.418359 191.524219 126.418359 188.824219 
+L 126.418359 179.095781 
+Q 126.418359 176.395781 123.718359 176.395781 
+L 74.821641 176.395781 
+Q 72.121641 176.395781 72.121641 179.095781 
+L 72.121641 188.824219 
+Q 72.121641 191.524219 74.821641 191.524219 
+z
+" style="fill: #2e86ab; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="99.27" y="187.015781" transform="rotate(-0 99.27 187.015781)">队列 Queue</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_6">
+     <path d="M 247.485 191.16 
+L 298.875 191.16 
+Q 301.575 191.16 301.575 188.46 
+L 301.575 179.46 
+Q 301.575 176.76 298.875 176.76 
+L 247.485 176.76 
+Q 244.785 176.76 244.785 179.46 
+L 244.785 188.46 
+Q 244.785 191.16 247.485 191.16 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="273.18" y="187.38" transform="rotate(-0 273.18 187.38)">哈希表 Hash</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_7">
+     <path d="M 430.053281 191.5875 
+L 464.126719 191.5875 
+Q 466.826719 191.5875 466.826719 188.8875 
+L 466.826719 179.0325 
+Q 466.826719 176.3325 464.126719 176.3325 
+L 430.053281 176.3325 
+Q 427.353281 176.3325 427.353281 179.0325 
+L 427.353281 188.8875 
+Q 427.353281 191.5875 430.053281 191.5875 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="447.09" y="186.9525" transform="rotate(-0 447.09 186.9525)">堆 Heap</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_8">
+     <path d="M 85.77 273.528 
+L 112.77 273.528 
+Q 115.47 273.528 115.47 270.828 
+L 115.47 261.828 
+Q 115.47 259.128 112.77 259.128 
+L 85.77 259.128 
+Q 83.07 259.128 83.07 261.828 
+L 83.07 270.828 
+Q 83.07 273.528 85.77 273.528 
+z
+" style="fill: #2e86ab; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="99.27" y="269.748" transform="rotate(-0 99.27 269.748)">单调栈</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_9">
+     <path d="M 255.18 273.528 
+L 291.18 273.528 
+Q 293.88 273.528 293.88 270.828 
+L 293.88 261.828 
+Q 293.88 259.128 291.18 259.128 
+L 255.18 259.128 
+Q 252.48 259.128 252.48 261.828 
+L 252.48 270.828 
+Q 252.48 273.528 255.18 273.528 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="273.18" y="269.748" transform="rotate(-0 273.18 269.748)">单调队列</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_10">
+     <path d="M 436.050938 273.528 
+L 458.129063 273.528 
+Q 460.829063 273.528 460.829063 270.828 
+L 460.829063 261.828 
+Q 460.829063 259.128 458.129063 259.128 
+L 436.050938 259.128 
+Q 433.350938 259.128 433.350938 261.828 
+L 433.350938 270.828 
+Q 433.350938 273.528 436.050938 273.528 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="447.09" y="269.748" transform="rotate(-0 447.09 269.748)">ST 表</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="314.1" y="358.992" transform="rotate(-0 314.1 358.992)">线性结构 → 树形结构 → 复杂结构，复杂度从 O(n) 到 O(log n)</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="314.1" y="19.52" transform="rotate(-0 314.1 19.52)">常见数据结构总览</text>
+   </g>
+  </g>
+ </g>
+</svg>

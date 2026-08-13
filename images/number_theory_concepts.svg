@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="628.2pt" height="369.36pt" viewBox="0 0 628.2 369.36" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T15:32:38.991600</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 369.36 
+L 628.2 369.36 
+L 628.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 314.1 195.84 
+L 83.925 84.96 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 314.1 195.84 
+L 237.375 73.872 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 314.1 195.84 
+L 83.925 306.72 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 314.1 195.84 
+L 237.375 317.808 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 314.1 195.84 
+L 390.825 73.872 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 314.1 195.84 
+L 544.275 84.96 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 314.1 195.84 
+L 390.825 317.808 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 314.1 195.84 
+L 544.275 306.72 
+" clip-path="url(#pd978ec285f)" style="fill: none; stroke: #999999; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 258.915 213.416406 
+L 369.285 213.416406 
+Q 373.185 213.416406 373.185 209.516406 
+L 373.185 182.163594 
+Q 373.185 178.263594 369.285 178.263594 
+L 258.915 178.263594 
+Q 255.015 178.263594 255.015 182.163594 
+L 255.015 209.516406 
+Q 255.015 213.416406 258.915 213.416406 
+z
+" style="fill: #2e86ab; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'" transform="translate(301.1 193.603594)">数论</text>
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'" transform="translate(258.915 206.603594)">(Number Theory)</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 52.748438 92.434219 
+L 115.101562 92.434219 
+Q 117.801563 92.434219 117.801563 89.734219 
+L 117.801563 80.185781 
+Q 117.801563 77.485781 115.101562 77.485781 
+L 52.748438 77.485781 
+Q 50.048438 77.485781 50.048438 80.185781 
+L 50.048438 89.734219 
+Q 50.048438 92.434219 52.748438 92.434219 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="83.925" y="88.105781" transform="rotate(-0 83.925 88.105781)">GCD / 欧几里得</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_4">
+     <path d="M 215.590078 81.346219 
+L 259.159922 81.346219 
+Q 261.859922 81.346219 261.859922 78.646219 
+L 261.859922 69.097781 
+Q 261.859922 66.397781 259.159922 66.397781 
+L 215.590078 66.397781 
+Q 212.890078 66.397781 212.890078 69.097781 
+L 212.890078 78.646219 
+Q 212.890078 81.346219 215.590078 81.346219 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="237.375" y="77.017781" transform="rotate(-0 237.375 77.017781)">素数 / 筛法</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_5">
+     <path d="M 70.425 313.92 
+L 97.425 313.92 
+Q 100.125 313.92 100.125 311.22 
+L 100.125 302.22 
+Q 100.125 299.52 97.425 299.52 
+L 70.425 299.52 
+Q 67.725 299.52 67.725 302.22 
+L 67.725 311.22 
+Q 67.725 313.92 70.425 313.92 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="83.925" y="310.14" transform="rotate(-0 83.925 310.14)">模运算</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_6">
+     <path d="M 214.667578 325.372219 
+L 260.082422 325.372219 
+Q 262.782422 325.372219 262.782422 322.672219 
+L 262.782422 312.943781 
+Q 262.782422 310.243781 260.082422 310.243781 
+L 214.667578 310.243781 
+Q 211.967578 310.243781 211.967578 312.943781 
+L 211.967578 322.672219 
+Q 211.967578 325.372219 214.667578 325.372219 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="237.375" y="320.863781" transform="rotate(-0 237.375 320.863781)">欧拉函数 φ</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_7">
+     <path d="M 354.055781 81.072 
+L 427.594219 81.072 
+Q 430.294219 81.072 430.294219 78.372 
+L 430.294219 69.372 
+Q 430.294219 66.672 427.594219 66.672 
+L 354.055781 66.672 
+Q 351.355781 66.672 351.355781 69.372 
+L 351.355781 78.372 
+Q 351.355781 81.072 354.055781 81.072 
+z
+" style="fill: #e63946; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="390.825" y="77.292" transform="rotate(-0 390.825 77.292)">中国剩余定理 CRT</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_8">
+     <path d="M 530.775 92.16 
+L 557.775 92.16 
+Q 560.475 92.16 560.475 89.46 
+L 560.475 80.46 
+Q 560.475 77.76 557.775 77.76 
+L 530.775 77.76 
+Q 528.075 77.76 528.075 80.46 
+L 528.075 89.46 
+Q 528.075 92.16 530.775 92.16 
+z
+" style="fill: #e63946; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="544.275" y="88.38" transform="rotate(-0 544.275 88.38)">快速幂</text>
+   </g>
+   <g id="text_8">
+    <g id="patch_9">
+     <path d="M 369.040078 325.282219 
+L 412.609922 325.282219 
+Q 415.309922 325.282219 415.309922 322.582219 
+L 415.309922 313.033781 
+Q 415.309922 310.333781 412.609922 310.333781 
+L 369.040078 310.333781 
+Q 366.340078 310.333781 366.340078 313.033781 
+L 366.340078 322.582219 
+Q 366.340078 325.282219 369.040078 325.282219 
+z
+" style="fill: #9d4edd; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="390.825" y="320.953781" transform="rotate(-0 390.825 320.953781)">同余 / 逆元</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_10">
+     <path d="M 517.275 313.92 
+L 571.275 313.92 
+Q 573.975 313.92 573.975 311.22 
+L 573.975 302.22 
+Q 573.975 299.52 571.275 299.52 
+L 517.275 299.52 
+Q 514.575 299.52 514.575 302.22 
+L 514.575 311.22 
+Q 514.575 313.92 517.275 313.92 
+z
+" style="fill: #9d4edd; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="544.275" y="310.14" transform="rotate(-0 544.275 310.14)">线性同余方程</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="314.1" y="339.984" transform="rotate(-0 314.1 339.984)">互相关联：CRT 依赖逆元，欧拉函数用于求逆元，素数筛是基础</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="314.1" y="19.52" transform="rotate(-0 314.1 19.52)">数论核心概念导览</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd978ec285f">
+   <rect x="7.2" y="29.52" width="613.8" height="332.64"/>
+  </clipPath>
+ </defs>
+</svg>

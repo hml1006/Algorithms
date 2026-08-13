@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="628.2pt" height="280.44pt" viewBox="0 0 628.2 280.44" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T15:37:06.590986</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 280.44 
+L 628.2 280.44 
+L 628.2 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 35.1 148.5 
+L 481.5 148.5 
+" clip-path="url(#p0ca7f03b40)" style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #9d4edd; stroke-width: 2"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 146.7 196.194706 
+L 369.9 196.194706 
+" clip-path="url(#p0ca7f03b40)" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="35.1" y="190.128235" transform="rotate(-0 35.1 190.128235)">#</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="90.9" y="190.128235" transform="rotate(-0 90.9 190.128235)">a</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="146.7" y="190.128235" transform="rotate(-0 146.7 190.128235)">#</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="202.5" y="190.128235" transform="rotate(-0 202.5 190.128235)">b</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="258.3" y="190.128235" transform="rotate(-0 258.3 190.128235)">#</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="314.1" y="190.128235" transform="rotate(-0 314.1 190.128235)">a</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="369.9" y="190.128235" transform="rotate(-0 369.9 190.128235)">#</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="425.7" y="190.128235" transform="rotate(-0 425.7 190.128235)">b</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="481.5" y="190.128235" transform="rotate(-0 481.5 190.128235)">#</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="537.3" y="190.128235" transform="rotate(-0 537.3 190.128235)">a</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="593.1" y="190.128235" transform="rotate(-0 593.1 190.128235)">#</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #9d4edd" x="258.3" y="130.155882" transform="rotate(-0 258.3 130.155882)">当前最右回文区间</text>
+   </g>
+   <g id="patch_2">
+    <path d="M 384.517169 239.34631 
+Q 377.397277 202.244089 370.593442 166.788867 
+" style="fill: none; stroke: #06a77d; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 369.504155 170.663587 
+L 370.593442 166.788867 
+L 373.039646 169.985129 
+" style="fill: none; stroke: #06a77d; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #06a77d" x="369.9" y="251.227059" transform="rotate(-0 369.9 251.227059)">i=6 镜像</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 87.725213 239.720656 
+Q 116.601585 202.24104 144.45442 166.089908 
+" style="fill: none; stroke: #f4a261; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 140.831389 167.84309 
+L 144.45442 166.089908 
+L 143.683147 170.040242 
+" style="fill: none; stroke: #f4a261; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #f4a261" x="63" y="251.227059" transform="rotate(-0 63 251.227059)">镜像点=2</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="258.3" y="210.87" transform="rotate(-0 258.3 210.87)">以 center 对称，直接借用镜像半径</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="342" y="67.785882" transform="rotate(-0 342 67.785882)">边界内 d[i] = min(right-i, d[2*center-i])，省去重复比较</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="314.1" y="17.76" transform="rotate(-0 314.1 17.76)">Manacher：利用镜像对称借用回文半径</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p0ca7f03b40">
+   <rect x="7.2" y="23.76" width="613.8" height="249.48"/>
+  </clipPath>
+ </defs>
+</svg>
