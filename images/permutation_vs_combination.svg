@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="856.8pt" height="352.66375pt" viewBox="0 0 856.8 352.66375" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:24:44.635776</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 352.66375 
+L 856.8 352.66375 
+L 856.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 37.78 103.287946 
+L 59.78 103.287946 
+Q 64.18 103.287946 64.18 98.887946 
+L 64.18 87.887946 
+Q 64.18 83.487946 59.78 83.487946 
+L 37.78 83.487946 
+Q 33.38 83.487946 33.38 87.887946 
+L 33.38 98.887946 
+Q 33.38 103.287946 37.78 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="48.78" y="97.567946" transform="rotate(-0 48.78 97.567946)">小明</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 120.94 103.287946 
+L 142.94 103.287946 
+Q 147.34 103.287946 147.34 98.887946 
+L 147.34 87.887946 
+Q 147.34 83.487946 142.94 83.487946 
+L 120.94 83.487946 
+Q 116.54 83.487946 116.54 87.887946 
+L 116.54 98.887946 
+Q 116.54 103.287946 120.94 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="131.94" y="97.567946" transform="rotate(-0 131.94 97.567946)">小红</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_4">
+     <path d="M 204.1 103.287946 
+L 226.1 103.287946 
+Q 230.5 103.287946 230.5 98.887946 
+L 230.5 87.887946 
+Q 230.5 83.487946 226.1 83.487946 
+L 204.1 83.487946 
+Q 199.7 83.487946 199.7 87.887946 
+L 199.7 98.887946 
+Q 199.7 103.287946 204.1 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="215.1" y="97.567946" transform="rotate(-0 215.1 97.567946)">小刚</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_5">
+     <path d="M 287.26 103.287946 
+L 309.26 103.287946 
+Q 313.66 103.287946 313.66 98.887946 
+L 313.66 87.887946 
+Q 313.66 83.487946 309.26 83.487946 
+L 287.26 83.487946 
+Q 282.86 83.487946 282.86 87.887946 
+L 282.86 98.887946 
+Q 282.86 103.287946 287.26 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="298.26" y="97.567946" transform="rotate(-0 298.26 97.567946)">小李</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_6">
+     <path d="M 78.36 241.683839 
+L 102.36 241.683839 
+Q 107.16 241.683839 107.16 236.883839 
+L 107.16 224.883839 
+Q 107.16 220.083839 102.36 220.083839 
+L 78.36 220.083839 
+Q 73.56 220.083839 73.56 224.883839 
+L 73.56 236.883839 
+Q 73.56 241.683839 78.36 241.683839 
+z
+" style="fill: #e63946; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="90.36" y="235.443839" transform="rotate(-0 90.36 235.443839)">班长</text>
+   </g>
+   <g id="text_6">
+    <g id="patch_7">
+     <path d="M 232.68 241.683839 
+L 280.68 241.683839 
+Q 285.48 241.683839 285.48 236.883839 
+L 285.48 224.883839 
+Q 285.48 220.083839 280.68 220.083839 
+L 232.68 220.083839 
+Q 227.88 220.083839 227.88 224.883839 
+L 227.88 236.883839 
+Q 227.88 241.683839 232.68 241.683839 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="256.68" y="235.443839" transform="rotate(-0 256.68 235.443839)">学习委员</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 49.384895 118.208931 
+Q 63.333197 162.136514 76.604778 203.932888 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 77.300433 199.515189 
+L 76.604778 203.932888 
+L 73.488012 200.725745 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 131.335105 118.208931 
+Q 117.386803 162.136514 104.115222 203.932888 
+" style="fill: none; stroke: #f4a261; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 107.231988 200.725745 
+L 104.115222 203.932888 
+L 103.419567 199.515189 
+" style="fill: none; stroke: #f4a261; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="90.36" y="152.9695" transform="rotate(-0 90.36 152.9695)">选法1</text>
+   </g>
+   <g id="patch_10">
+    <path d="M 133.492017 117.571133 
+Q 188.073592 162.136376 240.923109 205.287413 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 239.089614 201.208407 
+L 240.923109 205.287413 
+L 236.559807 204.306805 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 50.62609 117.071804 
+Q 158.968063 162.136335 265.245448 206.342106 
+" style="fill: none; stroke: #f4a261; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 262.320296 202.959284 
+L 265.245448 206.342106 
+L 260.784099 206.652534 
+" style="fill: none; stroke: #f4a261; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="256.68" y="152.9695" transform="rotate(-0 256.68 152.9695)">选法2</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="173.52" y="290.465393" transform="rotate(-0 173.52 290.465393)">(小明当班长,小红当委员) ≠ (小红当班长,小明当委员)</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="173.52" y="322.547768" transform="rotate(-0 173.52 322.547768)">P(4,2) = 4×3 = 12 种</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="215.1" y="18.64" transform="rotate(-0 215.1 18.64)">排列 P(4,2)=12：顺序重要</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="text_12">
+    <g id="patch_12">
+     <path d="M 464.38 103.287946 
+L 486.38 103.287946 
+Q 490.78 103.287946 490.78 98.887946 
+L 490.78 87.887946 
+Q 490.78 83.487946 486.38 83.487946 
+L 464.38 83.487946 
+Q 459.98 83.487946 459.98 87.887946 
+L 459.98 98.887946 
+Q 459.98 103.287946 464.38 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="475.38" y="97.567946" transform="rotate(-0 475.38 97.567946)">小明</text>
+   </g>
+   <g id="text_13">
+    <g id="patch_13">
+     <path d="M 547.54 103.287946 
+L 569.54 103.287946 
+Q 573.94 103.287946 573.94 98.887946 
+L 573.94 87.887946 
+Q 573.94 83.487946 569.54 83.487946 
+L 547.54 83.487946 
+Q 543.14 83.487946 543.14 87.887946 
+L 543.14 98.887946 
+Q 543.14 103.287946 547.54 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="558.54" y="97.567946" transform="rotate(-0 558.54 97.567946)">小红</text>
+   </g>
+   <g id="text_14">
+    <g id="patch_14">
+     <path d="M 630.7 103.287946 
+L 652.7 103.287946 
+Q 657.1 103.287946 657.1 98.887946 
+L 657.1 87.887946 
+Q 657.1 83.487946 652.7 83.487946 
+L 630.7 83.487946 
+Q 626.3 83.487946 626.3 87.887946 
+L 626.3 98.887946 
+Q 626.3 103.287946 630.7 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="641.7" y="97.567946" transform="rotate(-0 641.7 97.567946)">小刚</text>
+   </g>
+   <g id="text_15">
+    <g id="patch_15">
+     <path d="M 713.86 103.287946 
+L 735.86 103.287946 
+Q 740.26 103.287946 740.26 98.887946 
+L 740.26 87.887946 
+Q 740.26 83.487946 735.86 83.487946 
+L 713.86 83.487946 
+Q 709.46 83.487946 709.46 87.887946 
+L 709.46 98.887946 
+Q 709.46 103.287946 713.86 103.287946 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="724.86" y="97.567946" transform="rotate(-0 724.86 97.567946)">小李</text>
+   </g>
+   <g id="text_16">
+    <g id="patch_16">
+     <path d="M 576.12 247.683839 
+L 624.12 247.683839 
+Q 628.92 247.683839 628.92 242.883839 
+L 628.92 218.883839 
+Q 628.92 214.083839 624.12 214.083839 
+L 576.12 214.083839 
+Q 571.32 214.083839 571.32 218.883839 
+L 571.32 242.883839 
+Q 571.32 247.683839 576.12 247.683839 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'" transform="translate(576.12 229.443839)">打扫小组</text>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'" transform="translate(578.58 241.443839)">（2人）</text>
+   </g>
+   <g id="patch_17">
+    <path d="M 476.880499 117.62708 
+Q 527.35645 162.137172 576.15526 205.168346 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 574.47788 201.022698 
+L 576.15526 205.168346 
+L 571.832313 204.02286 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 559.664898 117.957169 
+Q 589.725799 162.137067 618.528805 204.468263 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 617.932144 200.036108 
+L 618.528805 204.468263 
+L 614.625085 202.286299 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #06a77d" x="516.96" y="152.9695" transform="rotate(-0 516.96 152.9695)">{小明,小红}</text>
+   </g>
+   <g id="patch_19">
+    <path d="M 640.685498 118.024306 
+Q 614.673192 162.135568 589.512753 204.802247 
+" style="fill: none; stroke: #2e86ab; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 593.267342 202.372625 
+L 589.512753 204.802247 
+L 589.821809 200.340803 
+" style="fill: none; stroke: #2e86ab; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 723.307983 117.571133 
+Q 668.726408 162.136376 615.443877 205.640965 
+" style="fill: none; stroke: #2e86ab; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 619.807179 204.660356 
+L 615.443877 205.640965 
+L 617.277371 201.561958 
+" style="fill: none; stroke: #2e86ab; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="683.28" y="152.9695" transform="rotate(-0 683.28 152.9695)">{小刚,小李}</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #06a77d" x="600.12" y="290.465393" transform="rotate(-0 600.12 290.465393)">{小明,小红} = {小红,小明}（同一组）</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="600.12" y="322.547768" transform="rotate(-0 600.12 322.547768)">C(4,2) = P(4,2)/2! = 12/2 = 6 种</text>
+   </g>
+   <g id="text_21">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="641.7" y="18.64" transform="rotate(-0 641.7 18.64)">组合 C(4,2)=6：顺序无关</text>
+   </g>
+  </g>
+ </g>
+</svg>

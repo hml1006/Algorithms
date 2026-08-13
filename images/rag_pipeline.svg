@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="684pt" height="369.36pt" viewBox="0 0 684 369.36" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:23:29.461684</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 369.36 
+L 684 369.36 
+L 684 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <g id="patch_2">
+     <path d="M 79.9 211.24 
+L 101.9 211.24 
+Q 106.3 211.24 106.3 206.84 
+L 106.3 184.84 
+Q 106.3 180.44 101.9 180.44 
+L 79.9 180.44 
+Q 75.5 180.44 75.5 184.84 
+L 75.5 206.84 
+Q 75.5 211.24 79.9 211.24 
+z
+" style="fill: #e63946; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'" transform="translate(79.9 194.52)">用户</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'" transform="translate(79.9 205.52)">查询</text>
+   </g>
+   <g id="text_2">
+    <g id="patch_3">
+     <path d="M 237.164844 93.96 
+L 279.435156 93.96 
+Q 283.435156 93.96 283.435156 89.96 
+L 283.435156 79.96 
+Q 283.435156 75.96 279.435156 75.96 
+L 237.164844 75.96 
+Q 233.164844 75.96 233.164844 79.96 
+L 233.164844 89.96 
+Q 233.164844 93.96 237.164844 93.96 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="258.3" y="88.76" transform="rotate(-0 258.3 88.76)">① 向量化</text>
+   </g>
+   <g id="text_3">
+    <g id="patch_4">
+     <path d="M 227.164844 204.84 
+L 289.435156 204.84 
+Q 293.435156 204.84 293.435156 200.84 
+L 293.435156 190.84 
+Q 293.435156 186.84 289.435156 186.84 
+L 227.164844 186.84 
+Q 223.164844 186.84 223.164844 190.84 
+L 223.164844 200.84 
+Q 223.164844 204.84 227.164844 204.84 
+z
+" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="258.3" y="199.64" transform="rotate(-0 258.3 199.64)">② 相似度搜索</text>
+   </g>
+   <g id="text_4">
+    <g id="patch_5">
+     <path d="M 232.810156 316.195 
+L 283.789844 316.195 
+Q 287.789844 316.195 287.789844 312.195 
+L 287.789844 301.245 
+Q 287.789844 297.245 283.789844 297.245 
+L 232.810156 297.245 
+Q 228.810156 297.245 228.810156 301.245 
+L 228.810156 312.195 
+Q 228.810156 316.195 232.810156 316.195 
+z
+" style="fill: #06a77d; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="258.3" y="310.045" transform="rotate(-0 258.3 310.045)">Top-K 文档</text>
+   </g>
+   <g id="text_5">
+    <g id="patch_6">
+     <path d="M 454 94.86 
+L 509 94.86 
+Q 513.4 94.86 513.4 90.46 
+L 513.4 79.46 
+Q 513.4 75.06 509 75.06 
+L 454 75.06 
+Q 449.6 75.06 449.6 79.46 
+L 449.6 90.46 
+Q 449.6 94.86 454 94.86 
+z
+" style="fill: #f4a261; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="481.5" y="89.14" transform="rotate(-0 481.5 89.14)">向量数据库</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC'; fill: #6c757d" transform="translate(452.920625 115.2955)">FAISS / Chroma</text>
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC'; fill: #6c757d" transform="translate(457.00375 123.768)">(文档 → 向量)</text>
+   </g>
+   <g id="text_7">
+    <g id="patch_7">
+     <path d="M 599 211.24 
+L 643 211.24 
+Q 647.4 211.24 647.4 206.84 
+L 647.4 184.84 
+Q 647.4 180.44 643 180.44 
+L 599 180.44 
+Q 594.6 180.44 594.6 184.84 
+L 594.6 206.84 
+Q 594.6 211.24 599 211.24 
+z
+" style="fill: #2e86ab; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'" transform="translate(603.202344 194.52)">③ LLM</text>
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC'" transform="translate(599 205.52)">生成回复</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 136.691488 194.20563 
+Q 174.599091 140.40129 211.54079 87.967911 
+" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 207.602011 90.085933 
+L 211.54079 87.967911 
+L 210.871941 92.389747 
+" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 258.3 114.679819 
+Q 258.3 140.400189 258.3 164.443509 
+" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 260.3 160.443509 
+L 258.3 164.443509 
+L 256.3 160.443509 
+" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 258.3 225.559819 
+Q 258.3 251.280189 258.3 275.323509 
+" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 260.3 271.323509 
+L 258.3 275.323509 
+L 256.3 271.323509 
+" style="fill: none; stroke: #6c757d; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 433.184448 84.96 
+Q 369.901192 84.96 306.617936 84.96 
+" style="fill: none; stroke: #f4a261; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 429.184448 82.96 
+L 433.184448 84.96 
+L 429.184448 86.96 
+" style="fill: none; stroke: #f4a261; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 310.617936 86.96 
+L 306.617936 84.96 
+L 310.617936 82.96 
+" style="fill: none; stroke: #f4a261; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 304.821598 306.03326 
+Q 439.652331 256.823149 572.382528 208.379686 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 567.939264 207.87233 
+L 572.382528 208.379686 
+L 569.310685 211.629883 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-style: italic; font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #06a77d" x="425.7" y="290.088" transform="rotate(-0 425.7 290.088)">检索结果 + 查询</text>
+   </g>
+   <g id="patch_13">
+    <path d="M 621 149.48412 
+Q 621 132.081684 621 116.356298 
+" style="fill: none; stroke: #2e86ab; stroke-width: 1.5; stroke-linecap: round"/>
+    <path d="M 619 120.356298 
+L 621 116.356298 
+L 623 120.356298 
+" style="fill: none; stroke: #2e86ab; stroke-width: 1.5; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; fill: #2e86ab" transform="translate(594 75.96)">基于资料回答</text>
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; fill: #2e86ab" transform="translate(594 84.96)">（减少幻觉）</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="342" y="351.072" transform="rotate(-0 342 351.072)">闭卷（纯 LLM）：凭记忆，可能瞎编  |  开卷（RAG）：查资料，答案准确</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="342" y="19.52" transform="rotate(-0 342 19.52)">RAG：开卷考试 —— 先检索后生成</text>
+   </g>
+  </g>
+ </g>
+</svg>

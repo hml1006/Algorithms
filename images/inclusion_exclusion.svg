@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="473.04pt" height="498.76332pt" viewBox="0 0 473.04 498.76332" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:24:44.484005</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 498.76332 
+L 473.04 498.76332 
+L 473.04 -0 
+L 0 -0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 197.712 311.76 
+C 225.781096 311.76 252.704334 300.60803 272.552182 280.760182 
+C 292.40003 260.912334 303.552 233.989096 303.552 205.92 
+C 303.552 177.850904 292.40003 150.927666 272.552182 131.079818 
+C 252.704334 111.23197 225.781096 100.08 197.712 100.08 
+C 169.642904 100.08 142.719666 111.23197 122.871818 131.079818 
+C 103.02397 150.927666 91.872 177.850904 91.872 205.92 
+C 91.872 233.989096 103.02397 260.912334 122.871818 280.760182 
+C 142.719666 300.60803 169.642904 311.76 197.712 311.76 
+z
+" clip-path="url(#p3256b0f31f)" style="fill: #2e86ab; opacity: 0.35; stroke: #2e86ab; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 310.608 311.76 
+C 338.677096 311.76 365.600334 300.60803 385.448182 280.760182 
+C 405.29603 260.912334 416.448 233.989096 416.448 205.92 
+C 416.448 177.850904 405.29603 150.927666 385.448182 131.079818 
+C 365.600334 111.23197 338.677096 100.08 310.608 100.08 
+C 282.538904 100.08 255.615666 111.23197 235.767818 131.079818 
+C 215.91997 150.927666 204.768 177.850904 204.768 205.92 
+C 204.768 233.989096 215.91997 260.912334 235.767818 280.760182 
+C 255.615666 300.60803 282.538904 311.76 310.608 311.76 
+z
+" clip-path="url(#p3256b0f31f)" style="fill: #e63946; opacity: 0.35; stroke: #e63946; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 254.16 403.488 
+C 282.229096 403.488 309.152334 392.33603 329.000182 372.488182 
+C 348.84803 352.640334 360 325.717096 360 297.648 
+C 360 269.578904 348.84803 242.655666 329.000182 222.807818 
+C 309.152334 202.95997 282.229096 191.808 254.16 191.808 
+C 226.090904 191.808 199.167666 202.95997 179.319818 222.807818 
+C 159.47197 242.655666 148.32 269.578904 148.32 297.648 
+C 148.32 325.717096 159.47197 352.640334 179.319818 372.488182 
+C 199.167666 392.33603 226.090904 403.488 254.16 403.488 
+z
+" clip-path="url(#p3256b0f31f)" style="fill: #06a77d; opacity: 0.35; stroke: #06a77d; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #2e86ab" x="98.928" y="114.192" transform="rotate(-0 98.928 114.192)">A</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #e63946" x="409.392" y="114.192" transform="rotate(-0 409.392 114.192)">B</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 16px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #06a77d" x="254.16" y="403.488" transform="rotate(-0 254.16 403.488)">C</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #2e86ab" x="134.208" y="156.528" transform="rotate(-0 134.208 156.528)">5</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="374.112" y="156.528" transform="rotate(-0 374.112 156.528)">4</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #06a77d" x="254.16" y="368.208" transform="rotate(-0 254.16 368.208)">6</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #9d4edd" x="254.16" y="149.472" transform="rotate(-0 254.16 149.472)">2</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #9d4edd" x="183.6" y="283.536" transform="rotate(-0 183.6 283.536)">3</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #9d4edd" x="324.72" y="283.536" transform="rotate(-0 324.72 283.536)">1</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_5">
+     <path d="M 254.16 239.184 
+C 256.70595 239.184 259.147967 238.172483 260.948225 236.372225 
+C 262.748483 234.571967 263.76 232.12995 263.76 229.584 
+C 263.76 227.03805 262.748483 224.596033 260.948225 222.795775 
+C 259.147967 220.995517 256.70595 219.984 254.16 219.984 
+C 251.61405 219.984 249.172033 220.995517 247.371775 222.795775 
+C 245.571517 224.596033 244.56 227.03805 244.56 229.584 
+C 244.56 232.12995 245.571517 234.571967 247.371775 236.372225 
+C 249.172033 238.172483 251.61405 239.184 254.16 239.184 
+z
+" style="fill: #ffffff; stroke: #000000; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="254.16" y="234.144" transform="rotate(-0 254.16 234.144)">1</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_6">
+     <path d="M 64.520156 494.56332 
+L 443.799844 494.56332 
+Q 446.799844 494.56332 446.799844 491.56332 
+L 446.799844 455.51293 
+Q 446.799844 452.51293 443.799844 452.51293 
+L 64.520156 452.51293 
+Q 61.520156 452.51293 61.520156 455.51293 
+L 61.520156 491.56332 
+Q 61.520156 494.56332 64.520156 494.56332 
+z
+" style="fill: #f1faee; stroke: #6c757d; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace" transform="translate(76.560781 464.156094)">|A∪B∪C| = |A| + |B| + |C| − |A∩B| − |A∩C| − |B∩C| + |A∩B∩C|</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace" transform="translate(64.520156 476.158047)">= (5+2+3+1) + (4+2+1+1) + (6+3+1+1) − (2+1) − (3+1) − (1+1) + 1</text>
+    <text style="font-size: 10px; font-family: 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Computer Modern Typewriter', 'Andale Mono', 'Nimbus Mono L', 'Courier New', 'Courier', 'Fixed', 'Terminal', monospace" transform="translate(151.814688 488.16)">= 11 + 8 + 11 − 3 − 4 − 2 + 1 = 22</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #06a77d" x="7.2" y="64.8" transform="rotate(-0 7.2 64.8)">+ 单区</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #e63946" x="7.2" y="100.08" transform="rotate(-0 7.2 100.08)">− 两交集</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: start; fill: #2e86ab" x="7.2" y="135.36" transform="rotate(-0 7.2 135.36)">+ 三交集</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="254.16" y="19.52" transform="rotate(-0 254.16 19.52)">容斥原理：三集合并集 |A∪B∪C|</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3256b0f31f">
+   <rect x="42.48" y="29.52" width="423.36" height="388.08"/>
+  </clipPath>
+ </defs>
+</svg>

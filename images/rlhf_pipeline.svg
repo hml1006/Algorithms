@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="739.8pt" height="313.92pt" viewBox="0 0 739.8 313.92" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-13T11:23:29.244569</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 313.92 
+L 739.8 313.92 
+L 739.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 35.1 231.876 
+L 202.5 231.876 
+Q 210.87 231.876 210.87 223.56 
+L 210.87 84.96 
+Q 210.87 76.644 202.5 76.644 
+L 35.1 76.644 
+Q 26.73 76.644 26.73 84.96 
+L 26.73 223.56 
+Q 26.73 231.876 35.1 231.876 
+z
+" clip-path="url(#p545fc511d6)" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 286.2 231.876 
+L 453.6 231.876 
+Q 461.97 231.876 461.97 223.56 
+L 461.97 84.96 
+Q 461.97 76.644 453.6 76.644 
+L 286.2 76.644 
+Q 277.83 76.644 277.83 84.96 
+L 277.83 223.56 
+Q 277.83 231.876 286.2 231.876 
+z
+" clip-path="url(#p545fc511d6)" style="fill: #f1faee; stroke: #000000; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 537.3 231.876 
+L 704.7 231.876 
+Q 713.07 231.876 713.07 223.56 
+L 713.07 84.96 
+Q 713.07 76.644 704.7 76.644 
+L 537.3 76.644 
+Q 528.93 76.644 528.93 84.96 
+L 528.93 223.56 
+Q 528.93 231.876 537.3 231.876 
+z
+" clip-path="url(#p545fc511d6)" style="fill: #a8dadc; stroke: #000000; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="118.8" y="107.136" transform="rotate(-0 118.8 107.136)">阶段1：SFT</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(98.8 161.92)">监督微调</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(87.064844 171.92)">用指令-回答对</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(88.8 181.92)">教模型听指令</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="369.9" y="107.136" transform="rotate(-0 369.9 107.136)">阶段2：RM</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(339.9 161.92)">训练奖励模型</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(339.9 171.92)">人类标注偏好</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(336.31875 181.92)">A &gt; B → 评分器</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="621" y="107.136" transform="rotate(-0 621 107.136)">阶段3：PPO</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(591 161.92)">强化学习优化</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(596 171.92)">最大化奖励</text>
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'" transform="translate(590.039844 181.92)">+ KL 散度约束</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 210.076798 154.26 
+Q 244.347343 154.26 276.381821 154.26 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 272.381821 152.26 
+L 276.381821 154.26 
+L 272.381821 156.26 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 461.176798 154.26 
+Q 495.447343 154.26 527.481821 154.26 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 523.481821 152.26 
+L 527.481821 154.26 
+L 523.481821 156.26 
+" style="fill: none; stroke: #e63946; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 619.279665 263.393129 
+Q 495.447912 336.674106 373.5405 264.52948 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 375.964271 268.287848 
+L 373.5405 264.52948 
+L 378.001457 264.845484 
+" style="fill: none; stroke: #06a77d; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #06a77d" x="495.45" y="287.316" transform="rotate(-0 495.45 287.316)">采样新回复 → 更新偏好数据</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #6c757d" x="118.8" y="57.24" transform="rotate(-0 118.8 57.24)">📥 预训练模型</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #e63946" x="621" y="57.24" transform="rotate(-0 621 57.24)">🏆 对齐后模型</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC'; text-anchor: middle; fill: #f4a261" x="621" y="240.192" transform="rotate(-0 621 240.192)">KL(π‖π_ref) 防止跑偏</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'Noto Sans CJK SC'; text-anchor: middle" x="369.9" y="19.52" transform="rotate(-0 369.9 19.52)">RLHF 三阶段：让模型学会"讨好人类"</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p545fc511d6">
+   <rect x="7.2" y="29.52" width="725.4" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>
