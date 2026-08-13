@@ -72,6 +72,49 @@ $$\min_G \max_D V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}(x)}[\log D(x)] + \m
 
 **应用场景：** 图像生成、数据增强、超分辨率、风格迁移、异常检测。
 
+#### 代码示例：简单 GAN（NumPy 简化版）
+
+```python
+import numpy as np
+
+# 简化的 GAN 训练过程（概念演示）
+class SimpleGAN:
+    """
+    简单 GAN 概念演示
+    💡 造假画师（生成器）与鉴宝专家（判别器）的博弈
+    """
+    def __init__(self, latent_dim=100, data_dim=784):
+        self.latent_dim = latent_dim
+        self.data_dim = data_dim
+        # 生成器：噪声 → 假数据
+        self.G_W1 = np.random.randn(latent_dim, 256) * 0.01
+        self.G_W2 = np.random.randn(256, data_dim) * 0.01
+        # 判别器：数据 → 真假概率
+        self.D_W1 = np.random.randn(data_dim, 256) * 0.01
+        self.D_W2 = np.random.randn(256, 1) * 0.01
+    
+    def generator(self, z):
+        """生成器：噪声 → 假数据"""
+        h = np.maximum(0, z @ self.G_W1)  # ReLU
+        return np.tanh(h @ self.G_W2)  # Tanh 输出 [-1, 1]
+    
+    def discriminator(self, x):
+        """判别器：数据 → 真假概率"""
+        h = np.maximum(0, x @ self.D_W1)  # LeakyReLU 简化
+        return 1 / (1 + np.exp(-(h @ self.D_W2)))  # Sigmoid
+    
+    def generate_samples(self, n_samples=1):
+        """生成假样本"""
+        z = np.random.randn(n_samples, self.latent_dim)
+        return self.generator(z)
+
+# 示例：生成"假"手写数字图像
+gan = SimpleGAN(latent_dim=100, data_dim=784)
+fake_images = gan.generate_samples(n_samples=5)
+print(f"生成 5 张假图像，每张维度: {fake_images.shape[1]}")
+print(f"像素值范围: [{fake_images.min():.3f}, {fake_images.max():.3f}]")
+```
+
 ---
 
 ### 1.2 DCGAN
@@ -299,6 +342,63 @@ $$x_{t-1} = \frac{1}{\sqrt{\alpha_t}} \left( x_t - \frac{\beta_t}{\sqrt{1 - \bar
 
 **应用场景：** 图像生成、图像修复、超分辨率、音频生成。
 
+#### 代码示例：扩散模型去噪过程（简化版）
+
+```python
+import numpy as np
+
+# 扩散模型核心概念演示
+class SimpleDiffusion:
+    """
+    简单扩散模型概念演示
+    💡 把照片"洗花"，再学会一步步"洗回来"
+    """
+    def __init__(self, n_steps=1000, beta_start=0.0001, beta_end=0.02):
+        self.T = n_steps
+        # 线性噪声调度
+        self.betas = np.linspace(beta_start, beta_end, n_steps)
+        self.alphas = 1 - self.betas
+        self.alpha_bars = np.cumprod(self.alphas)  # ᾱ_t = ∏α_s
+    
+    def forward_diffusion(self, x_0, t):
+        """前向加噪：直接从 x_0 计算 x_t"""
+        sqrt_alpha_bar = np.sqrt(self.alpha_bars[t])
+        sqrt_one_minus_alpha_bar = np.sqrt(1 - self.alpha_bars[t])
+        noise = np.random.randn(*x_0.shape)
+        x_t = sqrt_alpha_bar * x_0 + sqrt_one_minus_alpha_bar * noise
+        return x_t, noise
+    
+    def denoise_step(self, x_t, t, predicted_noise):
+        """单步去噪：从 x_t 预测 x_{t-1}"""
+        alpha_t = self.alphas[t]
+        alpha_bar_t = self.alpha_bars[t]
+        
+        # 预测 x_0
+        predicted_x0 = (x_t - np.sqrt(1 - alpha_bar_t) * predicted_noise) / np.sqrt(alpha_bar_t)
+        # 计算 x_{t-1} 的均值
+        mean = (1 / np.sqrt(alpha_t)) * (x_t - (self.betas[t] / np.sqrt(1 - alpha_bar_t)) * predicted_noise)
+        
+        if t > 0:
+            # 加噪声（t=0 时不加）
+            noise = np.random.randn(*x_t.shape)
+            x_prev = mean + np.sqrt(self.betas[t]) * noise
+        else:
+            x_prev = mean
+        return x_prev
+
+# 示例：对一张"图像"进行加噪和去噪
+diffusion = SimpleDiffusion(n_steps=1000)
+
+# 模拟一张 8x8 的"图像"
+x_0 = np.random.randn(8, 8)
+
+# 前向加噪到 t=500
+x_500, noise = diffusion.forward_diffusion(x_0, t=500)
+print(f"原始图像范围: [{x_0.min():.2f}, {x_0.max():.2f}]")
+print(f"加噪后范围: [{x_500.min():.2f}, {x_500.max():.2f}]")
+print(f"噪声水平（t=500）: α̅_500 = {diffusion.alpha_bars[500]:.4f}")
+```
+
 ---
 
 ### 2.2 DDIM
@@ -492,6 +592,87 @@ $$\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2$$
 $$\text{Transformer}(X) = \text{LayerNorm}(X + \text{MultiHead}(X)) + \text{LayerNorm}(X + \text{FFN}(X))$$
 
 **应用场景：** 所有现代大语言模型的基础架构，机器翻译、文本生成、代码生成、多模态模型。
+
+#### 代码示例：Transformer 核心组件（NumPy 简化版）
+
+```python
+import numpy as np
+
+# Transformer 核心：自注意力机制
+def scaled_dot_product_attention(Q, K, V, mask=None):
+    """
+    缩放点积注意力
+    💡 就像阅读时给每个词分配"注意力权重"，决定当前词应该关注哪些词
+    """
+    d_k = Q.shape[-1]
+    # 计算注意力分数：Q·K^T / √d_k
+    scores = np.matmul(Q, K.T) / np.sqrt(d_k)
+    
+    # 如果有掩码（如解码器中，防止看到未来信息）
+    if mask is not None:
+        scores = np.where(mask == 0, -1e9, scores)
+    
+    # Softmax 归一化得到注意力权重
+    attention_weights = np.exp(scores) / np.sum(np.exp(scores), axis=-1, keepdims=True)
+    
+    # 加权求和得到输出
+    output = np.matmul(attention_weights, V)
+    return output, attention_weights
+
+# 多头注意力
+class MultiHeadAttention:
+    """
+    多头注意力：同时从多个角度理解文本
+    💡 就像读句子时，一个头关注语法关系，一个头关注语义关系，一个头关注位置关系
+    """
+    def __init__(self, d_model=512, n_heads=8):
+        self.d_model = d_model
+        self.n_heads = n_heads
+        self.d_k = d_model // n_heads
+        
+        # 权重矩阵
+        self.W_q = np.random.randn(d_model, d_model) * 0.01
+        self.W_k = np.random.randn(d_model, d_model) * 0.01
+        self.W_v = np.random.randn(d_model, d_model) * 0.01
+        self.W_o = np.random.randn(d_model, d_model) * 0.01
+    
+    def forward(self, X, mask=None):
+        # 线性投影
+        Q = X @ self.W_q
+        K = X @ self.W_k
+        V = X @ self.W_v
+        
+        # 分割成多个头
+        batch_size = X.shape[0]
+        Q = Q.reshape(batch_size, -1, self.n_heads, self.d_k).transpose(0, 2, 1, 3)
+        K = K.reshape(batch_size, -1, self.n_heads, self.d_k).transpose(0, 2, 1, 3)
+        V = V.reshape(batch_size, -1, self.n_heads, self.d_k).transpose(0, 2, 1, 3)
+        
+        # 对每个头计算注意力
+        attn_out, _ = scaled_dot_product_attention(Q, K, V, mask)
+        
+        # 拼接所有头
+        attn_out = attn_out.transpose(0, 2, 1, 3).reshape(batch_size, -1, self.d_model)
+        
+        # 最终线性投影
+        output = attn_out @ self.W_o
+        return output
+
+# 示例：处理一个序列
+batch_size, seq_len, d_model = 1, 10, 512
+X = np.random.randn(batch_size, seq_len, d_model)
+
+mha = MultiHeadAttention(d_model=512, n_heads=8)
+output = mha.forward(X)
+print(f"输入形状: {X.shape}")
+print(f"输出形状: {output.shape}")
+```
+
+**💡 学习要点：**
+- 自注意力的核心是 $Q$（Query）、$K$（Key）、$V$（Value）三个矩阵
+- 除以 $\sqrt{d_k}$ 防止点积过大导致 softmax 梯度消失
+- 多头注意力让模型同时从多个角度理解序列关系
+- 这是所有现代大模型（GPT、BERT、LLaMA 等）的基础组件
 
 ---
 
