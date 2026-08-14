@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="309.04pt" viewBox="0 0 460.8 309.04" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:07:10.223197</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 309.04 
+L 460.8 309.04 
+L 460.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 12.78 296.56 
+L 448.02 296.56 
+Q 449.136 296.56 449.136 295.24 
+L 449.136 70.84 
+Q 449.136 69.52 448.02 69.52 
+L 12.78 69.52 
+Q 11.664 69.52 11.664 70.84 
+L 11.664 295.24 
+Q 11.664 296.56 12.78 296.56 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #4c72b0; opacity: 0.9; stroke: #000000; stroke-width: 3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 152.28 276.76 
+L 275.04 276.76 
+Q 276.156 276.76 276.156 275.44 
+L 276.156 169.84 
+Q 276.156 168.52 275.04 168.52 
+L 152.28 168.52 
+Q 151.164 168.52 151.164 169.84 
+L 151.164 275.44 
+Q 151.164 276.76 152.28 276.76 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #55a868; opacity: 0.9; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 297.36 276.76 
+L 431.28 276.76 
+Q 432.396 276.76 432.396 275.44 
+L 432.396 169.84 
+Q 432.396 168.52 431.28 168.52 
+L 297.36 168.52 
+Q 296.244 168.52 296.244 169.84 
+L 296.244 275.44 
+Q 296.244 276.76 297.36 276.76 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #dd8452; opacity: 0.9; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 319.68 243.76 
+L 408.96 243.76 
+Q 410.076 243.76 410.076 242.44 
+L 410.076 189.64 
+Q 410.076 188.32 408.96 188.32 
+L 319.68 188.32 
+Q 318.564 188.32 318.564 189.64 
+L 318.564 242.44 
+Q 318.564 243.76 319.68 243.76 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #c44e52; opacity: 0.9; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="18.36" y="64.24" transform="rotate(-0 18.36 64.24)">广义表 LS = ( a, (b, c), (d, (e, f)) )</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="213.66" y="226.060312" transform="rotate(-0 213.66 226.060312)">子表 (b, c)</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="364.32" y="226.060312" transform="rotate(-0 364.32 226.060312)">子表 (d, (e,f))</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="364.32" y="219.460312" transform="rotate(-0 364.32 219.460312)">子表 (e,f)</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #8c8c8c" x="40.68" y="288.64" transform="rotate(-0 40.68 288.64)">原子</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="230.4" y="18.64" transform="rotate(-0 230.4 18.64)">广义表：节点可存'原子'或另一个'子表'（俄罗斯套娃）</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 40.68 233.2 
+C 43.047733 233.2 45.318809 232.087332 46.993049 230.107048 
+C 48.66729 228.126763 49.608 225.440545 49.608 222.64 
+C 49.608 219.839455 48.66729 217.153237 46.993049 215.172952 
+C 45.318809 213.192668 43.047733 212.08 40.68 212.08 
+C 38.312267 212.08 36.041191 213.192668 34.366951 215.172952 
+C 32.69271 217.153237 31.752 219.839455 31.752 222.64 
+C 31.752 225.440545 32.69271 228.126763 34.366951 230.107048 
+C 36.041191 232.087332 38.312267 233.2 40.68 233.2 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #8172b3; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 174.6 233.2 
+C 176.967733 233.2 179.238809 232.087332 180.913049 230.107048 
+C 182.58729 228.126763 183.528 225.440545 183.528 222.64 
+C 183.528 219.839455 182.58729 217.153237 180.913049 215.172952 
+C 179.238809 213.192668 176.967733 212.08 174.6 212.08 
+C 172.232267 212.08 169.961191 213.192668 168.286951 215.172952 
+C 166.61271 217.153237 165.672 219.839455 165.672 222.64 
+C 165.672 225.440545 166.61271 228.126763 168.286951 230.107048 
+C 169.961191 232.087332 172.232267 233.2 174.6 233.2 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #8172b3; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 230.4 233.2 
+C 232.767733 233.2 235.038809 232.087332 236.713049 230.107048 
+C 238.38729 228.126763 239.328 225.440545 239.328 222.64 
+C 239.328 219.839455 238.38729 217.153237 236.713049 215.172952 
+C 235.038809 213.192668 232.767733 212.08 230.4 212.08 
+C 228.032267 212.08 225.761191 213.192668 224.086951 215.172952 
+C 222.41271 217.153237 221.472 219.839455 221.472 222.64 
+C 221.472 225.440545 222.41271 228.126763 224.086951 230.107048 
+C 225.761191 232.087332 228.032267 233.2 230.4 233.2 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #8172b3; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 322.47 233.2 
+C 324.837733 233.2 327.108809 232.087332 328.783049 230.107048 
+C 330.45729 228.126763 331.398 225.440545 331.398 222.64 
+C 331.398 219.839455 330.45729 217.153237 328.783049 215.172952 
+C 327.108809 213.192668 324.837733 212.08 322.47 212.08 
+C 320.102267 212.08 317.831191 213.192668 316.156951 215.172952 
+C 314.48271 217.153237 313.542 219.839455 313.542 222.64 
+C 313.542 225.440545 314.48271 228.126763 316.156951 230.107048 
+C 317.831191 232.087332 320.102267 233.2 322.47 233.2 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #8172b3; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 342 233.2 
+C 344.367733 233.2 346.638809 232.087332 348.313049 230.107048 
+C 349.98729 228.126763 350.928 225.440545 350.928 222.64 
+C 350.928 219.839455 349.98729 217.153237 348.313049 215.172952 
+C 346.638809 213.192668 344.367733 212.08 342 212.08 
+C 339.632267 212.08 337.361191 213.192668 335.686951 215.172952 
+C 334.01271 217.153237 333.072 219.839455 333.072 222.64 
+C 333.072 225.440545 334.01271 228.126763 335.686951 230.107048 
+C 337.361191 232.087332 339.632267 233.2 342 233.2 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #8172b3; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 386.64 233.2 
+C 389.007733 233.2 391.278809 232.087332 392.953049 230.107048 
+C 394.62729 228.126763 395.568 225.440545 395.568 222.64 
+C 395.568 219.839455 394.62729 217.153237 392.953049 215.172952 
+C 391.278809 213.192668 389.007733 212.08 386.64 212.08 
+C 384.272267 212.08 382.001191 213.192668 380.326951 215.172952 
+C 378.65271 217.153237 377.712 219.839455 377.712 222.64 
+C 377.712 225.440545 378.65271 228.126763 380.326951 230.107048 
+C 382.001191 232.087332 384.272267 233.2 386.64 233.2 
+z
+" clip-path="url(#p24f0a3eb03)" style="fill: #8172b3; stroke: #000000; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="40.68" y="226.06" transform="rotate(-0 40.68 226.06)">a</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="174.6" y="226.06" transform="rotate(-0 174.6 226.06)">b</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="230.4" y="226.06" transform="rotate(-0 230.4 226.06)">c</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="322.47" y="226.06" transform="rotate(-0 322.47 226.06)">d</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="342" y="226.06" transform="rotate(-0 342 226.06)">e</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="386.64" y="226.06" transform="rotate(-0 386.64 226.06)">f</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p24f0a3eb03">
+   <rect x="7.2" y="24.64" width="446.4" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>

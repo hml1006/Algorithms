@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="472.123077pt" height="309.04pt" viewBox="0 0 472.123077 309.04" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:07:10.484267</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 309.04 
+L 472.123077 309.04 
+L 472.123077 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 41.538462 280.516923 
+L 247.569231 280.516923 
+L 384.923077 195.224615 
+L 316.246154 109.932308 
+L 110.215385 109.932308 
+L 41.538462 195.224615 
+z
+" clip-path="url(#pb95fd9dd19)" style="fill: #4c72b0; opacity: 0.25; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 41.538462 195.224615 
+L 79.692308 218.916923 
+L 117.846154 242.609231 
+L 156 266.301538 
+L 194.153846 289.993846 
+L 226.435964 310.04 
+" clip-path="url(#pb95fd9dd19)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #dd8452; stroke-opacity: 0.7"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 41.538462 109.932308 
+L 79.692308 133.624615 
+L 117.846154 157.316923 
+L 156 181.009231 
+L 194.153846 204.701538 
+L 232.307692 228.393846 
+L 270.461538 252.086154 
+L 308.615385 275.778462 
+L 346.769231 299.470769 
+L 363.78981 310.04 
+" clip-path="url(#pb95fd9dd19)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #dd8452; stroke-opacity: 0.7"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 41.538462 24.64 
+L 79.692308 48.332308 
+L 117.846154 72.024615 
+L 156 95.716923 
+L 194.153846 119.409231 
+L 232.307692 143.101538 
+L 270.461538 166.793846 
+L 308.615385 190.486154 
+L 346.769231 214.178462 
+L 384.923077 237.870769 
+" clip-path="url(#pb95fd9dd19)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #dd8452; stroke-opacity: 0.7"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 137.601918 -1 
+L 156 10.424615 
+L 194.153846 34.116923 
+L 232.307692 57.809231 
+L 270.461538 81.501538 
+L 308.615385 105.193846 
+L 346.769231 128.886154 
+L 384.923077 152.578462 
+" clip-path="url(#pb95fd9dd19)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #dd8452; stroke-opacity: 0.7"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 41.538462 280.516923 
+L 247.569231 280.516923 
+L 384.923077 195.224615 
+L 316.246154 109.932308 
+" clip-path="url(#pb95fd9dd19)" style="fill: none; stroke-dasharray: 9.25,4; stroke-dashoffset: 0; stroke: #8172b3; stroke-width: 2.5"/>
+    <defs>
+     <path id="md0cfe8df09" d="M 0 3.5 
+C 0.928211 3.5 1.81853 3.131218 2.474874 2.474874 
+C 3.131218 1.81853 3.5 0.928211 3.5 0 
+C 3.5 -0.928211 3.131218 -1.81853 2.474874 -2.474874 
+C 1.81853 -3.131218 0.928211 -3.5 0 -3.5 
+C -0.928211 -3.5 -1.81853 -3.131218 -2.474874 -2.474874 
+C -3.131218 -1.81853 -3.5 -0.928211 -3.5 0 
+C -3.5 0.928211 -3.131218 1.81853 -2.474874 2.474874 
+C -1.81853 3.131218 -0.928211 3.5 0 3.5 
+z
+" style="stroke: #8172b3"/>
+    </defs>
+    <g clip-path="url(#pb95fd9dd19)">
+     <use xlink:href="#md0cfe8df09" x="41.538462" y="280.516923" style="fill: #8172b3; stroke: #8172b3"/>
+     <use xlink:href="#md0cfe8df09" x="247.569231" y="280.516923" style="fill: #8172b3; stroke: #8172b3"/>
+     <use xlink:href="#md0cfe8df09" x="384.923077" y="195.224615" style="fill: #8172b3; stroke: #8172b3"/>
+     <use xlink:href="#md0cfe8df09" x="316.246154" y="109.932308" style="fill: #8172b3; stroke: #8172b3"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #4c72b0" transform="translate(176.127692 193.904615)">可行域</text>
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #4c72b0" transform="translate(159.627692 204.904615)">（凸多边形）</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 77.573674 258.140219 
+Q 237.267253 158.975658 395.061215 60.990697 
+" style="fill: none; stroke: #dd8452; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 390.608011 61.401762 
+L 395.061215 60.990697 
+L 392.718145 64.799899 
+" style="fill: none; stroke: #dd8452; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #dd8452" x="384.923077" y="54.492308" transform="rotate(-0 384.923077 54.492308)">目标函数增大方向</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8172b3" x="48.406154" y="274.12" transform="rotate(-0 48.406154 274.12)">顶点0</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8172b3" x="254.436923" y="274.12" transform="rotate(-0 254.436923 274.12)">顶点1</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8172b3" x="391.790769" y="188.827692" transform="rotate(-0 391.790769 188.827692)">顶点2</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #8172b3" x="323.113846" y="103.535385" transform="rotate(-0 323.113846 103.535385)">顶点3</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="230.4" y="18.64" transform="rotate(-0 230.4 18.64)">单纯形法：沿凸多边形的顶角步步登高</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb95fd9dd19">
+   <rect x="7.2" y="24.64" width="446.4" height="277.2"/>
+  </clipPath>
+ </defs>
+</svg>
