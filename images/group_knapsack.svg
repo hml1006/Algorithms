@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="712.8pt" height="364.775335pt" viewBox="0 0 712.8 364.775335" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:51:02.699689</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 364.775335 
+L 712.8 364.775335 
+L 712.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 43.683582 145.84271 
+L 195.303664 145.84271 
+Q 200.041791 145.84271 200.041791 142.722635 
+L 200.041791 86.56128 
+Q 200.041791 83.441205 195.303664 83.441205 
+L 43.683582 83.441205 
+Q 38.945455 83.441205 38.945455 86.56128 
+L 38.945455 142.722635 
+Q 38.945455 145.84271 43.683582 145.84271 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 43.683582 220.724517 
+L 195.303664 220.724517 
+Q 200.041791 220.724517 200.041791 217.604442 
+L 200.041791 161.443087 
+Q 200.041791 158.323011 195.303664 158.323011 
+L 43.683582 158.323011 
+Q 38.945455 158.323011 38.945455 161.443087 
+L 38.945455 217.604442 
+Q 38.945455 220.724517 43.683582 220.724517 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #e67e22; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 43.683582 295.606324 
+L 195.303664 295.606324 
+Q 200.041791 295.606324 200.041791 292.486249 
+L 200.041791 236.324893 
+Q 200.041791 233.204818 195.303664 233.204818 
+L 43.683582 233.204818 
+Q 38.945455 233.204818 38.945455 236.324893 
+L 38.945455 292.486249 
+Q 38.945455 295.606324 43.683582 295.606324 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #27ae60; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 280.589959 145.84271 
+L 432.210041 145.84271 
+Q 436.948168 145.84271 436.948168 142.722635 
+L 436.948168 86.56128 
+Q 436.948168 83.441205 432.210041 83.441205 
+L 280.589959 83.441205 
+Q 275.851832 83.441205 275.851832 86.56128 
+L 275.851832 142.722635 
+Q 275.851832 145.84271 280.589959 145.84271 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 280.589959 220.724517 
+L 432.210041 220.724517 
+Q 436.948168 220.724517 436.948168 217.604442 
+L 436.948168 161.443087 
+Q 436.948168 158.323011 432.210041 158.323011 
+L 280.589959 158.323011 
+Q 275.851832 158.323011 275.851832 161.443087 
+L 275.851832 217.604442 
+Q 275.851832 220.724517 280.589959 220.724517 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #e67e22; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 517.496336 145.84271 
+L 669.116418 145.84271 
+Q 673.854545 145.84271 673.854545 142.722635 
+L 673.854545 86.56128 
+Q 673.854545 83.441205 669.116418 83.441205 
+L 517.496336 83.441205 
+Q 512.758209 83.441205 512.758209 86.56128 
+L 512.758209 142.722635 
+Q 512.758209 145.84271 517.496336 145.84271 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 517.496336 220.724517 
+L 669.116418 220.724517 
+Q 673.854545 220.724517 673.854545 217.604442 
+L 673.854545 161.443087 
+Q 673.854545 158.323011 669.116418 158.323011 
+L 517.496336 158.323011 
+Q 512.758209 158.323011 512.758209 161.443087 
+L 512.758209 217.604442 
+Q 512.758209 220.724517 517.496336 220.724517 
+z
+" clip-path="url(#pe3c664bbad)" style="fill: #e67e22; stroke: #000000; stroke-width: 1.1; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 237.946811 295.606324 
+L 237.946811 46.000301 
+" clip-path="url(#pe3c664bbad)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #aaaaaa"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 474.853189 295.606324 
+L 474.853189 46.000301 
+" clip-path="url(#pe3c664bbad)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #aaaaaa"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #2c3e50" x="119.493623" y="39.760151" transform="rotate(-0 119.493623 39.760151)">组1（水果）</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(110.993623 113.621957)">苹果</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(96.51374 122.121957)">重量2 价值3</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(110.993623 188.503764)">香蕉</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(96.51374 197.003764)">重量3 价值4</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(110.993623 263.385571)">橙子</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(96.51374 271.885571)">重量1 价值2</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #2c3e50" x="356.4" y="39.760151" transform="rotate(-0 356.4 39.760151)">组2（零食）</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(347.9 113.621957)">薯片</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(333.420117 122.121957)">重量1 价值2</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(347.9 188.503764)">饼干</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(333.420117 197.003764)">重量2 价值3</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #2c3e50" x="593.306377" y="39.760151" transform="rotate(-0 593.306377 39.760151)">组3（饮料）</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(584.806377 113.621957)">可乐</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(570.326494 122.121957)">重量2 价值3</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(584.806377 188.503764)">果汁</text>
+    <text style="font-weight: 700; font-size: 8.5px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #ffffff" transform="translate(570.326494 197.003764)">重量3 价值5</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #c0392b" x="356.4" y="355.640023" transform="rotate(-0 356.4 355.640023)">每组只能挑 1 个 → 组内做 0-1 选择；组间用容量逆序滚动数组</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 14px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="356.4" y="19.52" transform="rotate(-0 356.4 19.52)">分组背包：每组最多选一个</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pe3c664bbad">
+   <rect x="7.2" y="33.52" width="698.4" height="274.566625"/>
+  </clipPath>
+ </defs>
+</svg>

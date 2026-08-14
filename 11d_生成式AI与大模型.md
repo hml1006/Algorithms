@@ -20,6 +20,7 @@
   - [2.3 Stable Diffusion](#23-stable-diffusion)
   - [2.4 DiT](#24-dit)
   - [2.5 Sora](#25-sora)
+  - [2.6 LDM（潜在扩散模型）](#26-ldm潜在扩散模型)
 - [三、大语言模型（LLM）](#三大语言模型llm)
   - [3.1 Transformer 架构](#31-transformer-架构)
   - [3.2 GPT 系列](#32-gpt-系列)
@@ -27,6 +28,7 @@
   - [3.4 LLaMA](#34-llama)
   - [3.5 Claude](#35-claude)
   - [3.6 DeepSeek](#36-deepseek)
+  - [3.7 LLM 发展里程碑时间线](#37-llm-发展里程碑时间线)
 - [四、LLM 核心技术](#四llm-核心技术)
   - [4.1 预训练（Pre-training）](#41-预训练pre-training)
   - [4.2 监督微调（SFT）](#42-监督微调sft)
@@ -543,6 +545,41 @@ $$\text{AdaLN}(h, y) = y_{\text{scale}} \cdot \text{LayerNorm}(h) \cdot (1 + \ga
 
 ---
 
+### 2.6 LDM（潜在扩散模型）
+
+> 💡 **类比：LDM 如同"先在草图作画，再放大成正式作品"**
+> 想象你要画一幅巨幅壁画（高分辨率图像）。直接在大墙上一笔一笔地画（像素空间扩散）既费颜料又费体力。LDM（潜在扩散模型）的做法是：先用 VAE 把壁画"缩印"成一张小草图（潜空间），在草图上完成全部扩散与去噪，最后再用解码器把草图放大回完整的壁画。Stable Diffusion（见 2.3）正是这一思想最著名的开源实现。因为草图远小于正式画布（通常压缩 8 倍），计算成本大幅下降，普通消费级 GPU 也能生成高清图像。下图对比了直接在像素空间扩散与在潜在空间扩散两种范式。
+
+![潜在空间扩散 vs 像素空间扩散](images/diffusion_ldm.svg)
+
+**核心创新：** 潜在扩散模型（Latent Diffusion Model, LDM）由 Rombach 等人于 2022 年在论文《High-Resolution Image Synthesis with Latent Diffusion Models》中提出，将扩散过程从**像素空间**（Pixel Space）转移到低维的**潜空间**（Latent Space）进行，在保持高生成质量的同时大幅降低了计算与显存开销。LDM 是"潜在扩散"这一通用框架的统称，而 **Stable Diffusion（见 2.3）** 是该框架最著名的开源实例。
+
+**原理说明：** LDM 的核心洞察是：扩散模型的大部分去噪计算都花在了人眼不易察觉的"高频细节"上。因此可以先通过自编码器（VAE）把图像压缩到低维潜空间，让扩散模型只学习潜空间中的"语义结构"，精确的细节交给解码器重建。
+
+**技术细节：**
+
+**1. 两阶段结构：**
+- **感知压缩**（Perceptual Compression）：使用 VAE 编码器 $\mathcal{E}$ 将图像 $x$ 压缩到潜变量 $z = \mathcal{E}(x)$，压缩因子 $f = H/h = W/w$（典型 $f = 8$）
+- **扩散 / 去噪**：在潜空间 $z$ 上执行与 DDPM 相同的加噪-去噪过程
+- **解码重建**：VAE 解码器 $\mathcal{D}$ 将去噪后的潜变量还原为像素图像 $\hat{x} = \mathcal{D}(z)$
+
+**2. 训练目标：** 在潜空间上预测噪声，公式与 DDPM 一致：
+
+$$\mathcal{L}_{\text{LDM}} = \mathbb{E}_{z, \epsilon, t}\left[ \| \epsilon - \epsilon_\theta(z_t, t) \|_2^2 \right]$$
+
+其中 $z_t = \sqrt{\bar{\alpha}_t} z + \sqrt{1 - \bar{\alpha}_t} \epsilon$ 为潜空间中的加噪隐变量。
+
+**3. 条件注入：** 通过**交叉注意力**（Cross-Attention）把文本、语义图等条件信息注入去噪网络，实现可控生成。
+
+**LDM 家族与变体：**
+- **Stable Diffusion**（见 2.3）：LDM 框架最著名的开源实现，将文本条件与潜空间扩散结合
+- **VQ-Diffusion / VQ-Diffusion++**：使用 VQ-VAE 离散化潜空间，基于离散 token 的类别扩散
+- **Latent DiT**：将潜空间扩散与 DiT（见 2.4）主干结合，兼顾效率与 Transformer 的可扩展性
+
+**应用场景：** 高清文生图、图生图、图像修复、超分辨率、视频与 3D 生成（潜空间扩散思想被广泛复用）。
+
+---
+
 ## 三、大语言模型（LLM）
 
 ### 3.1 Transformer 架构
@@ -865,6 +902,33 @@ $$\text{CAI RLHF 阶段}:\quad \text{根据宪法原则训练偏好模型} \righ
 - **MLA（Multi-head Latent Attention）**：通过低秩键值压缩减少推理时的 KV-Cache 内存占用
 - **FP8 混合精度训练**：降低训练成本
 - **多 token 预测**：同时预测多个未来 token，提升训练效率
+
+---
+
+### 3.7 LLM 发展里程碑时间线
+
+> 下表汇总了从 Transformer 架构到当今大模型时代的关键里程碑事件，共 18 个节点。它们穿插于上文 3.1~3.6 各模型家族之中，这里是按时间顺序的显式总览，方便快速回顾大语言模型的发展脉络。
+
+| 年份 | 模型 / 事件 | 发布机构 | 意义 |
+|------|------------|----------|------|
+| 2017 | **Transformer** | Google | 提出自注意力架构，奠定所有现代大模型的基础 |
+| 2018 | **GPT-1** | OpenAI | 首个生成式预训练语言模型，开创"预训练-微调"范式 |
+| 2018 | **BERT** | Google | 双向编码器 + 掩码语言模型，树立迁移学习标杆 |
+| 2019 | **GPT-2** | OpenAI | 证明语言模型的零样本（Zero-shot）泛化能力 |
+| 2020 | **GPT-3** | OpenAI | 175B 参数，展现上下文学习与涌现能力 |
+| 2022 | **InstructGPT** | OpenAI | 系统化使用 RLHF 对齐，让模型"听人话" |
+| 2022 | **ChatGPT** | OpenAI | 对话式产品引爆大模型时代，进入大众视野 |
+| 2023 | **GPT-4** | OpenAI | 多模态 + 强推理，多项专业考试达到人类水平 |
+| 2023 | **LLaMA** | Meta | 开源高效基座，证明"小模型+大数据"也能追平大模型 |
+| 2023 | **Claude** | Anthropic | 以安全对齐为核心，提出宪法 AI（Constitutional AI） |
+| 2023 | **Gemini** | Google DeepMind | 原生多模态大模型，从零开始联合训练 |
+| 2023 | **Mixtral** | Mistral AI | 开源 MoE 架构，展示了稀疏专家混合的实用性 |
+| 2023 | **LLaMA 2** | Meta | 开源 Chat 微调版 + RLHF，推动开源生态繁荣 |
+| 2024 | **DeepSeek-V2** | 深度求索 | 提出 MLA 与 DeepSeekMoE，大幅降低推理成本 |
+| 2024 | **Claude 3** | Anthropic | Opus 在多项基准上超越 GPT-4，多模态能力增强 |
+| 2024 | **Gemini 1.5** | Google DeepMind | 百万级超长上下文，MoE 架构加持 |
+| 2025 | **DeepSeek-R1** | 深度求索 | 通过强化学习实现推理增强，媲美 OpenAI o1 |
+| 2025 | **DeepSeek-V3** | 深度求索 | 671B MoE 模型，以极低成本达到顶尖性能 |
 
 ---
 

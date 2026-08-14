@@ -1,52 +1,326 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 400" width="750" height="400">
-<rect width="750" height="400" fill="#ffffff" rx="8"/>
-
-<text x="375" y="30" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">哈希表 — 链地址法 (Chaining)</text>
-<!-- Bucket array -->
-<rect x="30" y="50" width="200" height="300" rx="5" fill="#f5f5f5" stroke="#ccc" stroke-width="2"/>
-<text x="130" y="75" font-size="13" fill="#333" text-anchor="middle" font-weight="bold">哈希桶 (Buckets)</text>
-<!-- Index labels -->
-<text x="20" y="105" font-size="11" fill="#999" text-anchor="end">0</text>
-<text x="20" y="145" font-size="11" fill="#999" text-anchor="end">1</text>
-<text x="20" y="185" font-size="11" fill="#999" text-anchor="end">2</text>
-<text x="20" y="225" font-size="11" fill="#999" text-anchor="end">3</text>
-<text x="20" y="265" font-size="11" fill="#999" text-anchor="end">4</text>
-<text x="20" y="305" font-size="11" fill="#999" text-anchor="end">5</text>
-<text x="20" y="345" font-size="11" fill="#999" text-anchor="end">6</text>
-<!-- Bucket rows -->
-<rect x="30" y="92" width="200" height="40" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
-<rect x="30" y="132" width="200" height="40" fill="#fff" stroke="#ccc" stroke-width="1"/>
-<rect x="30" y="172" width="200" height="40" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
-<rect x="30" y="212" width="200" height="40" fill="#fff" stroke="#ccc" stroke-width="1"/>
-<rect x="30" y="252" width="200" height="40" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
-<rect x="30" y="292" width="200" height="40" fill="#fff" stroke="#ccc" stroke-width="1"/>
-<rect x="30" y="332" width="200" height="40" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
-<!-- Bucket 2 has data -->
-<rect x="35" y="177" width="190" height="30" rx="3" fill="#4CAF50" stroke="#2E7D32" stroke-width="1"/>
-<text x="130" y="197" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">hash("apple") = 2</text>
-<!-- Bucket 5 has data -->
-<rect x="35" y="297" width="190" height="30" rx="3" fill="#4CAF50" stroke="#2E7D32" stroke-width="1"/>
-<text x="130" y="317" font-size="12" fill="#fff" text-anchor="middle" font-weight="bold">hash("banana") = 5</text>
-<!-- Chain from bucket 2 -->
-<defs>
-  <marker id="arrow3" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#888"/></marker>
-</defs>
-<line x1="230" y1="192" x2="275" y2="192" stroke="#888" stroke-width="1.5" marker-end="url(#arrow3)"/>
-<!-- Chain node 1 -->
-<rect x="280" y="170" width="120" height="45" rx="5" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
-<text x="340" y="190" font-size="12" fill="#E65100" text-anchor="middle" font-weight="bold">key="apple"</text>
-<text x="340" y="205" font-size="11" fill="#888" text-anchor="middle">value="水果"</text>
-<line x1="400" y1="192" x2="425" y2="192" stroke="#888" stroke-width="1.5" marker-end="url(#arrow3)"/>
-<!-- Chain node 2 -->
-<rect x="430" y="170" width="120" height="45" rx="5" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
-<text x="490" y="190" font-size="12" fill="#E65100" text-anchor="middle" font-weight="bold">key="apply"</text>
-<text x="490" y="205" font-size="11" fill="#888" text-anchor="middle">value="应用"</text>
-<line x1="550" y1="192" x2="575" y2="192" stroke="#888" stroke-width="1.5" marker-end="url(#arrow3)"/>
-<!-- Chain node 3 -->
-<rect x="580" y="170" width="120" height="45" rx="5" fill="#fff3e0" stroke="#FF9800" stroke-width="2"/>
-<text x="640" y="190" font-size="12" fill="#E65100" text-anchor="middle" font-weight="bold">key="ape"</text>
-<text x="640" y="205" font-size="11" fill="#888" text-anchor="middle">value="猿"</text>
-<text x="640" y="225" font-size="11" fill="#999" text-anchor="middle">→ NULL</text>
-<!-- Hash function description -->
-<text x="375" y="380" font-size="12" fill="#666" text-anchor="middle">哈希函数: key → hash(key) % 7 · 冲突时用链表链接 · 平均 O(1) 查找</text>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="712.8pt" height="381.6pt" viewBox="0 0 712.8 381.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:51:36.702113</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 381.6 
+L 712.8 381.6 
+L 712.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 251.64 357.5502 
+L 304.02 357.5502 
+Q 306.348 357.5502 306.348 355.798 
+L 306.348 316.3735 
+Q 306.348 314.6213 304.02 314.6213 
+L 251.64 314.6213 
+Q 249.312 314.6213 249.312 316.3735 
+L 249.312 355.798 
+Q 249.312 357.5502 251.64 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 304.02 357.5502 
+L 356.4 357.5502 
+Q 358.728 357.5502 358.728 355.798 
+L 358.728 316.3735 
+Q 358.728 314.6213 356.4 314.6213 
+L 304.02 314.6213 
+Q 301.692 314.6213 301.692 316.3735 
+L 301.692 355.798 
+Q 301.692 357.5502 304.02 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 356.4 357.5502 
+L 408.78 357.5502 
+Q 411.108 357.5502 411.108 355.798 
+L 411.108 316.3735 
+Q 411.108 314.6213 408.78 314.6213 
+L 356.4 314.6213 
+Q 354.072 314.6213 354.072 316.3735 
+L 354.072 355.798 
+Q 354.072 357.5502 356.4 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 408.78 357.5502 
+L 461.16 357.5502 
+Q 463.488 357.5502 463.488 355.798 
+L 463.488 316.3735 
+Q 463.488 314.6213 461.16 314.6213 
+L 408.78 314.6213 
+Q 406.452 314.6213 406.452 316.3735 
+L 406.452 355.798 
+Q 406.452 357.5502 408.78 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 461.16 357.5502 
+L 513.54 357.5502 
+Q 515.868 357.5502 515.868 355.798 
+L 515.868 316.3735 
+Q 515.868 314.6213 513.54 314.6213 
+L 461.16 314.6213 
+Q 458.832 314.6213 458.832 316.3735 
+L 458.832 355.798 
+Q 458.832 357.5502 461.16 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 513.54 357.5502 
+L 565.92 357.5502 
+Q 568.248 357.5502 568.248 355.798 
+L 568.248 316.3735 
+Q 568.248 314.6213 565.92 314.6213 
+L 513.54 314.6213 
+Q 511.212 314.6213 511.212 316.3735 
+L 511.212 355.798 
+Q 511.212 357.5502 513.54 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 565.92 357.5502 
+L 618.3 357.5502 
+Q 620.628 357.5502 620.628 355.798 
+L 620.628 316.3735 
+Q 620.628 314.6213 618.3 314.6213 
+L 565.92 314.6213 
+Q 563.592 314.6213 563.592 316.3735 
+L 563.592 355.798 
+Q 563.592 357.5502 565.92 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 618.3 357.5502 
+L 670.68 357.5502 
+Q 673.008 357.5502 673.008 355.798 
+L 673.008 316.3735 
+Q 673.008 314.6213 670.68 314.6213 
+L 618.3 314.6213 
+Q 615.972 314.6213 615.972 316.3735 
+L 615.972 355.798 
+Q 615.972 357.5502 618.3 357.5502 
+z
+" clip-path="url(#p14826737c4)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 350.58 295.78515 
+L 414.6 295.78515 
+Q 416.346 295.78515 416.346 294.471 
+L 416.346 268.188 
+Q 416.346 266.87385 414.6 266.87385 
+L 350.58 266.87385 
+Q 348.834 266.87385 348.834 268.188 
+L 348.834 294.471 
+Q 348.834 295.78515 350.58 295.78515 
+z
+" clip-path="url(#p14826737c4)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 350.58 258.5509 
+L 414.6 258.5509 
+Q 416.346 258.5509 416.346 257.23675 
+L 416.346 230.95375 
+Q 416.346 229.6396 414.6 229.6396 
+L 350.58 229.6396 
+Q 348.834 229.6396 348.834 230.95375 
+L 348.834 257.23675 
+Q 348.834 258.5509 350.58 258.5509 
+z
+" clip-path="url(#p14826737c4)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 350.58 221.31665 
+L 414.6 221.31665 
+Q 416.346 221.31665 416.346 220.0025 
+L 416.346 193.7195 
+Q 416.346 192.40535 414.6 192.40535 
+L 350.58 192.40535 
+Q 348.834 192.40535 348.834 193.7195 
+L 348.834 220.0025 
+Q 348.834 221.31665 350.58 221.31665 
+z
+" clip-path="url(#p14826737c4)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 507.72 295.78515 
+L 571.74 295.78515 
+Q 573.486 295.78515 573.486 294.471 
+L 573.486 268.188 
+Q 573.486 266.87385 571.74 266.87385 
+L 507.72 266.87385 
+Q 505.974 266.87385 505.974 268.188 
+L 505.974 294.471 
+Q 505.974 295.78515 507.72 295.78515 
+z
+" clip-path="url(#p14826737c4)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 507.72 258.5509 
+L 571.74 258.5509 
+Q 573.486 258.5509 573.486 257.23675 
+L 573.486 230.95375 
+Q 573.486 229.6396 571.74 229.6396 
+L 507.72 229.6396 
+Q 505.974 229.6396 505.974 230.95375 
+L 505.974 257.23675 
+Q 505.974 258.5509 507.72 258.5509 
+z
+" clip-path="url(#p14826737c4)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 612.48 295.78515 
+L 676.5 295.78515 
+Q 678.246 295.78515 678.246 294.471 
+L 678.246 268.188 
+Q 678.246 266.87385 676.5 266.87385 
+L 612.48 266.87385 
+Q 610.734 266.87385 610.734 268.188 
+L 610.734 294.471 
+Q 610.734 295.78515 612.48 295.78515 
+z
+" clip-path="url(#p14826737c4)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="49.163" transform="rotate(-0 24.66 49.163)">key</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="84.207" transform="rotate(-0 24.66 84.207)">apple</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="112.68025" transform="rotate(-0 24.66 112.68025)">banana</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="141.1535" transform="rotate(-0 24.66 141.1535)">grape</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="169.62675" transform="rotate(-0 24.66 169.62675)">kiwi</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="198.1" transform="rotate(-0 24.66 198.1)">melon</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="24.66" y="226.57325" transform="rotate(-0 24.66 226.57325)">pear</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="49.163" transform="rotate(-0 123.6 49.163)">= hash(key)%8</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="84.207" transform="rotate(-0 123.6 84.207)">→ 2</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="112.68025" transform="rotate(-0 123.6 112.68025)">→ 5</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="141.1535" transform="rotate(-0 123.6 141.1535)">→ 2</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="169.62675" transform="rotate(-0 123.6 169.62675)">→ 7</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="198.1" transform="rotate(-0 123.6 198.1)">→ 5</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="123.6" y="226.57325" transform="rotate(-0 123.6 226.57325)">→ 2</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="277.83" y="339.50575" transform="rotate(-0 277.83 339.50575)">0</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="330.21" y="339.50575" transform="rotate(-0 330.21 339.50575)">1</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="382.59" y="339.50575" transform="rotate(-0 382.59 339.50575)">2</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="434.97" y="339.50575" transform="rotate(-0 434.97 339.50575)">3</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="487.35" y="339.50575" transform="rotate(-0 487.35 339.50575)">4</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="539.73" y="339.50575" transform="rotate(-0 539.73 339.50575)">5</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="592.11" y="339.50575" transform="rotate(-0 592.11 339.50575)">6</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="644.49" y="339.50575" transform="rotate(-0 644.49 339.50575)">7</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="251.64" y="373.32" transform="rotate(-0 251.64 373.32)">桶数组（8 个槽）</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="382.59" y="283.93325" transform="rotate(-0 382.59 283.93325)">apple</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="382.59" y="246.61525" transform="rotate(-0 382.59 246.61525)">grape</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="382.59" y="209.46475" transform="rotate(-0 382.59 209.46475)">pear</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="539.73" y="284.3695" transform="rotate(-0 539.73 284.3695)">banana</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="539.73" y="247.13525" transform="rotate(-0 539.73 247.13525)">melon</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="644.49" y="284.3695" transform="rotate(-0 644.49 284.3695)">kiwi</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #b7791f" x="251.64" y="40.402" transform="rotate(-0 251.64 40.402)">冲突的 key 串成链表（拉链法）</text>
+   </g>
+   <g id="text_31">
+    <g id="patch_16">
+     <path d="M 468.84 45.442 
+L 639.866719 45.442 
+L 639.866719 18.838562 
+L 468.84 18.838562 
+z
+" style="fill: #fff5f5; stroke: #e53e3e; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif" transform="translate(472.8 30.718562)">load factor=元素数/桶数&gt;阈值(如0.75)时</text>
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif" transform="translate(472.8 40.402)">rehash 扩容到 2 倍</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="356.4" y="16.88" transform="rotate(-0 356.4 16.88)">哈希表 + 拉链法处理冲突（bucket → 链表）</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p14826737c4">
+   <rect x="7.2" y="22.88" width="698.4" height="350.44"/>
+  </clipPath>
+ </defs>
 </svg>

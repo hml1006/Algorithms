@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="712.8pt" height="352.8pt" viewBox="0 0 712.8 352.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:47:14.783880</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 352.8 
+L 712.8 352.8 
+L 712.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="text_1">
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="406.285714" y="233.835" transform="rotate(-0 406.285714 233.835)">石子个数 n（取走最后一个者获胜）</text>
+   </g>
+   <g id="text_2">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #1f77b4" x="17.177143" y="61.49" transform="rotate(-0 17.177143 61.49)">玩家 A（白方 · 先手）</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #333333" x="17.177143" y="92.455" transform="rotate(-0 17.177143 92.455)">只能取 1 个石子</text>
+   </g>
+   <g id="patch_2">
+    <path d="M 158.857565 120 
+Q 206.742025 120 252.390418 120 
+" style="fill: none; stroke: #1f77b4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 248.390418 118 
+L 252.390418 120 
+L 248.390418 122 
+z
+" style="fill: #1f77b4; stroke: #1f77b4; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f77b4" x="156.857143" y="145.33" transform="rotate(-0 156.857143 145.33)">+1</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 458.171851 120 
+Q 506.056311 120 551.704703 120 
+" style="fill: none; stroke: #1f77b4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 547.704703 118 
+L 551.704703 120 
+L 547.704703 122 
+z
+" style="fill: #1f77b4; stroke: #1f77b4; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #1f77b4" x="456.171429" y="145.33" transform="rotate(-0 456.171429 145.33)">+1</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #d62728" x="17.177143" y="301.19" transform="rotate(-0 17.177143 301.19)">玩家 B（黑方 · 后手）</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #333333" x="17.177143" y="332.155" transform="rotate(-0 17.177143 332.155)">可取 1 或 2 个石子</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 158.857565 261 
+Q 206.742025 261 252.390418 261 
+" style="fill: none; stroke: #d62728; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 248.390418 259 
+L 252.390418 261 
+L 248.390418 263 
+z
+" style="fill: #d62728; stroke: #d62728; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #d62728" x="156.857143" y="289.855" transform="rotate(-0 156.857143 289.855)">+1</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 158.857565 261 
+Q 256.629556 261 352.165479 261 
+" style="fill: none; stroke: #ff7f0e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 348.165479 259 
+L 352.165479 261 
+L 348.165479 263 
+z
+" style="fill: #ff7f0e; stroke: #ff7f0e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ff7f0e" x="156.857143" y="314.53" transform="rotate(-0 156.857143 314.53)">+2</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 458.171851 261 
+Q 555.943842 261 651.479764 261 
+" style="fill: none; stroke: #ff7f0e; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 647.479764 259 
+L 651.479764 261 
+L 647.479764 263 
+z
+" style="fill: #ff7f0e; stroke: #ff7f0e; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ff7f0e" x="456.171429" y="314.53" transform="rotate(-0 456.171429 314.53)">+2</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_7">
+     <path d="M 186.573214 32.1 
+L 625.998214 32.1 
+Q 630.798214 32.1 630.798214 27.3 
+L 630.798214 15.3 
+Q 630.798214 10.5 625.998214 10.5 
+L 186.573214 10.5 
+Q 181.773214 10.5 181.773214 15.3 
+L 181.773214 27.3 
+Q 181.773214 32.1 186.573214 32.1 
+z
+" style="fill: #eef4ff; stroke: #9db8e8; stroke-width: 1.2; stroke-linejoin: miter"/>
+    </g>
+    <text style="font-size: 12px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="406.285714" y="25.86" transform="rotate(-0 406.285714 25.86)">相同局面：A 只能在位置间走 1 步，B 可以走 1 或 2 步 → 规则不对称 → 非公平博弈</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 156.857143 210.24 
+C 164.265857 210.24 171.372126 208.160069 176.610878 204.458288 
+C 181.84963 200.756507 184.793143 195.735109 184.793143 190.5 
+C 184.793143 185.264891 181.84963 180.243493 176.610878 176.541712 
+C 171.372126 172.839931 164.265857 170.76 156.857143 170.76 
+C 149.448429 170.76 142.34216 172.839931 137.103408 176.541712 
+C 131.864656 180.243493 128.921143 185.264891 128.921143 190.5 
+C 128.921143 195.735109 131.864656 200.756507 137.103408 204.458288 
+C 142.34216 208.160069 149.448429 210.24 156.857143 210.24 
+z
+" clip-path="url(#p07bf1f64af)" style="fill: #f5c242; stroke: #8a6d1a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 256.628571 210.24 
+C 264.037285 210.24 271.143555 208.160069 276.382306 204.458288 
+C 281.621058 200.756507 284.564571 195.735109 284.564571 190.5 
+C 284.564571 185.264891 281.621058 180.243493 276.382306 176.541712 
+C 271.143555 172.839931 264.037285 170.76 256.628571 170.76 
+C 249.219858 170.76 242.113588 172.839931 236.874836 176.541712 
+C 231.636085 180.243493 228.692571 185.264891 228.692571 190.5 
+C 228.692571 195.735109 231.636085 200.756507 236.874836 204.458288 
+C 242.113588 208.160069 249.219858 210.24 256.628571 210.24 
+z
+" clip-path="url(#p07bf1f64af)" style="fill: #f5c242; stroke: #8a6d1a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 356.4 210.24 
+C 363.808714 210.24 370.914983 208.160069 376.153735 204.458288 
+C 381.392487 200.756507 384.336 195.735109 384.336 190.5 
+C 384.336 185.264891 381.392487 180.243493 376.153735 176.541712 
+C 370.914983 172.839931 363.808714 170.76 356.4 170.76 
+C 348.991286 170.76 341.885017 172.839931 336.646265 176.541712 
+C 331.407513 180.243493 328.464 185.264891 328.464 190.5 
+C 328.464 195.735109 331.407513 200.756507 336.646265 204.458288 
+C 341.885017 208.160069 348.991286 210.24 356.4 210.24 
+z
+" clip-path="url(#p07bf1f64af)" style="fill: #f5c242; stroke: #8a6d1a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 456.171429 210.24 
+C 463.580142 210.24 470.686412 208.160069 475.925164 204.458288 
+C 481.163915 200.756507 484.107429 195.735109 484.107429 190.5 
+C 484.107429 185.264891 481.163915 180.243493 475.925164 176.541712 
+C 470.686412 172.839931 463.580142 170.76 456.171429 170.76 
+C 448.762715 170.76 441.656445 172.839931 436.417694 176.541712 
+C 431.178942 180.243493 428.235429 185.264891 428.235429 190.5 
+C 428.235429 195.735109 431.178942 200.756507 436.417694 204.458288 
+C 441.656445 208.160069 448.762715 210.24 456.171429 210.24 
+z
+" clip-path="url(#p07bf1f64af)" style="fill: #f5c242; stroke: #8a6d1a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 555.942857 210.24 
+C 563.351571 210.24 570.45784 208.160069 575.696592 204.458288 
+C 580.935344 200.756507 583.878857 195.735109 583.878857 190.5 
+C 583.878857 185.264891 580.935344 180.243493 575.696592 176.541712 
+C 570.45784 172.839931 563.351571 170.76 555.942857 170.76 
+C 548.534143 170.76 541.427874 172.839931 536.189122 176.541712 
+C 530.95037 180.243493 528.006857 185.264891 528.006857 190.5 
+C 528.006857 195.735109 530.95037 200.756507 536.189122 204.458288 
+C 541.427874 208.160069 548.534143 210.24 555.942857 210.24 
+z
+" clip-path="url(#p07bf1f64af)" style="fill: #f5c242; stroke: #8a6d1a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 655.714286 210.24 
+C 663.123 210.24 670.229269 208.160069 675.468021 204.458288 
+C 680.706773 200.756507 683.650286 195.735109 683.650286 190.5 
+C 683.650286 185.264891 680.706773 180.243493 675.468021 176.541712 
+C 670.229269 172.839931 663.123 170.76 655.714286 170.76 
+C 648.305572 170.76 641.199302 172.839931 635.960551 176.541712 
+C 630.721799 180.243493 627.778286 185.264891 627.778286 190.5 
+C 627.778286 195.735109 630.721799 200.756507 635.960551 204.458288 
+C 641.199302 208.160069 648.305572 210.24 655.714286 210.24 
+z
+" clip-path="url(#p07bf1f64af)" style="fill: #f5c242; stroke: #8a6d1a; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="156.857143" y="194.68" transform="rotate(-0 156.857143 194.68)">1</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="256.628571" y="194.68" transform="rotate(-0 256.628571 194.68)">2</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="356.4" y="194.68" transform="rotate(-0 356.4 194.68)">3</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="456.171429" y="194.68" transform="rotate(-0 456.171429 194.68)">4</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="555.942857" y="194.68" transform="rotate(-0 555.942857 194.68)">5</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="655.714286" y="194.68" transform="rotate(-0 655.714286 194.68)">6</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p07bf1f64af">
+   <rect x="7.2" y="7.2" width="698.4" height="338.4"/>
+  </clipPath>
+ </defs>
+</svg>

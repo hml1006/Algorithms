@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="712.8pt" height="352.8pt" viewBox="0 0 712.8 352.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:51:36.431474</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 352.8 
+L 712.8 352.8 
+L 712.8 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 356.4 148.7408 
+C 365.660892 148.7408 374.543729 147.040609 381.092169 144.014675 
+C 387.640609 140.988741 391.32 136.884117 391.32 132.6048 
+C 391.32 128.325483 387.640609 124.220859 381.092169 121.194925 
+C 374.543729 118.168991 365.660892 116.4688 356.4 116.4688 
+C 347.139108 116.4688 338.256271 118.168991 331.707831 121.194925 
+C 325.159391 124.220859 321.48 128.325483 321.48 132.6048 
+C 321.48 136.884117 325.159391 140.988741 331.707831 144.014675 
+C 338.256271 147.040609 347.139108 148.7408 356.4 148.7408 
+z
+" clip-path="url(#pd45ada9a26)" style="fill: #fefcbf; stroke: #b7791f; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 188.784 219.7392 
+C 198.044892 219.7392 206.927729 218.039009 213.476169 215.013075 
+C 220.024609 211.987141 223.704 207.882517 223.704 203.6032 
+C 223.704 199.323883 220.024609 195.219259 213.476169 192.193325 
+C 206.927729 189.167391 198.044892 187.4672 188.784 187.4672 
+C 179.523108 187.4672 170.640271 189.167391 164.091831 192.193325 
+C 157.543391 195.219259 153.864 199.323883 153.864 203.6032 
+C 153.864 207.882517 157.543391 211.987141 164.091831 215.013075 
+C 170.640271 218.039009 179.523108 219.7392 188.784 219.7392 
+z
+" clip-path="url(#pd45ada9a26)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.6; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 524.016 219.7392 
+C 533.276892 219.7392 542.159729 218.039009 548.708169 215.013075 
+C 555.256609 211.987141 558.936 207.882517 558.936 203.6032 
+C 558.936 199.323883 555.256609 195.219259 548.708169 192.193325 
+C 542.159729 189.167391 533.276892 187.4672 524.016 187.4672 
+C 514.755108 187.4672 505.872271 189.167391 499.323831 192.193325 
+C 492.775391 195.219259 489.096 199.323883 489.096 203.6032 
+C 489.096 207.882517 492.775391 211.987141 499.323831 215.013075 
+C 505.872271 218.039009 514.755108 219.7392 524.016 219.7392 
+L 524.016 219.7392 
+z
+" clip-path="url(#pd45ada9a26)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #cccccc; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 91.008 289.124 
+C 99.342803 289.124 107.337356 287.593828 113.230952 284.870488 
+C 119.124548 282.147147 122.436 278.452985 122.436 274.6016 
+C 122.436 270.750215 119.124548 267.056053 113.230952 264.332712 
+C 107.337356 261.609372 99.342803 260.0792 91.008 260.0792 
+C 82.673197 260.0792 74.678644 261.609372 68.785048 264.332712 
+C 62.891452 267.056053 59.58 270.750215 59.58 274.6016 
+C 59.58 278.452985 62.891452 282.147147 68.785048 284.870488 
+C 74.678644 287.593828 82.673197 289.124 91.008 289.124 
+z
+" clip-path="url(#pd45ada9a26)" style="fill: #e6fffa; stroke: #2c7a7b; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 279.576 289.124 
+C 287.910803 289.124 295.905356 287.593828 301.798952 284.870488 
+C 307.692548 282.147147 311.004 278.452985 311.004 274.6016 
+C 311.004 270.750215 307.692548 267.056053 301.798952 264.332712 
+C 295.905356 261.609372 287.910803 260.0792 279.576 260.0792 
+C 271.241197 260.0792 263.246644 261.609372 257.353048 264.332712 
+C 251.459452 267.056053 248.148 270.750215 248.148 274.6016 
+C 248.148 278.452985 251.459452 282.147147 257.353048 284.870488 
+C 263.246644 287.593828 271.241197 289.124 279.576 289.124 
+L 279.576 289.124 
+z
+" clip-path="url(#pd45ada9a26)" style="fill: none; stroke-dasharray: 4.81,2.08; stroke-dashoffset: 0; stroke: #cccccc; stroke-width: 1.3; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 356.4 132.6048 
+L 188.784 203.6032 
+" clip-path="url(#pd45ada9a26)" style="fill: none; stroke: #8888aa; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 356.4 132.6048 
+L 524.016 203.6032 
+" clip-path="url(#pd45ada9a26)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #bbbbbb; stroke-width: 1.2"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 188.784 203.6032 
+L 91.008 274.6016 
+" clip-path="url(#pd45ada9a26)" style="fill: none; stroke: #8888aa; stroke-width: 1.2; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 188.784 203.6032 
+L 279.576 274.6016 
+" clip-path="url(#pd45ada9a26)" style="fill: none; stroke-dasharray: 4.44,1.92; stroke-dashoffset: 0; stroke: #bbbbbb; stroke-width: 1.2"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 65.072696 68.0608 
+Q 356.398951 68.0608 646.607172 68.0608 
+" style="fill: none; stroke: #333333; stroke-linecap: round"/>
+    <path d="M 642.607172 66.0608 
+L 646.607172 68.0608 
+L 642.607172 70.0608 
+z
+" style="fill: #333333; stroke: #333333; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="35.136" y="58.3792" transform="rotate(-0 35.136 58.3792)">0</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="607.824" y="58.3792" transform="rotate(-0 607.824 58.3792)">2^31-1</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start" x="328.464" y="45.4704" transform="rotate(-0 328.464 45.4704)">值域 [0, 2^31-1]（不预先建满）</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif" transform="translate(348.6125 131.3648)">root</text>
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif" transform="translate(347.824375 139.3648)">[0,R]</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif" transform="translate(186.612125 202.3632)">L</text>
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif" transform="translate(179.50025 210.3632)">[0,M]</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #999999" transform="translate(520.016 202.33945)">空</text>
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #999999" transform="translate(509.31225 210.33945)">(未开点)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="91.008" y="277.3616" transform="rotate(-0 91.008 277.3616)">[0,..]</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #999999" x="279.576" y="277.6416" transform="rotate(-0 279.576 277.6416)">空</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2c7a7b" x="63.072" y="326.2368" transform="rotate(-0 63.072 326.2368)">用 dict/ls,rs 数组按需创建节点，只存储实际访问的路径</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="356.4" y="16.88" transform="rotate(-0 356.4 16.88)">动态开点：值域巨大时只创建用到的节点，其余视为空(0)</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd45ada9a26">
+   <rect x="7.2" y="22.88" width="698.4" height="322.72"/>
+  </clipPath>
+ </defs>
+</svg>

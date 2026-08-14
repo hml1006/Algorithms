@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1423.395pt" height="666.305312pt" viewBox="0 0 1423.395 666.305312" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-14T10:51:01.729560</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.1, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 666.305312 
+L 1423.395 666.305312 
+L 1423.395 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 14.1975 314.37808 
+C 37.874833 314.37808 60.585591 305.77938 77.327993 290.475744 
+C 94.070396 275.172108 103.4775 254.41301 103.4775 232.7704 
+C 103.4775 211.12779 94.070396 190.368692 77.327993 175.065056 
+C 60.585591 159.76142 37.874833 151.16272 14.1975 151.16272 
+C -9.479833 151.16272 -32.190591 159.76142 -48.932993 175.065056 
+C -65.675396 190.368692 -75.0825 211.12779 -75.0825 232.7704 
+C -75.0825 254.41301 -65.675396 275.172108 -48.932993 290.475744 
+C -32.190591 305.77938 -9.479833 314.37808 14.1975 314.37808 
+z
+" clip-path="url(#ped333dc91b)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 293.1975 314.37808 
+C 316.874833 314.37808 339.585591 305.77938 356.327993 290.475744 
+C 373.070396 275.172108 382.4775 254.41301 382.4775 232.7704 
+C 382.4775 211.12779 373.070396 190.368692 356.327993 175.065056 
+C 339.585591 159.76142 316.874833 151.16272 293.1975 151.16272 
+C 269.520167 151.16272 246.809409 159.76142 230.067007 175.065056 
+C 213.324604 190.368692 203.9175 211.12779 203.9175 232.7704 
+C 203.9175 254.41301 213.324604 275.172108 230.067007 290.475744 
+C 246.809409 305.77938 269.520167 314.37808 293.1975 314.37808 
+z
+" clip-path="url(#ped333dc91b)" style="fill: #5a6b7c; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 572.1975 314.37808 
+C 595.874833 314.37808 618.585591 305.77938 635.327993 290.475744 
+C 652.070396 275.172108 661.4775 254.41301 661.4775 232.7704 
+C 661.4775 211.12779 652.070396 190.368692 635.327993 175.065056 
+C 618.585591 159.76142 595.874833 151.16272 572.1975 151.16272 
+C 548.520167 151.16272 525.809409 159.76142 509.067007 175.065056 
+C 492.324604 190.368692 482.9175 211.12779 482.9175 232.7704 
+C 482.9175 254.41301 492.324604 275.172108 509.067007 290.475744 
+C 525.809409 305.77938 548.520167 314.37808 572.1975 314.37808 
+z
+" clip-path="url(#ped333dc91b)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 851.1975 314.37808 
+C 874.874833 314.37808 897.585591 305.77938 914.327993 290.475744 
+C 931.070396 275.172108 940.4775 254.41301 940.4775 232.7704 
+C 940.4775 211.12779 931.070396 190.368692 914.327993 175.065056 
+C 897.585591 159.76142 874.874833 151.16272 851.1975 151.16272 
+C 827.520167 151.16272 804.809409 159.76142 788.067007 175.065056 
+C 771.324604 190.368692 761.9175 211.12779 761.9175 232.7704 
+C 761.9175 254.41301 771.324604 275.172108 788.067007 290.475744 
+C 804.809409 305.77938 827.520167 314.37808 851.1975 314.37808 
+z
+" clip-path="url(#ped333dc91b)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 1130.1975 314.37808 
+C 1153.874833 314.37808 1176.585591 305.77938 1193.327993 290.475744 
+C 1210.070396 275.172108 1219.4775 254.41301 1219.4775 232.7704 
+C 1219.4775 211.12779 1210.070396 190.368692 1193.327993 175.065056 
+C 1176.585591 159.76142 1153.874833 151.16272 1130.1975 151.16272 
+C 1106.520167 151.16272 1083.809409 159.76142 1067.067007 175.065056 
+C 1050.324604 190.368692 1040.9175 211.12779 1040.9175 232.7704 
+C 1040.9175 254.41301 1050.324604 275.172108 1067.067007 290.475744 
+C 1083.809409 305.77938 1106.520167 314.37808 1130.1975 314.37808 
+z
+" clip-path="url(#ped333dc91b)" style="fill: #5a6b7c; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 1409.1975 314.37808 
+C 1432.874833 314.37808 1455.585591 305.77938 1472.327993 290.475744 
+C 1489.070396 275.172108 1498.4775 254.41301 1498.4775 232.7704 
+C 1498.4775 211.12779 1489.070396 190.368692 1472.327993 175.065056 
+C 1455.585591 159.76142 1432.874833 151.16272 1409.1975 151.16272 
+C 1385.520167 151.16272 1362.809409 159.76142 1346.067007 175.065056 
+C 1329.324604 190.368692 1319.9175 211.12779 1319.9175 232.7704 
+C 1319.9175 254.41301 1329.324604 275.172108 1346.067007 290.475744 
+C 1362.809409 305.77938 1385.520167 314.37808 1409.1975 314.37808 
+z
+" clip-path="url(#ped333dc91b)" style="fill: #f4b942; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="14.1975" y="237.7104" transform="rotate(-0 14.1975 237.7104)">1</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="14.1975" y="401.956" transform="rotate(-0 14.1975 401.956)">位0</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="293.1975" y="237.7104" transform="rotate(-0 293.1975 237.7104)">0</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="293.1975" y="401.956" transform="rotate(-0 293.1975 401.956)">位1</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="572.1975" y="237.7104" transform="rotate(-0 572.1975 237.7104)">1</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="572.1975" y="401.956" transform="rotate(-0 572.1975 401.956)">位2</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="851.1975" y="237.7104" transform="rotate(-0 851.1975 237.7104)">1</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="851.1975" y="401.956" transform="rotate(-0 851.1975 401.956)">位3</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="1130.1975" y="237.7104" transform="rotate(-0 1130.1975 237.7104)">0</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="1130.1975" y="401.956" transform="rotate(-0 1130.1975 401.956)">位4</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="1409.1975" y="237.7104" transform="rotate(-0 1409.1975 237.7104)">1</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="1409.1975" y="401.956" transform="rotate(-0 1409.1975 401.956)">位5</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #333333" x="711.6975" y="16" transform="rotate(-0 711.6975 16)">灯开=1  灯灭=0</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #c0392b" x="711.6975" y="504.7256" transform="rotate(-0 711.6975 504.7256)">状态 = 二进制 101101 = 十进制 45</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="711.6975" y="656.814687" transform="rotate(-0 711.6975 656.814687)">DFS + 记忆化：dp[mask] = 该状态是否必胜</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="153.6975" y="91.2584" transform="rotate(-0 153.6975 91.2584)">用 1 个整数（位掩码）记录整盘状态</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_8">
+    <path d="M 312.7275 383.23456 
+L 385.2675 383.23456 
+Q 390.8475 383.23456 390.8475 378.13408 
+L 390.8475 342.43072 
+Q 390.8475 337.33024 385.2675 337.33024 
+L 312.7275 337.33024 
+Q 307.1475 337.33024 307.1475 342.43072 
+L 307.1475 378.13408 
+Q 307.1475 383.23456 312.7275 383.23456 
+z
+" clip-path="url(#p560616edc5)" style="fill: #27ae60; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 591.7275 383.23456 
+L 664.2675 383.23456 
+Q 669.8475 383.23456 669.8475 378.13408 
+L 669.8475 342.43072 
+Q 669.8475 337.33024 664.2675 337.33024 
+L 591.7275 337.33024 
+Q 586.1475 337.33024 586.1475 342.43072 
+L 586.1475 378.13408 
+Q 586.1475 383.23456 591.7275 383.23456 
+z
+" clip-path="url(#p560616edc5)" style="fill: #c0392b; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 452.2275 153.71296 
+L 524.7675 153.71296 
+Q 530.3475 153.71296 530.3475 148.61248 
+L 530.3475 112.90912 
+Q 530.3475 107.80864 524.7675 107.80864 
+L 452.2275 107.80864 
+Q 446.6475 107.80864 446.6475 112.90912 
+L 446.6475 148.61248 
+Q 446.6475 153.71296 452.2275 153.71296 
+z
+" clip-path="url(#p560616edc5)" style="fill: #2c7fb8; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="348.9975" y="364.0824" transform="rotate(-0 348.9975 364.0824)">必胜态</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="627.9975" y="364.0824" transform="rotate(-0 627.9975 364.0824)">必败态</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #ffffff" x="488.4975" y="134.5608" transform="rotate(-0 488.4975 134.5608)">当前状态</text>
+   </g>
+   <g id="patch_11">
+    <path d="M 488.4975 163.364421 
+Q 488.4975 244.24481 488.4975 323.112738 
+" style="fill: none; stroke: #27ae60; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 490.4975 319.112738 
+L 488.4975 323.112738 
+L 486.4975 319.112738 
+" style="fill: none; stroke: #27ae60; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #27ae60" transform="translate(521.9775 241.89136)">存在一步</text>
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #27ae60" transform="translate(521.9775 250.89136)">走到必败态</text>
+   </g>
+   <g id="patch_12">
+    <path d="M 593.43847 163.050778 
+Q 541.506813 244.247554 490.659473 323.748967 
+" style="fill: none; stroke: #c0392b; stroke-width: 1.8; stroke-linecap: round"/>
+    <path d="M 494.499544 321.456839 
+L 490.659473 323.748967 
+L 491.129813 319.301633 
+" style="fill: none; stroke: #c0392b; stroke-width: 1.8; stroke-linecap: round"/>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #c0392b" transform="translate(588.9375 241.89136)">所有后继</text>
+    <text style="font-size: 9px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; fill: #c0392b" transform="translate(588.9375 250.89136)">都是必胜态</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 10px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #555555" x="488.4975" y="435.48912" transform="rotate(-0 488.4975 435.48912)">记忆化：同一 mask 只算一次，避免指数级重复</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 13px; font-family: 'Noto Sans CJK SC', 'DejaVu Sans', sans-serif; text-anchor: middle" x="488.4975" y="91.2584" transform="rotate(-0 488.4975 91.2584)">必胜态 ⇄ 必败态的递归判定</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="ped333dc91b">
+   <rect x="14.1975" y="105.2584" width="279" height="255.024"/>
+  </clipPath>
+  <clipPath id="p560616edc5">
+   <rect x="348.9975" y="105.2584" width="279" height="255.024"/>
+  </clipPath>
+ </defs>
+</svg>
