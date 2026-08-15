@@ -1,0 +1,18 @@
+[book]
+title = "算法学习教程"
+description = "计算机数据结构与算法学习教程"
+authors = ["Algorithms"]
+language = "zh-CN"
+src = "src"
+
+[build]
+build-dir = "book"
+
+[preprocessor.katex]
+before = ["links"]
+renders = ["html"]
+
+[output.html]
+default-theme = "ayu"
+preferred-dark-theme = "navy"
+mathjax-support = false
