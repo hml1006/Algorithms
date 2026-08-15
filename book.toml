@@ -13,6 +13,6 @@ before = ["links"]
 renders = ["html"]
 
 [output.html]
-default-theme = "ayu"
+default-theme = "light"
 preferred-dark-theme = "navy"
 mathjax-support = false
