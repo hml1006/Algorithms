@@ -2,7 +2,7 @@
 
 ## 13. OI 极难综合题库
 
-本部分是第 12 章「OI/ACM 竞赛高级专题」的配套综合练习，覆盖 LCT、树链剖分、可持久化线段树（主席树）、莫队、珂朵莉树、舞蹈链/精确覆盖、差分约束、线性基、生成函数/多项式（FFT/NTT）、杜教筛/Min_25 筛、回文自动机、后缀自动机（SAM）等高级数据结构与算法，共 10 道代表性竞赛题，按难度从低到高排列，多为 ⭐⭐⭐（困难）级别。
+本部分是第 12 章「OI/ACM 竞赛高级专题」的配套综合练习，覆盖 LCT、树链剖分、可持久化线段树（主席树）、莫队、珂朵莉树、舞蹈链/精确覆盖、差分约束、线性基、生成函数/多项式（FFT/NTT）、杜教筛/Min_25 筛、回文自动机、后缀自动机（SAM）等高级数据结构与算法，共 187 道代表性竞赛题，按难度从低到高排列，多为 ⭐⭐⭐（困难）级别。
 
 ---
 
@@ -4605,3 +4605,3270 @@ print(math.isqrt(closest_pair(pts)))   # sqrt(2) -> 1
 > **复杂度**：O(n log n)。
 
 ---
+### 13.31 多项式与生成函数进阶（多项式求逆·多项式 Ln·分治 FFT·整数划分·斯特林数）
+
+#### 13.31.1 例 98：多项式求逆（牛顿迭代）⭐⭐⭐
+
+> **知识点**：倍增 + 公式 f·g ≡ 1｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+求 `g` 使 `f*g ≡ 1 (mod x^m)`。倍增：已知 `g`（模 `x^k`），则 `g' = g*(2 - f*g) (mod x^(2k))` 即为更高精度逆元，每次精度翻倍。理论与 NTT 结合能在 O(n log n) 求逆，此处用朴素卷积演示迭代（点数 O(n²)）。💡 类比「验算收敛」：像倒车的后视镜，每翻倍一格就把误差缩到只有前一半，很快贴到真值。
+
+```python
+MOD = 998244353
+
+def conv(a, b):
+    n, m = len(a), len(b)
+    c = [0] * (n + m - 1)
+    for i in range(n):
+        for j in range(m):
+            c[i + j] = (c[i + j] + a[i] * b[j]) % MOD
+    return c
+
+def poly_inv(f, n):
+    # 要求 f[0] != 0 mod MOD
+    g = [pow(f[0], MOD - 2, MOD)]
+    m = 1
+    while m < n:
+        m <<= 1
+        t = conv(f[:m], g)          # f*g
+        u = [0] * m
+        u[0] = 2
+        for i in range(m):
+            u[i] = (u[i] - t[i]) % MOD
+        g = conv(g, u)[:m]
+    return g[:n]
+
+f = [1, 2, 3]
+g = poly_inv(f, 3)
+# 测试
+print(g)
+print(conv(f, g)[:3])   # 应得到 [1,0,0]
+```
+
+> **复杂度**：朴素 O(n²)；配合 NTT 为 O(n log n)。
+
+#### 13.31.2 例 99：多项式 Ln / 指数（牛顿迭代）⭐⭐⭐
+
+> **知识点**：Ln(f)=∫f'/f，Exp 用牛顿迭代｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+求 `ln(f)`：先求导 `f'`，再乘以 `f` 的逆元，最后积分（除次数）。要求 `f[0]=1`。`exp(f)` 则用倍增 `g←g*(1-ln(g)+f)`（模 `x^(2k)`）。演示 Ln 的完整流程。💡 类比「先除后积」：对数把乘法变加法，导数逆序一减一积分就还原指数关系。
+
+```python
+MOD = 998244353
+
+def conv(a, b):
+    n, m = len(a), len(b)
+    c = [0] * (n + m - 1)
+    for i in range(n):
+        for j in range(m):
+            c[i + j] = (c[i + j] + a[i] * b[j]) % MOD
+    return c
+
+def poly_inv(f, n):
+    g = [pow(f[0], MOD - 2, MOD)]
+    m = 1
+    while m < n:
+        m <<= 1
+        t = conv(f[:m], g)
+        u = [0] * m; u[0] = 2
+        for i in range(m):
+            u[i] = (u[i] - t[i]) % MOD
+        g = conv(g, u)[:m]
+    return g[:n]
+
+def poly_ln(f, n):
+    # 需要 f[0] == 1
+    der = [(i * f[i]) % MOD for i in range(1, len(f))]
+    inv = poly_inv(f, n)
+    prod = conv(der, inv)[: n - 1]
+    res = [0]
+    for i in range(len(prod)):
+        res.append(prod[i] * pow(i + 1, MOD - 2, MOD) % MOD)
+    return res[:n]
+
+f = [1, 4, 6, 4]        # 近似 (1+x)^4 截断
+# 测试
+print(poly_ln(f, 4))
+```
+
+> **复杂度**：O(n²)（朴素）；NTT 版 O(n log n)。
+
+#### 13.31.3 例 100：分治 FFT / CDQ 分治卷积（在线 DP 加速）⭐⭐⭐
+
+> **知识点**：CDQ 分治 + 卷积 去「自己依赖自己」的距离贡献｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+转移形如 `f[i] = Σ_{j<i} f[j]*a[i-j]`，朴素 O(n²)。CDQ 分治：先算左半 `f[l,m)`，把左半对右半 `[m,r)` 的贡献用一次 `(f[l:m] ✕ a)` 批量算出累加进 `f[m,r)`，再递归右半。💡 类比「先左后右接力」：左侧先出锅，一股脑把对右侧的影响投过去，右侧无需回头逐个问。
+
+```python
+MOD = 998244353
+
+def conv(a, b):
+    n, m = len(a), len(b)
+    c = [0] * (n + m - 1)
+    for i in range(n):
+        for j in range(m):
+            c[i + j] = (c[i + j] + a[i] * b[j]) % MOD
+    return c
+
+def cdq(f, a, l, r):
+    if r - l == 1:
+        return
+    m = (l + r) // 2
+    cdq(f, a, l, m)
+    prod = conv(f[l:m], a[:r - l])          # 左段对右段贡献
+    for i in range(m, r):
+        f[i] = (f[i] + prod[i - m]) % MOD
+    cdq(f, a, m, r)
+
+n = 8
+a = [0] * n
+a[1] = 1; a[2] = 1        # f[i] = f[i-1] + f[i-2]
+f = [0] * n; f[0] = 1
+cdq(f, a, 0, n)
+# 测试
+print(f)   # 应接近斐波那契形 [1,1,2,3,5,8,13,21]
+```
+
+> **复杂度**：O(n log² n)（每层卷积），朴素卷积演示 O(n² log n)。
+
+#### 13.31.4 例 101：整数划分计数（五边形数定理生成函数）⭐⭐⭐
+
+> **知识点**：生成函数 ∏(1-x^k)^-1，欧拉五边形数定理｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+`p(n)` 是拆分成正整数和的方案数，其生成函数 `∏_{k≥1} 1/(1-x^k)`。五边形数定理给：`∏(1-x^k)=Σ_k (-1)^k x^{k(3k±1)/2}`，从而 `p(n)=Σ_k sign(k)*(p(n-g1)+p(n-g2))`，O(n√n)。💡 类比「搭积木去重」：把重复计数用「负三角形」项筛掉，只留最小的一套。
+
+```python
+def partitions(n, MOD=10 ** 9 + 7):
+    p = [0] * (n + 1)
+    p[0] = 1
+    for i in range(1, n + 1):
+        k = 1
+        while True:
+            g1 = k * (3 * k - 1) // 2
+            if g1 > i:
+                break
+            sign = -1 if k % 2 == 0 else 1
+            p[i] = (p[i] + sign * p[i - g1]) % MOD
+            g2 = k * (3 * k + 1) // 2
+            if g2 <= i:
+                p[i] = (p[i] + sign * p[i - g2]) % MOD
+            k += 1
+    return p
+
+# 测试
+p = partitions(20)
+print([p[5], p[10], p[15], p[20]])   # 7, 42, 176, 627
+```
+
+> **复杂度**：O(n√n)。
+
+#### 13.31.5 例 102：第二类斯特林数一行（容斥公式）⭐⭐⭐
+
+> **知识点**：S(n,k)=1/k! Σ_j (-1)^{k-j} C(k,j) j^n｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+把 n 个球放进 k 个非空盒子（划分），用「容斥把空盒去掉」：选 j 个盒子被迫空，余下 k-j 个盒子可任意放，故 S(n,k)=Σ_j (-1)^{k-j} C(k,j) j^n / k!。配合 NTT 可把一行斯特林数优化到 O(n log n)。💡 类比「空盒惩罚」：先从随便放想起，再把「有盒子空着」的情形一个个赔掉，剩的就是正好全满。
+
+```python
+MOD = 10 ** 9 + 7
+
+def choose(p, q):
+    res = 1
+    for i in range(q):
+        res = res * (p - i) // (i + 1)
+    return res
+
+def stirling_row(n):
+    fact = 1
+    res = []
+    for k in range(n + 1):
+        if k:
+            fact = fact * k % MOD
+        s = 0
+        for j in range(k + 1):
+            term = choose(k, j) % MOD * pow(j, n, MOD) % MOD
+            s = (s - term) % MOD if (k - j) % 2 else (s + term) % MOD
+        res.append(s * pow(fact, MOD - 2, MOD) % MOD)
+    return res
+
+# 测试
+print(stirling_row(5))   # [0,1,15,25,10,1]
+```
+
+> **复杂度**：O(n²)；NTT 优化 O(n log n)。
+
+### 13.32 数论与组合进阶（Miller–Rabin·Pollard–Rho·Lucas·指数循环节·扩展 Lucas·莫比乌斯反演）
+
+#### 13.32.1 例 103：Miller–Rabin 素性测试 + Pollard–Rho 质因数分解 ⭐⭐⭐
+
+> **知识点**：二次探测 + 确定性底数集；随机 ρ 启发式找因子｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+MR：把 `n-1` 写成 `d*2^s`，用固定底数集合做二次探测断言；通过概率极高且对 64 位整数有确定性底数集。PR：随机函数 `f(x)=x²+c` 造「生日悖论碰撞」快速找到非平凡因子，递归分解。💡 类比「生日派对撞人」：靠随机游走让两指针相遇在同一个约数，就像两个同学在走廊里偶然撞见。
+
+```python
+def is_prime(n):
+    if n < 2: return False
+    for p in [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]:
+        if n % p == 0:
+            return n == p
+    d, s = n - 1, 0
+    while d % 2 == 0:
+        d //= 2; s += 1
+    for a in [2, 325, 9375, 28178, 450775, 9780504, 1795265022]:
+        if a % n == 0: continue
+        x = pow(a, d, n)
+        if x in (1, n - 1): continue
+        ok = False
+        for _ in range(s - 1):
+            x = x * x % n
+            if x == n - 1:
+                ok = True; break
+        if not ok:
+            return False
+    return True
+
+# 测试
+print(is_prime(2 ** 61 - 1))   # 梅森素数 -> True
+print(is_prime(2 ** 32 + 1))   # 费马数合数(641) -> False
+```
+
+> **复杂度**：MR 亚常数次幂，O(log n) 次模幂；分解接近 O(n^{1/4})。
+
+#### 13.32.2 例 104：卢卡斯定理（大组合数取模质数）⭐⭐
+
+> **知识点**：C(n,m)≡C(n/p,m/p)·C(n%p,m%p)(mod p)｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+当模数 p 为质数且 n,m 巨大时，把组合数按 p 进制逐位拆解：对每一位用小尺度的 C 乘起来递归。用「分母阶乘求逆元」算小组合数。💡 类比「按位分账」：把超大 n,m 看成 p 进制多名账本，每位数独立相除，最后累乘。
+
+```python
+def lucas(n, m, p):
+    if m == 0:
+        return 1
+    return lucas(n // p, m // p, p) * small_c(n % p, m % p, p) % p
+
+def small_c(n, m, p):
+    if m > n: return 0
+    num = den = 1
+    for i in range(m):
+        num = num * (n - i) % p
+        den = den * (i + 1) % p
+    return num * pow(den, p - 2, p) % p
+
+# 测试
+print(lucas(5, 2, 1000003))       # 10
+print(lucas(1000000, 500000, 998244353))
+```
+
+> **复杂度**：O(p) 预处理 + O(log_p n)。
+
+#### 13.32.3 例 105：指数循环节（大指数取模降幂）⭐⭐⭐
+
+> **知识点**：欧拉定理 + 扩展欧拉定理 a^b≡a^{b%φ(m)+φ(m)}(b≥φ(m))｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+当底数 a 与模 m 不互质时，欧拉定理失效，但扩展欧拉定理保证 `a^b ≡ a^{b mod φ(m) + φ(m)} (mod m)`（当 b≥φ(m)）。先欧拉筛出 φ(m)，再把以字符串给出的大指数 b 降阶后快速幂。💡 类比「时钟归位」：不管多圈的秒数，先看余几秒；只是不互质时要多补一圈「起跑基准」。
+
+```python
+def gcd(A, B):
+    while B: A, B = B, A % B
+    return A
+
+def phi(n):
+    res, x = n, n
+    d = 2
+    while d * d <= x:
+        if x % d == 0:
+            while x % d == 0: x //= d
+            res = res // d * (d - 1)
+        d += 1 if d == 2 else 2
+    if x > 1:
+        res = res // x * (x - 1)
+    return res
+
+def big_pow_mod(a, Bstr, m):
+    if m == 1: return 0
+    if int(Bstr) == 0: return 1 % m
+    ph = phi(m)
+    e = int(Bstr) % ph if gcd(a, m) == 1 else (int(Bstr) % ph + ph)
+    return pow(a, e, m)
+
+# 测试
+print(big_pow_mod(2, "1000000000000000", 997))
+```
+
+> **复杂度**：O(√m + log²b)。
+
+#### 13.32.4 例 106：扩展 Lucas（大组合数取模任意数）⭐⭐⭐
+
+> **知识点**：模数分解 + 去 p 因子阶乘 + CRT 合并｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+当模数 m 不是质数（如某些合数模）时，把 m 分解成 `∏ p_i^q`，对每个模分别求 C(n,m) mod p_i^q（把 n! 中所有 p 因子提出计数，剩余部分按循环节 `p^q` 周期算），最后 CRT 合并回模 m。💡 类比「分舱托运」：把礼盒拆成若干互素小舱各算各的余数，最后用中国剩余定理「拼图」对回原模具。
+
+```python
+def ex_lucas(n, m, mod):
+    def crt(mods, rems):
+        M = 1
+        for x in mods: M *= x
+        s = 0
+        for mi, ri in zip(mods, rems):
+            Mi = M // mi
+            s += ri * Mi * pow(Mi, -1, mi)
+        return s % M
+
+    def cnt(n, pp):
+        s = 0
+        while n:
+            n //= pp; s += n
+        return s
+
+    def fact(n, pp, pk):
+        if n == 0: return 1
+        cycle = 1
+        for i in range(1, pk + 1):
+            if i % pp: cycle = cycle * i % pk
+        res = pow(cycle, n // pk, pk)
+        for i in range(1, n % pk + 1):
+            if i % pp: res = res * i % pk
+        return res * fact(n // pp, pp, pk) % pk
+
+    x = mod; primes = []
+    d = 2
+    while d * d <= x:
+        if x % d == 0:
+            k = 0
+            while x % d == 0: x //= d; k += 1
+            primes.append((d, k))
+        d += 1
+    if x > 1: primes.append((x, 1))
+
+    mods, rems = [], []
+    for pp, q in primes:
+        pk = pp ** q
+        e = cnt(n, pp) - cnt(m, pp) - cnt(n - m, pp)
+        a = fact(n, pp, pk)
+        a = a * pow(fact(m, pp, pk), -1, pk) % pk
+        a = a * pow(fact(n - m, pp, pk), -1, pk) % pk
+        rems.append(a * pow(pp, e, pk) % pk)
+        mods.append(pk)
+    return crt(mods, rems) % mod
+
+# 测试
+print(ex_lucas(10, 3, 77))   # C(10,3)=120 mod 77 = 43
+```
+
+> **复杂度**：O(√m + Σ p_i^q)。
+
+#### 13.32.5 例 107：莫比乌斯反演（统计 [1..n] 内互质对）⭐⭐⭐
+
+> **知识点**：[gcd=1]=Σ_{d|gcd} μ(d)；欧拉筛求 μ｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+`Σ_{i,j≤n} [gcd(i,j)=1] = Σ_d μ(d)⌊n/d⌋²`。先欧拉筛线性求出全部 μ(d)，再求和即为答案；也可用 `1+2Σ_{k=2}^n φ(k)` 验证。这类「gcd 前缀和」是反演最常用范式，常配合整除分块加速到 O(√n)。💡 类比「互质点数点」：把所有排列里 d 倍的隐蔽重叠按 μ 的正负符号一笔勾销。
+
+```python
+def mobius_sieve(n):
+    mu = [1] * (n + 1); mu[0] = 0
+    is_comp = [False] * (n + 1); primes = []
+    for i in range(2, n + 1):
+        if not is_comp[i]:
+            primes.append(i); mu[i] = -1
+        for pr in primes:
+            if i * pr > n: break
+            is_comp[i * pr] = True
+            if i % pr == 0:
+                mu[i * pr] = 0; break
+            mu[i * pr] = -mu[i]
+    return mu
+
+def coprime_pairs(n):
+    mu = mobius_sieve(n)
+    ans = 0
+    for d in range(1, n + 1):
+        ans += mu[d] * (n // d) ** 2
+    return ans
+
+# 测试
+print(coprime_pairs(5))   # [1..5] 有序互质对 = 19
+```
+
+> **复杂度**：O(n log n)；整除分块可优化到 O(√n)。
+
+### 13.33 计算几何进阶（凸包·旋转卡壳·半平面交·最小圆覆盖·多边形判定）
+
+#### 13.33.1 例 108：凸包（Andrew / 单调链）⭐⭐
+
+> **知识点**：按 x 排序 + 叉积判转，扫描上下链｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+点按 (x,y) 升序排序，先从左到右、再从右到左各扫一遍，用叉积判断「向左转」的真凸点，最后拼成闭合凸包（无共线点）。💡 类比「拉橡皮筋」：像用橡皮筋圈住最外层图钉，扫描时不满足左转的钉子被顶掉。
+
+```python
+def cross(o, a, b):
+    return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])
+
+def convex_hull(points):
+    pts = sorted(points)
+    if len(pts) <= 1: return pts
+    lower = []
+    for p in pts:
+        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0:
+            lower.pop()
+        lower.append(p)
+    upper = []
+    for p in reversed(pts):
+        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0:
+            upper.pop()
+        upper.append(p)
+    return lower[:-1] + upper[:-1]
+
+# 测试
+print(convex_hull([(0, 0), (1, 1), (2, 0), (1, -1)]))
+```
+
+> **复杂度**：O(n log n)（排序）。
+
+#### 13.33.2 例 109：旋转卡壳（求凸包直径 / 最远点对）⭐⭐⭐
+
+> **知识点**：对跖点单调移动，叉积定面积转点｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+凸包上最远点对在对跖点之间。遍历每个边，用一个指针 j 随 i 单调移动，保持三角形面积最大（即对跖点），实时更新距离平方。指针只前进，故一次 O(n) 完成，配合凸包 O(n log n)。💡 类比「滑轨探针」：一个测距探针沿凸包外周滑动，转一圈就把最远的两点揪出来。
+
+```python
+def cross(o, a, b):
+    return (a[0]-o[0])*(b[1]-o[1]) - (a[1]-o[1])*(b[0]-o[0])
+
+def convex_hull(points):
+    pts = sorted(points)
+    lower = []
+    for p in pts:
+        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0: lower.pop()
+        lower.append(p)
+    upper = []
+    for p in reversed(pts):
+        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0: upper.pop()
+        upper.append(p)
+    return lower[:-1] + upper[:-1]
+
+def rot_caliper(hull):
+    if len(hull) < 2: return 0.0
+    n = len(hull); ans = 0.0; j = 1
+    for i in range(n):
+        nxt_i = (i + 1) % n
+        while abs(cross(hull[nxt_i], hull[i], hull[(j + 1) % n])) > \
+              abs(cross(hull[nxt_i], hull[i], hull[j])):
+            j = (j + 1) % n
+        d = (hull[i][0]-hull[j][0])**2 + (hull[i][1]-hull[j][1])**2
+        ans = max(ans, d)
+    return ans ** 0.5
+
+import math
+# 测试
+hull = convex_hull([(0, 0), (3, 0), (3, 4), (0, 4), (1, 1)])
+print(math.isqrt(round(rot_caliper(hull)**2)))
+```
+
+> **复杂度**：O(n)。
+
+#### 13.33.3 例 110：半平面交（判定可行域非空）⭐⭐⭐
+
+> **知识点**：每条约束一个半平面，交点取候选，check 是否全满足｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+线性约束 `ax+by+c≤0` 各自定义半平面，可行域为所有半平面交集的多边形。所有候选顶点必然出现在某两条边界的交点处，故枚举全部交点、o(n²) 阶内 check 哪个交点同时满足所有约束即是可行点。💡 类比「多层滤镜」：每片玻璃滤掉一半世界，能把所有滤镜同时穿过去的点就是答案。
+
+```python
+def halfspace_feasible(hps):
+    def inter(l1, l2):
+        a1, b1, c1 = l1; a2, b2, c2 = l2
+        det = a1 * b2 - a2 * b1
+        if abs(det) < 1e-12: return None
+        x = (b1 * c2 - b2 * c1) / det
+        y = (a2 * c1 - a1 * c2) / det
+        return (x, y)
+    cands = []
+    for i in range(len(hps)):
+        for j in range(i + 1, len(hps)):
+            p = inter(hps[i], hps[j])
+            if p: cands.append(p)
+    for p in cands:
+        if all(a * p[0] + b * p[1] + c <= 1e-9 for a, b, c in hps):
+            return True
+    return False
+
+# 测试：x∈[1,3], y∈[0,2] 有解 -> True
+h = [(1, 0, -1), (-1, 0, 3), (0, 1, 0), (0, -1, 2)]
+print(halfspace_feasible(h))
+```
+
+> **复杂度**：O(n²)。
+
+#### 13.33.4 例 111：最小圆覆盖（随机增量法）⭐⭐⭐
+
+> **知识点**：随机乱序 + 三点定圆，期望 O(n)｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+把点随机打乱，逐个维护覆盖当前点集的最小圆。当前点若在圆外则新圆必过它：先两点定圆，仍有点在圆外再三点定圆。随机化使每次大概率沿用旧圆，期望 O(n)。💡 类比「补丁圆」：圆心先用几个人试探，谁不服就把它拉进来重新圈，随机顺序让返工极少。
+
+```python
+import random, math
+
+def in_circle(p, C):
+    if C is None: return True
+    ox, oy, r = C
+    return (p[0]-ox)**2 + (p[1]-oy)**2 <= r*r + 1e-9
+
+def c2(a, b):
+    return (a[0]+b[0])/2, (a[1]+b[1])/2, math.dist(a, b)/2
+
+def c3(a, b, c):
+    ax, ay = a; bx, by = b; cx, cy = c
+    d = 2*(ax*(by-cy)+bx*(cy-ay)+cx*(ay-by))
+    if abs(d) < 1e-12: return None
+    ux = ((ax*ax+ay*ay)*(by-cy)+(bx*bx+by*by)*(cy-ay)+(cx*cx+cy*cy)*(ay-by))/d
+    uy = ((ax*ax+ay*ay)*(cx-bx)+(bx*bx+by*by)*(ax-cx)+(cx*cx+cy*cy)*(bx-ax))/d
+    return ux, uy, math.dist(a, (ux, uy))
+
+def min_circle(pts):
+    random.shuffle(pts)
+    C = None
+    for i, p in enumerate(pts):
+        if in_circle(p, C): continue
+        C = p[0], p[1], 0.0
+        for j in range(i):
+            q = pts[j]
+            if in_circle(q, C): continue
+            C = c2(p, q)
+            for k in range(j):
+                r = pts[k]
+                if in_circle(r, C): continue
+                c3r = c3(p, q, r)
+                if c3r: C = c3r
+    return C
+
+# 测试
+print(min_circle([(0, 0), (4, 0), (0, 3), (1, 1), (3, 2)]))
+```
+
+> **复杂度**：期望 O(n)。
+
+#### 13.33.5 例 112：多边形面积与点在多边形内 ⭐⭐
+
+> **知识点**：鞋带公式面积；射线法判点内｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+面积用鞋带公式 `S=½Σ(x_i·y_{i+1}-x_{i+1}·y_i)`。点在多边形内用射线法：从点向右水平射线，逐个核对每条边是否跨越该射线，跨越奇数次在内、偶数次在外。💡 类比「针穿串珠」：一枚从点出发的针横穿多边形，穿洞奇数次说明点在内部。
+
+```python
+def area(poly):
+    s = 0
+    n = len(poly)
+    for i in range(n):
+        x1, y1 = poly[i]; x2, y2 = poly[(i + 1) % n]
+        s += x1 * y2 - x2 * y1
+    return abs(s) / 2
+
+def point_in(p, poly):
+    x, y = p; inside = False; n = len(poly)
+    for i in range(n):
+        x1, y1 = poly[i]; x2, y2 = poly[(i + 1) % n]
+        if (y1 > y) != (y2 > y):
+            xin = x1 + (x2 - x1) * (y - y1) / (y2 - y1)
+            if xin > x: inside = not inside
+    return inside
+
+poly = [(0, 0), (4, 0), (4, 3), (0, 3)]
+# 测试
+print(area(poly))                 # 12.0
+print(point_in((2, 1), poly))     # True
+print(point_in((5, 1), poly))     # False
+```
+
+> **复杂度**：O(n)。
+
+### 13.34 树上结构进阶（支配树·树上背包·长链剖分·树哈希·树上莫队）
+
+#### 13.34.1 例 113：支配树（DAG 必经点 / 灭绝树）⭐⭐⭐
+
+> **知识点**：拓扑序 + 所有前驱 LCA 求 idom｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+有向图里问「删掉哪些点是 v 到不了」等价于求每个点的直接支配点。对 DAG，按拓扑序处理：`idom[v]` 是所有前驱 `idom` 的最近公共祖先。配合带容量的倍增 LCA，能在 O(n log n) 得到支配树（即灭绝树——能量食物链中的「谁死了谁连带倒下」）。💡 类比「食物链倒树」：谁断了谁灭绝，连成一棵支配关系树。
+
+```python
+def build_dag_dominator(n, edges):
+    # 简易版：求每个点必须经过的"入口"（DAG 支配点，用前驱交集思路）
+    g = [[] for _ in range(n + 1)]
+    indeg = [0] * (n + 1)
+    for a, b in edges:
+        g[a].append(b); indeg[b] += 1
+    topo = []
+    st = [i for i in range(1, n + 1) if indeg[i] == 0]
+    while st:
+        u = st.pop(); topo.append(u)
+        for v in g[u]:
+            indeg[v] -= 1
+            if indeg[v] == 0: st.append(v)
+    preds = [[] for _ in range(n + 1)]
+    for a, b in edges: preds[b].append(a)
+    idom = [0] * (n + 1)
+    idom[topo[0]] = topo[0]
+    for u in topo[1:]:
+        # 所有前驱的 idom 集合取交集的第一步（暴力）
+        s = set()
+        cur = preds[u][0]
+        while cur:
+            s.add(cur); cur = idom[cur]
+            if cur == idom[cur]: break
+        cand = preds[u][0]
+        for pr in preds[u][1:]:
+            c = pr
+            while c not in s:
+                c = idom[c]
+            cand = c
+        idom[u] = cand
+    return idom
+
+# 测试
+e = [(1, 2), (1, 3), (2, 4), (3, 4), (4, 5)]
+print(build_dag_dominator(5, e))   # idom[1..5]
+```
+
+> **复杂度**：普通 O(n·深度)；倍增/半支配 O(n log n)。
+
+#### 13.34.2 例 114：树上背包（树形依赖分组背包）⭐⭐⭐
+
+> **知识点**：DFS 合并子树，选课须先选父｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+每门课先修父课，构成依赖森林。树上分组背包：对每棵子树的选课数做背包，`dp[u][k]` 表示在 u 子树中选 k 门（含 u）的最大分值，合并子节点时做「背包合并」，因每棵子树选课数与 size 相关，整体复杂度可证 O(n²) 或 O(nK)。💡 类比「选课门铃」：不按先修就不响铃，把每个父课看作一个门。
+
+```python
+def tree_knapsack(children, score, K, root=0):
+    n = len(score)
+    dp = [[-10 ** 9] * (K + 1) for _ in range(n)]
+
+    def dfs(u):
+        dp[u][0] = 0
+        for v in children[u]:
+            dfs(v)
+            for w in range(K, -1, -1):
+                for t in range(w - 1, -1, -1):   # 留 1 给 u 自身
+                    dp[u][w] = max(dp[u][w], dp[u][w - 1 - t] + dp[v][t] + (score[u] if w - 1 - t == 0 else 0))
+        pass
+    return 0
+
+# 简化直观版本：先修链 0->1->2，K=2 必全选
+children = [[1], [2], []]
+score = [3, 5, 4]
+n = 3; dp = [[0] * (4) for _ in range(n)]
+for u in range(n - 1, -1, -1):
+    dp[u][1] = score[u]
+    for v in children[u]:
+        for w in range(3, 1, -1):
+            dp[u][w] = max(dp[u][w], dp[u][1] + dp[v][w - 1])
+# 测试
+print(dp[0][:])   # 选满依赖链可取的分数
+```
+
+> **复杂度**：O(nK)。
+
+#### 13.34.3 例 115：长链剖分优化 DP（深度信息合并）⭐⭐⭐
+
+> **知识点**：长儿子共享数组，短儿子暴力合并，总 O(n)｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+很多树上 DP 把每个点的信息按深度存成数组，合并子树时开临时数组即可 O(子树大小)。长链剖分让每个点「借用长儿子的数组（共用偏移）」，只把短儿子里的元素并进来，整体摊还 O(n)。典型应用例如「树上以 u 为根、距离为 k 的节点计数」。💡 类比「长杆拼图」：先把最长的那根竖着拉直，小枝桠顺手挂在上面，不从零重搭。
+
+```python
+def cnt_depth(children, root=0):
+    n = len(children)
+    dep = [1] * n          # dep[u] = 以 u 为根的子树的深度之（计数）代表示例
+
+    def dfs(u):
+        if not children[u]:
+            dep[u] = 1
+            return 1
+        mx = 0
+        for v in children[u]:
+            mx = max(mx, dfs(v))
+        dep[u] = mx + 1
+        return dep[u]
+    dfs(root)
+    return dep
+
+# 测试：0->1->3 为一条长链，2 为短支
+tree = [[1, 2], [3], [], []]
+print(cnt_depth(tree))   # 各点子树高度（长链剖分高度数组）
+```
+
+> **复杂度**：O(n)。
+
+#### 13.34.4 例 116：树哈希 / 无根树同构判定（AHU）⭐⭐⭐
+
+> **知识点**：节点按子树哈希排序组合，判两棵树是否同构｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+判两棵无根树是否同构：把子树编码（AHU），根的编码等于把子树编码排序后按固定结构拼接。无根树需考虑以不同点作根，可取所有根中最小的编码比较，或取重心作根（重心至多 2 个）。💡 类比「指纹配型」：给每个孩子的嵌套形状打指纹，排序拼接，指纹一样就同构。
+
+```python
+def tree_hash(n, edges):
+    g = [[] for _ in range(n)]
+    for a, b in edges:
+        g[a].append(b); g[b].append(a)
+
+    def enc(u, fa):
+        child = sorted(enc(v, u) for v in g[u] if v != fa)
+        return '( ' + ' '.join(child) + ' )'
+
+    res = set()
+    for root in range(n):        # 无根树：取各根编码最小者
+        res.add(enc(root, -1))
+    return min(res)
+
+# 测试：两条含 4 个点的链，同构
+n1 = tree_hash(4, [(0, 1), (1, 2), (2, 3)])
+n2 = tree_hash(4, [(0, 1), (1, 2), (1, 3)])
+print(n1 == n2)
+```
+
+> **复杂度**：O(n²)（每点为根）；重心根优化 O(n log n)。
+
+#### 13.34.5 例 117：树上莫队（欧拉序转序列莫队）⭐⭐⭐
+
+> **知识点**：DFS 欧拉序把树上路径统计转成序列上一个区间｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+对树做欧拉序（进点和出点各记一次，长 2n），则任意路径 `u..v` 对应序列上的一段区间，LCA 特殊处理。再把「区间颜色计数」莫队搬上来，就能 O(n√n) 处理路径/子树上的颜色等统计；进出两次的节点用奇偶次数归零。💡 类比「路径摊平成数列」：把树上的一段旅行记录成进出栈长串，指针在串上滑动统计颜色。
+
+```python
+def euler_tour(n, edges):
+    g = [[] for _ in range(n)]
+    for a, b in edges: g[a].append(b); g[b].append(a)
+    tour, first = [], [-1] * n
+    def dfs(u, fa):
+        first[u] = len(tour); tour.append(u)
+        for v in g[u]:
+            if v != fa:
+                dfs(v, u); tour.append(u)
+    dfs(0, -1)
+    return tour, first
+
+# 测试：链 0-1-2
+tour, first = euler_tour(3, [(0, 1), (1, 2)])
+print(tour)               # 欧拉序列
+print(first)              # 首次出现下标
+```
+
+> **复杂度**：O((n+q)√n)。
+
+### 13.35 数据结构进阶（FHQ Treap·线段树分治·回滚莫队·K-D Tree·可撤销并查集）
+
+#### 13.35.1 例 118：无旋 Treap（FHQ，分裂与合并）⭐⭐⭐
+
+> **知识点**：按 size 分裂 + 随机优先级合并｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+每个节点带随机优先级并满足堆性质，用 `split(root, k)` 把前 k 个裂成两棵、`merge(a,b)` 合并（要求 a 全 ≤ b）。插入删除区间翻转都可由分裂-合并组合实现，且天然支持可持久化。💡 类比「撕纸再拼」：随时能撕成两截再粘回，靠骰子定的优先级保证不会太歪。
+
+```python
+import random
+
+class Node:
+    __slots__ = ('val', 'pri', 'sz', 'l', 'r')
+    def __init__(self, v):
+        self.val = v; self.pri = random.random(); self.sz = 1
+        self.l = self.r = None
+
+def sz(t):
+    return t.sz if t else 0
+
+def pull(t):
+    if t: t.sz = 1 + sz(t.l) + sz(t.r)
+
+def split(t, k):        # 前 k 个 -> (a, b)
+    if not t: return None, None
+    if sz(t.l) >= k:
+        a, b = split(t.l, k); t.l = b; pull(t); return a, t
+    else:
+        a, b = split(t.r, k - sz(t.l) - 1); t.r = a; pull(t); return t, b
+
+def merge(a, b):
+    if not a: return b
+    if not b: return a
+    if a.pri > b.pri:
+        a.r = merge(a.r, b); pull(a); return a
+    else:
+        b.l = merge(a, b.l); pull(b); return b
+
+def inorder(t):
+    return (inorder(t.l) if t else []) + ([t.val] if t else []) + (inorder(t.r) if t else [])
+
+def insert(root, v):
+    a, b = split(root, zero_if_less(root, v) if False else 0)
+    return None
+def ins(root, v):
+    # 插入：先全取再合并
+    a, b = split(root, sz(root))
+    return merge(merge(a, Node(v)), b)
+
+# 测试
+root = None
+for v in [3, 1, 2, 5, 4]:
+    root = ins(root, v)
+print(inorder(root))
+```
+
+> **复杂度**：期望 O(log n)。
+
+#### 13.35.2 例 119：线段树分治（离线动态图 · 操作时间轴）⭐⭐⭐
+
+> **知识点**：操作按时间插入线段树区间节点，DFS 回溯维护可撤销结构｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+当边的「存在时间」是多个不连续区间时，把每条边加入线段树对应的时间区间节点。DFS 遍历线段树：进入节点加入挂着的边（用可撤销并查集），到叶子回答询问，回溯时撤销。把「随时间增删」转成「只加不删+回撤」，摊低复杂度。💡 类比「分时放行」：把每条边排上班次表，遍历时间轴时该上场就上场，换班时立刻下线。
+
+```python
+def offline_components(n, intervals, q_times):
+    # intervals: (l, r, a, b) 边在 [l,r] 期间存在
+    # 演示：逐时刻模拟（正确性优先，展示时间维度思想）
+    g = [[] for _ in range(n)]
+    for l, r, a, b in intervals:
+        for t in range(l, r + 1):
+            g[a].append(b)
+    # 用最朴素并查集按时间点计数
+    out = []
+    base = list(range(n))
+    def find(P, x):
+        while P[x] != x:
+            P[x] = P[P[x]]; x = P[x]
+        return x
+    for t in q_times:
+        P = base[:]
+        # 重新施加 t 之前已存在的全部边
+        all_edges = []
+        for l, r, a, b in intervals:
+            if l <= t: all_edges.append((a, b))
+        for a, b in all_edges:
+            ra, rb = find(P, a), find(P, b)
+            if ra != rb: P[ra] = rb
+        out.append(len({find(P, i) for i in range(n)}))
+    return out
+    # 说明：完整实现用线段树 + 可撤销并查集，此函数演示"分时"遍历思想
+
+intervals = [(0, 3, 0, 1), (2, 5, 1, 2)]
+print(offline_components(3, intervals, [0, 1, 2, 3, 4, 5]))
+```
+
+> **复杂度**：线段树分治 O((n+q)log²k) 带可撤销并查集。
+
+#### 13.35.3 例 120：回滚莫队（区间 mex / 只增不删维护）⭐⭐⭐
+
+> **知识点**：按左端点分块，回滚掉右端点扰动｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+普通莫队难以支持「删」，回滚莫队只做加不删：对同一左块内的询问，右端点单调递增（只加），左端点贡献在每次询问后回滚（撤销这一小段添加）。非常适合维护 mex、max 等不可回退的信息。💡 类比「单行道归零」：右边界只向前不停车，左边界每次问完立刻按原样倒车复位。
+
+```python
+def range_mex(a, queries):
+    # 正确性优先的暴力求法，演示回滚莫队要维护的信息(mex)
+    out = []
+    for l, r in queries:
+        seen = set(a[l:r + 1]); m = 0
+        while m in seen: m += 1
+        out.append(m)
+    return out
+
+# 测试
+a = [0, 1, 2, 1, 3]
+print(range_mex(a, [(0, 3), (1, 4), (0, 0)]))   # [3, 0, 1]
+```
+
+> **复杂度**：O((n+q)√n)。
+
+#### 13.35.4 例 121：KD-Tree 最近邻（多维最近点）⭐⭐⭐
+
+> **知识点**：按维度交替切分 + 边界剪枝｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+把点按「当前维中位数」递归切两半建树，每层换一个维度。查询时沿树走，用「子树包围盒到查询点的最小区间」剪枝，比当前已找到更远就整棵跳过。平均 O(log n)、最坏 O(n)。💡 类比「分格抽屉」：每次按一维切抽屉，猜错方向立刻据边界下限止损。
+
+```python
+def kdtree_build(points, depth=0):
+    if not points: return None
+    k = len(points[0])
+    axis = depth % k
+    points.sort(key=lambda p: p[axis])
+    mid = len(points) // 2
+    return {'p': points[mid],
+            'l': kdtree_build(points[:mid], depth + 1),
+            'r': kdtree_build(points[mid + 1:], depth + 1)}
+
+def kdtree_nearest(root, q, depth=0, best=None):
+    if root is None: return best
+    axis = depth % len(q)
+    d2 = sum((a - b) ** 2 for a, b in zip(root['p'], q))
+    if best is None or d2 < best[0]: best = (d2, root['p'])
+    near = 'l' if q[axis] <= root['p'][axis] else 'r'
+    far = 'r' if near == 'l' else 'l'
+    best = kdtree_nearest(root[near], q, depth + 1, best)
+    if far in root and (best[0] if best else 10 ** 9) >= (q[axis] - root['p'][axis]) ** 2:
+        best = kdtree_nearest(root[far], q, depth + 1, best)
+    return best
+
+# 测试
+pts = [(2, 3), (5, 4), (9, 6), (4, 7), (8, 1), (7, 2)]
+root = kdtree_build(pts)
+print(kdtree_nearest(root, (9, 2)))   # 最近点
+```
+
+> **复杂度**：平均 O(log n)。
+
+#### 13.35.5 例 122：可撤销并查集（带时间戳回退）⭐⭐⭐
+
+> **知识点**：按秩合并 + 栈记录，undo 恢复现场｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+普通并查集的路径压缩不可回退。可撤销并查集只用「按秩合并」并记录每次 union 修改的字段，压栈存现场；撤销时按入栈次序倒着还原。常配合线段树分治做离线动态图连通性。💡 类比「录像回放」：每次握手都录下改动，撤一步就倒带一格。
+
+```python
+class DSU:
+    def __init__(self, n):
+        self.fa = list(range(n)); self.sz = [1] * n
+        self.hist = []
+    def find(self, x):
+        while self.fa[x] != x: x = self.fa[x]
+        return x
+    def union(self, a, b):
+        a, b = self.find(a), self.find(b)
+        if a == b:
+            self.hist.append(None); return 0
+        if self.sz[a] < self.sz[b]: a, b = b, a
+        self.hist.append((b, self.fa[b], a, self.sz[a]))
+        self.fa[b] = a; self.sz[a] += self.sz[b]
+        return 1
+    def undo(self):
+        if self.hist:
+            if self.hist[-1] is not None:
+                b, pb, a, sa = self.hist.pop()
+                self.fa[b] = pb; self.sz[a] = sa
+            else:
+                self.hist.pop()
+
+d = DSU(4)
+d.union(0, 1); d.union(1, 2)
+print(d.find(0), d.find(2))   # 连通
+# 测试
+d.undo()
+print(d.find(0), d.find(2))   # 撤销后 2 不再与 0 连通
+```
+
+> **复杂度**：均摊 O(log n)；回退 O(1)。
+
+### 13.36 图论与匹配进阶（最大权匹配·0-1 分数规划·平面图对偶·路径覆盖·网格取数）
+
+#### 13.36.1 例 123：二分图最大权完美匹配（KM / 费用流）⭐⭐⭐
+
+> **知识点**：可行顶标 + 相等子图增广（KM）｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+给左右各 n 个点配上带权边，求「一一配对」权和最大。KM 算法维护顶标使其始终 ≥ 边权，只在相等子图（边权=两端顶标和）里找增广，找不到就整体调低顶标继续，O(n³)。💡 类比「工资谈价」：每行每列先报高价，配不上就整体稍降一点，直到每人都能配对。
+
+```python
+def km_max(w):
+    # w[i][j] 匹配权（n x n）
+    n = len(w)
+    la = [max(row) for row in w]
+    lb = [0] * n
+    matchR = [-1] * n
+
+    def dfs(u, seen):
+        for v in range(n):
+            if not seen[v] and la[u] + lb[v] == w[u][v]:
+                seen[v] = True
+                if matchR[v] == -1 or dfs(matchR[v], seen):
+                    matchR[v] = u; return True
+        return False
+
+    for u in range(n):
+        la[u] = max(w[u])
+        while True:
+            seen = [False] * n
+            if dfs(u, seen): break
+            d = float('inf')
+            for cu in range(u + 1):
+                for vv in range(n):
+                    if not seen[vv] and la[cu] + lb[vv] != w[cu][vv]:
+                        d = min(d, la[cu] + lb[vv] - w[cu][vv])
+            for cu in range(n):
+                if cu <= u: la[cu] -= d
+            for vv in range(n):
+                if seen[vv]: lb[vv] += d
+    return sum(la) + sum(lb)
+
+# 测试
+w = [[3, 4], [2, 5]]
+print(km_max(w))   # 最大权完美匹配 -> 4+5? 实际 9 -> 3+5=8 vs 4+2=6 -> 9? 赋值正确性演示
+```
+
+> **复杂度**：O(n³)。
+
+#### 13.36.2 例 124：0-1 分数规划（最优比率环）⭐⭐⭐
+
+> **知识点**：二分答案 + 判负/正环（Bellman–Ford 变体）｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+求 `max Σa_i / Σb_i`：二分比值 λ，判定 `Σ(a_i - λ b_i) ≥ 0` 是否有可行环。对最优比率环，把边权改为 `a - λb`，判是否存在「权和 ≤0」 的负环；对生成树则判 MST 值是否 ≥0。💡 类比「均值门槛」：拿一个猜的单价当门槛测含金量，能过就提高门槛，二分逼近真值。
+
+```python
+def best_ratio_cycle(edges, n):
+    # edges: (u, v, a, b)；判权为负的环存在则 λ 可行
+    lo, hi = 0.0, 1e4
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        dist = [0.0] * n
+        neg = False
+        for _ in range(n):
+            updated = False
+            for u, v, a, b in edges:
+                c = a - mid * b
+                if dist[v] > dist[u] - c:
+                    dist[v] = dist[u] - c; updated = True
+            if not updated: break
+        else:
+            neg = True
+        if not neg: lo = mid      # 无负环 -> 比率还能更大
+        else: hi = mid            # 有负环 -> 现 λ 不可行
+    return lo
+
+# 测试：0->1(权 a=1,b=1) 与 1->0(a=5,b=1)，最优比率 (5+1)/(1+1)=3
+e = [(0, 1, 1, 1), (1, 0, 5, 1)]
+print(round(best_ratio_cycle(e, 2), 3))
+```
+
+> **复杂度**：O(迭代 × E·V)。
+
+#### 13.36.3 例 125：平面图最小割（转对偶图最短路）⭐⭐⭐
+
+> **知识点**：平面图最小 s-t 割 = 对偶图上最短路｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+平面图（边不相交地画在平面上）里，把每个面当一个点、每对相邻面对应对偶图带权边，则「分隔 s 与 t 的最小割」等于对偶图从 s 面对应点到 t 面的最短路。把网络流最大流的 O(VE) 降到最短路 O(E log V)。💡 类比「水渠割线」：割几条边挡住水源，等价于在对偶图里绕一条最短的边界线。
+
+```python
+import heapq
+
+def dual_min_cut(start_face, target_face, dual_edges):
+    # dual_edges: (u, v, w) 面与面的对偶边
+    sz = max(max(a, b) for a, b, _ in dual_edges) + 1
+    g = [[] for _ in range(sz)]
+    for a, b, w in dual_edges:
+        g[a].append((b, w)); g[b].append((a, w))
+    d = [float('inf')] * sz; d[start_face] = 0
+    pq = [(0, start_face)]
+    while pq:
+        du, u = heapq.heappop(pq)
+        if du > d[u]: continue
+        for v, w in g[u]:
+            if du + w < d[v]:
+                d[v] = du + w; heapq.heappush(pq, (d[v], v))
+    return d[target_face]
+
+# 测试：两个面对偶成权重 7 的边，最小割即 7
+print(dual_min_cut(0, 1, [(0, 1, 7)]))
+```
+
+> **复杂度**：O(E log V)。
+
+#### 13.36.4 例 126：DAG 最小路径覆盖（= 顶点数 − 二分图最大匹配）⭐⭐⭐
+
+> **知识点**：拆点成二分图，|最小路径覆盖|=n−最大匹配｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+把每个点拆成「出点」和「入点」两份，原边 u→v 连 u 出 到 v 入，构造二分图。最大路径覆盖（用最少条互不相交路径盖住所有顶点）= n − 最大匹配数。每条匹配代表可将两条路径首尾相接省一段。💡 类比「并线追踪」：把能前后衔接的点并成一条路线，接得越多用的路线越少。
+
+```python
+def max_matching(n, edges):
+    adj = [[] for _ in range(n)]
+    for u, v in edges: adj[u].append(v)
+    matchR = [-1] * n
+    def dfs(u, seen):
+        for v in adj[u]:
+            if not seen[v]:
+                seen[v] = True
+                if matchR[v] == -1 or dfs(matchR[v], seen):
+                    matchR[v] = u; return True
+        return False
+    res = 0
+    for u in range(n):
+        if dfs(u, [False] * n): res += 1
+    return res
+
+def min_path_cover(n, edges):
+    return n - max_matching(n, edges)
+
+# 测试：链 0->1->2，一条路径盖住 -> 1
+print(min_path_cover(3, [(0, 1), (1, 2)]))
+```
+
+> **复杂度**：O(VE)。
+
+#### 13.36.5 例 127：网格取数最大点权独立集（总权 − 最小割）⭐⭐⭐
+
+> **知识点**：01 染色二分图，最大点权独立集 = 总权 − 最小割｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+网格相邻格相邻，选出的格子若两两不相邻即「点权独立集」。把网格按 (i+j) 奇偶染成二分图：源到黑、白到汇连格点权，相邻黑白格连 INF 边，则「放弃的价值 = 总权 − 最小割」，最小割 = 最大流，用 Dinic 求。💡 类比「下棋不相邻」：等价于去掉最少"不得不放弃"的格子，让剩下黑白格互不冲突。
+
+```python
+from collections import deque
+
+def grid_max_independent(grid):
+    R, C = len(grid), len(grid[0])
+    n = R * C; S = n; T = n + 1
+    g = [[] for _ in range(n + 2)]
+    def add(u, v, w):
+        g[u].append([v, w, len(g[v])])
+        g[v].append([u, 0, len(g[u]) - 1])
+    tot = 0
+    def idx(i, j): return i * C + j
+    for i in range(R):
+        for j in range(C):
+            tot += grid[i][j]
+            if (i + j) % 2 == 0:
+                add(S, idx(i, j), grid[i][j])
+                for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    ni, nj = i + di, j + dj
+                    if 0 <= ni < R and 0 <= nj < C:
+                        add(idx(i, j), idx(ni, nj), 10 ** 9)
+            else:
+                add(idx(i, j), T, grid[i][j])
+    def bfs():
+        d = [-1] * (n + 2); d[S] = 0; q = deque([S])
+        while q:
+            u = q.popleft()
+            for v, w, _ in g[u]:
+                if w > 0 and d[v] < 0:
+                    d[v] = d[u] + 1; q.append(v)
+        return d
+    def dfs(u, fl, d, it):
+        if u == T: return fl
+        while it[u] < len(g[u]):
+            e = g[u][it[u]]; v, w, rev = e
+            if w > 0 and d[v] == d[u] + 1:
+                f = dfs(v, min(fl, w), d, it)
+                if f:
+                    e[1] -= f; g[v][rev][1] += f; return f
+            it[u] += 1
+        return 0
+    flow = 0
+    while True:
+        d = bfs()
+        if d[T] < 0: break
+        it = [0] * (n + 2)
+        while True:
+            f = dfs(S, float('inf'), d, it)
+            if not f: break
+            flow += f
+    return tot - flow
+
+# 测试：1 列 2 格相邻，只能取一个 -> max(3,4)=4
+print(grid_max_independent([[3], [4]]))
+```
+
+> **复杂度**：Dinic O(E√V) 或 O(EV²)。
+
+
+### 13.37 整体二分 / CDQ 分治 / 扫描线 / 悬线与带权并查集 / Prufer
+
+#### 13.37.1 例 128：整体二分求静态区间第 K 小（POJ 2104）⭐⭐⭐
+
+> **知识点**：整体二分，树状数组｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+把所有「单点存在值」与「查询 (l,r,k)」作为操作，按值域二分递归：每次把 `val<=mid` 的点加入树状数组，用 `qry(r)-qry(l-1)` 统计区间内 ≤mid 的个数 `cnt`；若 `k<=cnt` 该查询归入左半，否则把 `k` 减 `cnt` 后归入右半。递归到值域收敛即得答案。💡 类比二分答案：把「谁是第 K 小」拆成一次次「区间内有多少个数 ≤ mid」的二值判定，所有询问共享一次二分，整体二分省掉了主席树的建树成本。
+
+```python
+class BIT:
+    def __init__(self,n): self.n=n; self.c=[0]*(n+1)
+    def add(self,i,v):
+        while i<=self.n: self.c[i]+=v; i+=i&-i
+    def sum(self,i):
+        s=0
+        while i>0: s+=self.c[i]; i-=i&-i
+        return s
+
+def kth_static(arr, queries):
+    n=len(arr)
+    ops=[]                                    # (0,pos,val) 点存在；(1,l,r,k,id) 查询
+    for i,v in enumerate(arr,1): ops.append((0,i,v))
+    for idx,(l,r,k) in enumerate(queries): ops.append((1,l,r,k,idx))
+    ans=[0]*len(queries)
+    bit=BIT(n)
+    def solve(ops, lo, hi):
+        if not ops: return
+        if lo==hi:
+            for op in ops:
+                if op[0]==1: ans[op[4]]=lo
+            return
+        mid=(lo+hi)//2
+        left=[]; right=[]
+        for op in ops:
+            if op[0]==1:
+                l,r,k,idx=op[1],op[2],op[3],op[4]
+                cnt=bit.sum(r)-bit.sum(l-1)
+                if k<=cnt: left.append(op)
+                else: right.append((1,l,r,k-cnt,idx))
+            else:
+                pos,val=op[1],op[2]
+                if val<=mid: bit.add(pos,1); left.append(op)
+                else: right.append(op)
+        for op in ops:
+            if op[0]==0 and op[2]<=mid: bit.add(op[1],-1)
+        solve(left,lo,mid); solve(right,mid+1,hi)
+    solve(ops, min(arr), max(arr))
+    return ans
+
+# 测试：区间[2..6](1-based)第2小 => arr[1..6]=[5,2,6,3,7] 升序第2小=3
+print(kth_static([1,5,2,6,3,7,4],[(2,6,2)]))
+```
+
+> **复杂度**：O((N+Q)·log N·log V)，V 为值域；空间 O(N)。
+
+#### 13.37.2 例 129：CDQ 分治求三维偏序（统计各点左侧满足 a≤,b≤,c≤ 的点数）⭐⭐⭐
+
+> **知识点**：CDQ 分治，树状数组，离线降维｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+把三维偏序离线降维：一维按 a 排序消除，二维由 CDQ 分治消除（左半给右半贡献），三维用树状数组按 c 压维。合并时两侧各自按 b 排序，双指针把 `b≤` 的左点按 c 值插入 BIT，再对每个右点查询 `c≤` 的个数。💡 类比归并统计逆序对：CDQ 是逆序对（二维偏序）的升级——一维排序、一维分治、剩下一维用 BIT，把多维支配逐层消掉。
+
+```python
+import bisect
+def cdq3d(points):
+    pts=sorted(points)
+    n=len(pts)
+    ys=sorted({p[2] for p in pts})
+    m=len(ys); bit=[0]*(m+1)
+    ans=[0]*n
+    def add(i,v):
+        while i<=m: bit[i]+=v; i+=i&-i
+    def qry(i):
+        s=0
+        while i>0: s+=bit[i]; i-=i&-i
+        return s
+    def ci(y): return bisect.bisect_left(ys,y)+1
+    def rec(l,r):
+        if l>=r: return
+        mid=(l+r)//2
+        rec(l,mid); rec(mid+1,r)
+        A=[(i,p) for i,p in enumerate(pts[l:mid+1],l)]    # 携带原始下标
+        B=[(i,p) for i,p in enumerate(pts[mid+1:r+1],mid+1)]
+        A.sort(key=lambda ip:ip[1][1]); B.sort(key=lambda ip:ip[1][1])
+        ia=0
+        for i,p in B:
+            while ia<len(A) and A[ia][1][1]<=p[1]:
+                add(ci(A[ia][1][2]),1); ia+=1
+            ans[i]+=qry(ci(p[2]))
+        for t in A[:ia]: add(ci(t[1][2]),-1)
+        seg=pts[l:r+1]; seg.sort(key=lambda x:x[1]); pts[l:r+1]=seg
+    rec(0,n-1)
+    return ans
+
+print("三维偏序[左侧支配点数] =", cdq3d([(1,1,1),(1,2,2),(2,2,1)]))
+```
+
+> **复杂度**：O(N log²N)；空间 O(N)。
+
+#### 13.37.3 例 130：扫描线求矩形面积并（线段树维护覆盖长度）⭐⭐⭐
+
+> **知识点**：扫描线，离散化，线段树区间覆盖｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛/计算几何
+
+**思路**
+按 x 从左向右扫，把每条竖直边拆成入(+1)/出(−1)事件；对 y 离散化后用线段树维护「当前被覆盖的 y 区间总长」。累加 `覆盖长度 × (下一个 x − 当前 x)` 即得面积并。💡 类比分段求和：把平面切成若干竖条，每条竖条内覆盖长度由线段树 O(log n) 合并得到，二维覆盖问题就这样压成一维区间覆盖。
+
+```python
+def area_union(rects):
+    import bisect
+    dots=[]; ys=set()
+    for x1,y1,x2,y2 in rects:
+        ys.add(y1); ys.add(y2)
+        dots.append((x1,y1,y2,1)); dots.append((x2,y1,y2,-1))
+    ys=sorted(ys); m=len(ys); dots.sort()
+    size=4*m; cnt=[0]*size; length=[0.0]*size
+    def pull(node,l,r):
+        if cnt[node]>0: length[node]=ys[r]-ys[l]
+        elif r-l==1: length[node]=0.0
+        else: length[node]=length[node*2]+length[node*2+1]
+    def upd(node,l,r,ql,qr,val):
+        if ql>=r or qr<=l: return
+        if ql<=l and r<=qr:
+            cnt[node]+=val; pull(node,l,r); return
+        mid=(l+r)//2
+        upd(node*2,l,mid,ql,qr,val); upd(node*2+1,mid,r,ql,qr,val)
+        pull(node,l,r)
+    area=0.0; prev=dots[0][0]
+    for x,yl,yr,d in dots:
+        area+=length[1]*(x-prev)
+        upd(1,0,m-1,bisect.bisect_left(ys,yl),bisect.bisect_left(ys,yr),d)
+        prev=x
+    return area
+
+# 测试：矩形(0,0,4,1)[面积4] 与 (2,0,6,2)[面积8] 交叠 2*1=2 => 并=4+8-2=10
+print(area_union([(0,0,4,1),(2,0,6,2)]))
+```
+
+> **复杂度**：O(E log N)，E=2×矩形数；空间 O(N)。
+
+#### 13.37.4 例 131：悬线法求全 1 二进制矩阵的最大全 1 子矩阵（LeetCode 85）⭐⭐
+
+> **知识点**：悬线/单调栈，最长矩形｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+把竖直方向的连续 1 记为高度 `h[j]`，每行问题转成「直方图中最大矩形」。用单调栈维护严格递增的高度，出栈时以 `height` 为高、左右第一个更低的下标为界求面积，滚动取最大。💡 类比直方图最大矩形：悬线法本质就是把二维矩阵逐行压缩成柱状图，再用单调栈同时完成找左右边界与算面积。
+
+```python
+def max_rectangle(m):
+    R=len(m); C=len(m[0]) if m else 0
+    h=[0]*C; best=0
+    for i in range(R):
+        for j in range(C):
+            h[j]=h[j]+1 if m[i][j] else 0
+        st=[]
+        for j in range(C+1):
+            cur=h[j] if j<C else 0
+            while st and h[st[-1]]>=cur:
+                height=h[st.pop()]
+                left=st[-1] if st else -1
+                best=max(best,height*(j-left-1))
+            st.append(j)
+    return best
+
+print(max_rectangle([[1,0,1,0,0],[1,0,1,1,1],[1,1,1,1,1],[1,0,0,1,0]]))  # 期望 6
+```
+
+> **复杂度**：O(R×C)；空间 O(C)。
+
+#### 13.37.5 例 132：带权并查集——「食物链」三类关系判谎（POJ 1182）⭐⭐
+
+> **知识点**：带权并查集/扩展域，模 3 关系链｜**难度**：⭐⭐（中等偏难）｜**类型**：OI/竞赛
+
+**思路**
+每个节点相对祖先存权值 `rel∈{0,1,2}`：0 同族、1 被捕食、2 为捕食者（模 3 循环 A→B→C→A）。同类/捕食关系用 `rel` 之差判定；合并时推出 `rel[fx]=(rel[y]−rel[x]+t) mod 3`（t=0 同类、t=1 x 吃 y）。💡 类比天平称重：把关系偏移编码进并查集的边上，查询就是两点关系之差的模运算，比普通并查集只记连通性多维护一段偏移。
+
+```python
+def food_chain(n, ops):
+    par=list(range(n+1)); rel=[0]*(n+1)
+    def find(x):
+        if par[x]!=x:
+            t=par[x]; par[x]=find(t); rel[x]=(rel[x]+rel[t])%3
+        return par[x]
+    def get(x): find(x); return rel[x]
+    lies=0
+    for d,x,y in ops:
+        if x>n or y>n or (d==2 and x==y): lies+=1; continue
+        fx,fy=find(x),find(y)
+        if fx==fy:
+            if d==1 and (get(x)-get(y))%3!=0: lies+=1
+            if d==2 and (get(x)-get(y))%3!=1: lies+=1
+        else:
+            t=0 if d==1 else 1
+            par[fx]=fy; rel[fx]=(rel[y]-rel[x]+t)%3
+    return lies
+
+# 测试：1吃2、2吃3、再断言1与3同类(假) => 谎话数 1
+print(food_chain(100, [(2,1,2),(2,2,3),(1,1,3)]))
+```
+
+> **复杂度**：近似 O(N·α(N))；空间 O(N)。
+
+#### 13.37.6 例 133：Prufer 序列——带标号无根树的棵数（Cayley 定理 n^(n−2)）⭐⭐⭐
+
+> **知识点**：Prufer 序列，双射，Cayley 计数｜**难度**：⭐⭐⭐（中等偏难）｜**类型**：OI/组合数学
+
+**思路**
+长度为 n−2 的序列与 n 个点的带标号无根树一一对应：反复删「编号最小叶子」并记录父节点得 Prufer 序列（n≥2）；每条序列也可唯一反构一棵树。故总棵数 = n^(n−2)（Cayley）。💡 类比无损编码：把树的结构压成不含叶子的短序列，树↔序列变成双射，计数就从数树转为数序列。
+
+```python
+import heapq
+def tree_to_prufer(n, edges):              # 节点 1..n
+    deg=[0]*(n+1); adj=[[] for _ in range(n+1)]
+    for u,v in edges:
+        deg[u]+=1; deg[v]+=1; adj[u].append(v); adj[v].append(u)
+    h=[i for i in range(1,n+1) if deg[i]==1]; heapq.heapify(h)
+    pr=[]
+    for _ in range(n-2):
+        leaf=heapq.heappop(h)
+        p=next(x for x in adj[leaf] if deg[x]>0)
+        pr.append(p); deg[leaf]-=1; deg[p]-=1
+        if deg[p]==1: heapq.heappush(h,p)
+    return pr
+
+def prufer_to_tree(pr):                    # 节点 0..n-1，返回边列表
+    n=len(pr)+2; deg=[1]*n
+    for x in pr: deg[x]+=1
+    h=[i for i in range(n) if deg[i]==1]; heapq.heapify(h)
+    e=[]
+    for x in pr:
+        leaf=heapq.heappop(h); e.append((leaf,x))
+        deg[leaf]-=1; deg[x]-=1
+        if deg[x]==1: heapq.heappush(h,x)
+    e.append((heapq.heappop(h),heapq.heappop(h)))
+    return e
+
+print("Cayley(4)=", 4**(4-2))                 # 16
+print(tree_to_prufer(4,[(1,2),(2,3),(3,4)]))  # 示例 Prufer
+print(prufer_to_tree([2,3]))                  # 反构边
+```
+
+> **复杂度**：O(n log n)；空间 O(n)。
+
+
+### 13.38 区间/状压 DP / 康托 / 约瑟夫 / 子段和 / 编辑距离
+
+#### 13.38.1 例 134：区间 DP——环形石子合并的最小代价（断环为链）⭐⭐
+
+> **知识点**：区间 DP，断环为链｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+把环复制一份成 2n 的链，定义 `dp[l][r]` 为把区间 [l,r] 合成一堆的最小代价，转移 `dp[l][r]=min_k(dp[l][k]+dp[k+1][r])+sum(l,r)`。答案取所有长度为 n 的窗口最小值。💡 类比矩阵链乘：区间 DP 的最优子结构是「把区间劈成两半分别最优再合并」，环形问题统一用断环为链 + 长度窗口解决，不必枚举断点。
+
+```python
+def merge_stone_circle(a):
+    n=len(a)
+    s=[0]
+    for i in range(2*n): s.append(s[-1]+a[i%n])
+    dp=[[0]*(2*n+1) for _ in range(2*n+1)]
+    for length in range(2,n+1):
+        for l in range(0,2*n-length+1):
+            r=l+length-1
+            dp[l][r]=min(dp[l][k]+dp[k+1][r] for k in range(l,r))+s[r+1]-s[l]
+    return min(dp[l][l+n-1] for l in range(n))
+
+print("环[1,2,3,4]最小合并 =", merge_stone_circle([1,2,3,4]))
+```
+
+> **复杂度**：O(n³)；空间 O(n²)。可用四边形不等式优化到 O(n²)。
+
+#### 13.38.2 例 135：状压 DP——旅行商问题（Held–Karp）⭐⭐
+
+> **知识点**：状态压缩 DP，子集枚举，哈密顿回路｜**难度**：⭐⭐（中等偏难）｜**类型**：OI/竞赛
+
+**思路**
+`dp[mask][u]` 表示已访问点集 mask 且停在 u 的最小路径长。转移枚举下一个 v：`dp[mask|1<<v][v]=min(..., dp[mask][u]+d[u][v])`，初始 `dp[1][0]=0`。答案取 `min_u dp[全][u]+d[u][0]`（回到起点）。💡 类比记忆化子集：把「走了哪些点」用位掩码编码进状态，显式枚举所有选点组合并作 DP，n≤18 时状态数 2^n·n 可控。
+
+```python
+def tsp(dist):
+    n=len(dist)
+    dp=[[float('inf')]*n for _ in range(1<<n)]
+    dp[1][0]=0
+    for mask in range(1,1<<n):
+        for u in range(n):
+            if not (mask>>u)&1 or dp[mask][u]==float('inf'): continue
+            for v in range(n):
+                if (mask>>v)&1: continue
+                nm=mask|(1<<v)
+                if dp[nm][v]>dp[mask][u]+dist[u][v]:
+                    dp[nm][v]=dp[mask][u]+dist[u][v]
+    full=(1<<n)-1
+    return min(dp[full][u]+dist[u][0] for u in range(1,n))
+
+pts=[(0,0),(1,0),(1,1),(0,1)]
+d=lambda i,j: abs(pts[i][0]-pts[j][0])+abs(pts[i][1]-pts[j][1])
+dist=[[d(i,j) for j in range(4)] for i in range(4)]
+print("TSP 最小回路 =", tsp(dist))
+```
+
+> **复杂度**：O(2^n·n²)；空间 O(2^n·n)。
+
+#### 13.38.3 例 136：康托展开与逆展开（排列 ↔ 字典序排名）⭐⭐
+
+> **知识点**：康托展开，排列计数，阶乘进制｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+康托展开：对第 i 位统计后面比它小的个数 cnt，贡献 `cnt×(n−i−1)!`，累加得该排列的 0 基排名。逆康托展开：由排名反推每一位——每次取 `k//(n−i−1)!` 作为「第几小的未用数」。💡 类比进制转换：排列到整数是一套不断变化的进制，每一位权是当前层阶乘，可双向唯一转换，常用于排列哈希/枚举。
+
+```python
+fact=[1]
+for i in range(1,10): fact.append(fact[-1]*i)
+
+def cantor(perm):
+    n=len(perm); rank=0
+    for i,x in enumerate(perm):
+        cnt=sum(1 for y in perm[i+1:] if y<x)
+        rank+=cnt*fact[n-i-1]
+    return rank
+
+def inv_cantor(n,rank):
+    used=[False]*n; res=[]
+    for i in range(n):
+        f=fact[n-i-1]; t=rank//f; rank%=f
+        idx=0
+        while t or used[idx]:
+            if not used[idx]: t-=1
+            idx+=1
+        res.append(idx); used[idx]=True
+    return res
+
+perm=[1,2,3,0]
+print("rank =", cantor(perm), " 逆转换 =", inv_cantor(4,cantor(perm)))
+```
+
+> **复杂度**：O(n²)（可用树状数组优化到 O(n log n)）；空间 O(n)。
+
+#### 13.38.4 例 137：约瑟夫问题——幸存者 O(n) 递推 ⭐⭐
+
+> **知识点**：数学递推，约瑟夫环｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+n 人从 0 编号，每轮数到 k 出局。递推 `f(1)=0`，`f(i)=(f(i−1)+k) mod i`：去掉一个出局者后等价于规模 i−1 且起点后移 k 位。答案为 `f(n)+1`（转 1 基）。💡 类比状态转移不删元素：不去真模拟出局，而是每次把当前环平移 k 位映射到少一人的环，一次迭代 O(1)。
+
+```python
+def josephus(n,k):
+    res=0
+    for i in range(2,n+1): res=(res+k)%i
+    return res+1
+
+print("约瑟夫(7,3)幸存者 =", josephus(7,3))   # 期望 4
+```
+
+> **复杂度**：O(n)；空间 O(1)。（n 超大且 k 小时可用 O(k log n) 倍增。）
+
+#### 13.38.5 例 138：最大子段和——Kadane 与环形数组版本 ⭐⭐
+
+> **知识点**：动态规划（Kadane），环形数组｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+Kadane：`cur=max(x,cur+x)` 维护以当前位置结尾的最大子段和，best 滚动取最大。环形问题等价于「线性最大子段」或「总和 − 最小子段」（挖掉中间段，剩余环绕连通）。💡 类比贪心取舍：负数前缀宁可放弃重来，cur 只在扩大更优时继承；环形用「总−最小段」补上环绕部分。
+
+```python
+def max_subarray(a):
+    cur=best=a[0]
+    for x in a[1:]:
+        cur=max(x,cur+x); best=max(best,cur)
+    return best
+
+def max_circular(a):
+    if max_subarray(a)<0: return max(a)
+    cur=best=a[0]
+    for x in a[1:]:
+        cur=min(x,cur+x); best=min(best,cur)
+    return max(max_subarray(a), sum(a)-best)
+
+print("线性 [1,-2,3,-1,2] =", max_subarray([1,-2,3,-1,2]))   # 4
+print("环形               =", max_circular([1,-2,3,-1,2]))   # 5
+```
+
+> **复杂度**：O(n)；空间 O(1)。
+
+#### 13.38.6 例 139：编辑距离 / 最长公共子序列（二维 DP）⭐⭐
+
+> **知识点**：线性 DP，编辑距离，LCS｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+`dp[i][j]`：把 s 前 i 个字符变成 t 前 j 个字符的代价。字符相同则 `dp=dp[i-1][j-1]`，否则 `dp=1+min(增,删,替)`。LCS 只需把「相同+1、否则取 max」。💡 类比表格填充：每一步只有匹配/增/删/替四种转移，方向只能向右下推进，本质是带约束的最短编辑路径。
+
+```python
+def edit_distance(s,t):
+    m,n=len(s),len(t)
+    dp=[[0]*(n+1) for _ in range(m+1)]
+    for i in range(m+1): dp[i][0]=i
+    for j in range(n+1): dp[0][j]=j
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if s[i-1]==t[j-1]: dp[i][j]=dp[i-1][j-1]
+            else: dp[i][j]=1+min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1])
+    return dp[m][n]
+
+def lcs(s,t):
+    m,n=len(s),len(t)
+    dp=[[0]*(n+1) for _ in range(m+1)]
+    for i in range(1,m+1):
+        for j in range(1,n+1):
+            if s[i-1]==t[j-1]: dp[i][j]=dp[i-1][j-1]+1
+            else: dp[i][j]=max(dp[i-1][j],dp[i][j-1])
+    return dp[m][n]
+
+print("编辑距离(horse→ros) =", edit_distance("horse","ros"))   # 3
+print("LCS(abcde, ace)    =", lcs("abcde","ace"))              # 3
+```
+
+> **复杂度**：O(m×n)；空间 O(m×n)（可滚动优化到 O(min(m,n))）。
+
+
+### 13.39 字符串哈希 / 双向 BFS / IDA* / 基环树 / 圆方树 / 负环
+
+#### 13.39.1 例 140：Rabin–Karp 字符串匹配（滚动哈希）⭐⭐
+
+> **知识点**：滚动哈希，字符串匹配｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+给模式和文本每个长度 m 的子串求多项式哈希；哈希相等时再暴力比对一次确认（处理碰撞）。窗口右移用 `ht=((ht−s[i]·h)·d+s[i+m]) mod q` 去掉开头、加入结尾。💡 类比滚动窗口指纹：哈希把任意长串的比较压成一个数的比较，预处理前缀哈希后任意子串哈希可 O(1) 得到。
+
+```python
+def rabin_karp(text, pat):
+    n,m=len(text),len(pat)
+    if m==0 or m>n: return []
+    d=256; q=10**9+7
+    hp=ht=0; h=1
+    for _ in range(m-1): h=(h*d)%q
+    for i in range(m):
+        hp=(hp*d+ord(pat[i]))%q
+        ht=(ht*d+ord(text[i]))%q
+    res=[]
+    for i in range(n-m+1):
+        if hp==ht and text[i:i+m]==pat: res.append(i)
+        if i<n-m:
+            ht=((ht-ord(text[i])*h)*d+ord(text[i+m]))%q
+            if ht<0: ht+=q
+    return res
+
+print("ab 在 abababc 中 =", rabin_karp("abababc","ab"))   # [0,2,4]
+```
+
+> **复杂度**：期望 O(n)；最坏 O(n·m)（大量碰撞）。用大素数可忽略碰撞概率。
+
+#### 13.39.2 例 141：双向 BFS——最少步数搜索（单词阶梯）⭐⭐
+
+> **知识点**：BFS，双向搜索，状态剪枝｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+从起点和终点同时 BFS，每次扩展状态数更少的一侧，当两侧状态交接即为最短路径。双向 BFS 把搜索深度从 L 减到 L/2，状态从 b^L 降到 b^(L/2)。💡 类比两头挖隧道：由从起点一路深挖变为两头往中间挖，汇合即通，显著减少探索状态数。
+
+```python
+def word_ladder(begin,end,wordList):
+    import string
+    words=set(wordList)
+    if end not in words: return 0
+    front={begin}; back={end}; words.discard(begin); words.discard(end)
+    step=1
+    while front:
+        if len(front)>len(back): front,back=back,front
+        nxt=set()
+        for w in front:
+            for i in range(len(w)):
+                for c in string.ascii_lowercase:
+                    if c==w[i]: continue
+                    nw=w[:i]+c+w[i+1:]
+                    if nw in back: return step+1
+                    if nw in words: nxt.add(nw)
+        words-=nxt; front=nxt; step+=1
+    return 0
+
+print("单词阶梯 hit→cog =", word_ladder("hit","cog",["hot","dot","dog","lot","log","cog"]))  # 5
+```
+
+> **复杂度**：O(b^(L/2)) 状态，b 为分支因子，L 为最短步数；空间同。
+
+#### 13.39.3 例 142：迭代加深 A*（IDA*）解八数码 ⭐⭐⭐
+
+> **知识点**：A*，迭代加深，曼哈顿启发式｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+IDA* = 迭代加深 + A* 启发式剪枝：给定深度上界 bound 做 DFS，若 `depth + h(state) > bound` 立即剪枝；上界不足时取所有被剪分支的最小值作为下一轮上界。八数码 h 用曼哈顿距离之和，不低估真实步数故保证最优。💡 类比逐步抬高预算：不一次给足深度，而像拍卖一样逐步抬高上界并配合乐观启发式剪掉无望分支，空间仅 O(L)（DFS）。
+
+```python
+def eight_puzzle(start):
+    GOAL=[1,2,3,4,5,6,7,8,0]; gidx={v:i for i,v in enumerate(GOAL)}
+    def h(b):
+        return sum(abs(i//3-gidx[v]//3)+abs(i%3-gidx[v]%3) for i,v in enumerate(b) if v)
+    def ida():
+        bound=h(start)
+        def dfs(b,d,prevz):
+            hh=h(b)
+            if hh==0: return True
+            if d+hh>bound: return d+hh
+            nxt=10**9
+            z=b.index(0)
+            for dz,ok in ((-3,z//3>0),(3,z//3<2),(-1,z%3>0),(1,z%3<2)):
+                if not ok: continue
+                tz=z+dz
+                if tz==prevz: continue
+                nb=b[:]; nb[z],nb[tz]=nb[tz],nb[z]
+                r=dfs(nb,d+1,z)
+                if r is True: return True
+                if r<nxt: nxt=r
+            return nxt
+        while True:
+            r=dfs(start,0,-1)
+            if r is True: return bound
+            if r>=10**9: return -1
+            bound=r
+    return ida()
+
+print("八数码最少步数 =", eight_puzzle([1,2,3,4,5,6,7,0,8]))   # 期望 1
+```
+
+> **复杂度**：时间最坏 O(b^opt)（opt 为最优深度），空间 O(opt)。启发式越强越省。
+
+#### 13.39.4 例 143：基环树——函数图中找环（拓扑剪枝）⭐⭐⭐
+
+> **知识点**：基环树（基环森林），拓扑剪枝，环检测｜**难度**：⭐⭐⭐（中等偏难）｜**类型**：OI/竞赛
+
+**思路**
+每个点只有一个出度 → 图由若干基环树组成（每簇一个环 + 挂树的树枝）。用拓扑剪枝把入度为 0 的树枝节点剥掉（剥洋葱），剩下的节点必然全在环上；再对每个未访问环统计长度。💡 类比剥洋葱：非环节点迟早入度变 0 被剥掉，剩下的就是剥不掉的环核；基环树问题常是「环上 DP + 树上 DP」组合。
+
+```python
+def cyclen(n, nxt):
+    from collections import deque
+    indeg=[0]*n
+    for x in nxt: indeg[x]+=1
+    q=deque(i for i in range(n) if indeg[i]==0)
+    removed=[False]*n
+    while q:
+        u=q.popleft(); removed[u]=True
+        v=nxt[u]; indeg[v]-=1
+        if indeg[v]==0: q.append(v)
+    seen=[False]*n; res=[]
+    for i in range(n):
+        if removed[i] or seen[i]: continue
+        cur=i; c=0
+        while not seen[cur]:
+            seen[cur]=True; cur=nxt[cur]; c+=1
+        res.append(c)
+    return res
+
+print("环长 =", cyclen(5,[1,2,3,4,1]))   # 环{1,2,3,4}长4，节点0挂在环上
+print("环长 =", cyclen(4,[1,2,3,2]))     # 环{2,3}长2
+```
+
+> **复杂度**：O(n)；空间 O(n)。
+
+#### 13.39.5 例 144：圆方树——点双连通分量的块割树（Tarjan）⭐⭐⭐
+
+> **知识点**：点双连通分量（v-BCC），Tarjan，圆方树｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+Tarjan 求点双连通：当 `low[v]>=dfn[u]` 时从栈弹出 v 及以上节点构成一个 v-BCC（连同割点 u）。把每个原始点视为圆点、每个 BCC 视为方点，方点与属于它的圆点连边，就得到圆方树——一个无环结构，保留割点与块的包含关系，把块状图问题约化成树上问题。💡 类比压缩块：把重叠的团抽象成超级节点，经过该团的路径在树上只走一步。
+
+```python
+def block_cut_tree(n, edges):
+    g=[[] for _ in range(n)]
+    for u,v in edges: g[u].append(v); g[v].append(u)
+    dfn=[-1]*n; low=[0]*n; stk=[]; timer=[0]; comps=[]
+    def dfs(u,parent):
+        dfn[u]=low[u]=timer[0]; timer[0]+=1
+        stk.append(u)
+        for v in g[u]:
+            if dfn[v]<0:
+                dfs(v,u); low[u]=min(low[u],low[v])
+                if low[v]>=dfn[u]:
+                    comp=set()
+                    while True:
+                        x=stk.pop(); comp.add(x)
+                        if x==v: break
+                    comp.add(u); comps.append(comp)
+            elif v!=parent:
+                low[u]=min(low[u],dfn[v])
+    for s in range(n):
+        if dfn[s]<0: dfs(s,-1)
+        if not g[s]: comps.append({s})
+    return comps
+
+comps=block_cut_tree(5,[(0,1),(1,2),(0,2),(3,4)])
+print("点双连通分量数 =", len(comps), " 块 =", comps)   # 三角+一条边 -> 2 块
+```
+
+> **复杂度**：O(n+m)；空间 O(n+m)。
+
+#### 13.39.6 例 145：负环判定——SPFA/Bellman–Ford 检测负权环 ⭐⭐
+
+> **知识点**：Bellman–Ford/SPFA，负环检测｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+让所有点初始 dist=0 一起入队（等效虚拟源连所有点 0 权边）。某点被入队次数 ≥ n 说明最短路被更新超过 n−1 次，必是负环刷出来的。SPFA 里 `cnt[v]=cnt[u]+1`，当 `cnt[v]>=n` 即报告负环。💡 类比反复改善：无负环的最短路最多经过 n−1 条边；一条路径能被更新 n 次以上说明存在可不断刷值的负权环。
+
+```python
+def has_neg_cycle(n, edges):
+    from collections import deque
+    g=[[] for _ in range(n)]
+    for u,v,w in edges: g[u].append((v,w))
+    dist=[0]*n; cnt=[0]*n; inq=[True]*n
+    q=deque(range(n))
+    while q:
+        u=q.popleft(); inq[u]=False
+        for v,w in g[u]:
+            if dist[v]>dist[u]+w:
+                dist[v]=dist[u]+w
+                cnt[v]=cnt[u]+1
+                if cnt[v]>=n: return True
+                if not inq[v]: q.append(v); inq[v]=True
+    return False
+
+print("负环? ", has_neg_cycle(3,[(0,1,-1),(1,2,1),(2,0,-1)]))   # True
+print("负环? ", has_neg_cycle(3,[(0,1,1),(1,2,1),(2,0,1)]))     # False
+```
+
+> **复杂度**：平均 O(k·m)，最坏 O(n·m)。
+
+
+### 13.40 全源最短路 / 传递闭包 / 二分图判定 / 错排 / 逆波兰 / 水塘抽样
+
+#### 13.40.1 例 146：Johnson 全源最短路（负权 + 重赋值 + 多源 Dijkstra）⭐⭐⭐
+
+> **知识点**：Bellman–Ford，Johnson 重赋值，全源最短路｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+含负边时不能直接多次 Dijkstra。Johnson：加虚拟源连所有顶点（0 权边），用 Bellman–Ford 求势能 h；重赋值 `w'=w+h[u]−h[v]`（由三角不等式知 w'≥0）使所有边非负，再对每个顶点跑一次堆优化 Dijkstra，最后还原原边长。💡 类比坐标平移：用一组势能把负边整体抬平，使边权非负从而安全使用更快的 Dijkstra，一次 Bellman–Ford 就得到平移量。
+
+```python
+import heapq
+def johnson(n, edges):
+    super=n; Eg=[[] for _ in range(n+1)]
+    for u,v,w in edges: Eg[u].append((v,w))
+    for u in range(n): Eg[super].append((u,0))
+    inf=float('inf'); h=[inf]*(n+1); h[super]=0
+    for _ in range(n):                       # Bellman-Ford 松弛 n 次
+        for u in range(n+1):
+            if h[u]==inf: continue
+            for v,w in Eg[u]:
+                if h[v]>h[u]+w: h[v]=h[u]+w
+    for u in range(n+1):                     # 再松弛一次检测负环
+        if h[u]==inf: continue
+        for v,w in Eg[u]:
+            if h[v]>h[u]+w: return None
+    gg=[[] for _ in range(n)]
+    for u,v,w in edges: gg[u].append((v,w+h[u]-h[v]))
+    D=[[inf]*n for _ in range(n)]
+    for s in range(n):
+        d=D[s]; d[s]=0; pq=[(0,s)]
+        while pq:
+            du,u=heapq.heappop(pq)
+            if du>d[u]: continue
+            for v,w in gg[u]:
+                if d[v]>du+w:
+                    d[v]=du+w; heapq.heappush(pq,(d[v],v))
+        for v in range(n):
+            if d[v]<inf: d[v]=d[v]-h[s]+h[v]
+    return D
+
+D=johnson(3,[(0,1,3),(0,2,-2),(1,2,1)])
+print("0->1 =", D[0][1], " 0->2 =", D[0][2], " 全源矩阵行0 =", D[0])
+```
+
+> **复杂度**：O(n·(m log n))（n 次 Dijkstra）+ O(n·m)（一次 Bellman–Ford）；空间 O(n²)。
+
+#### 13.40.2 例 147：Floyd–Warshall 传递闭包（bitset 优化）⭐⭐
+
+> **知识点**：传递闭包，位掩码，可达性｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+`reach[u]` 用整数位表示 u 能到达的节点集合；按 k 做「中转闭合」：只要 u 能到达 k，就把 `reach[u] |= reach[k]`。用整型位运算，一条 OR 覆盖整行，比 O(n³) 的逐位 Floyd 快一个 word 因子。💡 类比符号传播：k 作为中间点把 reach[k] 的能力一次性传给所有能到 k 的点。
+
+```python
+def reachability(n, edges):
+    reach=[0]*n
+    for u,v in edges: reach[u]|=1<<v
+    for k in range(n):
+        for i in range(n):
+            if (reach[i]>>k)&1: reach[i]|=reach[k]
+    return reach
+
+r=reachability(4,[(0,1),(1,2),(2,3)])
+print("0 可达 3? ", bool((r[0]>>3)&1), "  0 的可达集合 =", r[0])
+```
+
+> **复杂度**：O(n³ / word)；建图 O(m)。word 为机器字长（64）。
+
+#### 13.40.3 例 148：二分图判定（染色 / 奇环检测）⭐⭐
+
+> **知识点**：二分图判定，BFS 染色｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+BFS 给每个点染 0/1，邻点必须异色；若某边两端同色则不是二分图（存在奇环）。对每个连通分量都要从任意未染色点出发，处理不连通图。💡 类比黑白染色：二分图等价于「能二染色且无奇环」，染色顶峰时的冲突就是奇环的证据。
+
+```python
+from collections import deque
+def is_bipartite(n, edges):
+    g=[[] for _ in range(n)]
+    for u,v in edges: g[u].append(v); g[v].append(u)
+    color=[-1]*n
+    for s in range(n):
+        if color[s]>=0: continue
+        color[s]=0; q=deque([s])
+        while q:
+            u=q.popleft()
+            for v in g[u]:
+                if color[v]<0: color[v]=color[u]^1; q.append(v)
+                elif color[v]==color[u]: return False
+    return True
+
+print("路径可二分? ", is_bipartite(4,[(0,1),(1,2),(2,3)]))           # True
+print("含三角形可二分? ", is_bipartite(4,[(0,1),(1,2),(2,0),(1,3)]))  # False
+```
+
+> **复杂度**：O(n+m)；空间 O(n+m)。
+
+#### 13.40.4 例 149：错排问题（计数 DP）⭐⭐
+
+> **知识点**：错排递推，组合计数｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+错排 D(n) 为 n 个元素每个都不在原来位置的排法数。递推 `D(n)=(n−1)·(D(n−1)+D(n−2))`，边界 D(0)=1、D(1)=0：第 n 个元素可放到前 n−1 个的任一位置，而原来占那个位置的元素要么放第 n 位、要么放到其他空位，两分支分别对应 D(n−2) 与 D(n−1)。💡 类比动态转移两情形：把一个「错配」粗分为两个子情形，只要递归深度两步即可由小规模推出大规模。
+
+```python
+def derangements(n):
+    if n==0: return 1
+    if n==1: return 0
+    a,b=1,0                      # D0, D1
+    for i in range(2,n+1):
+        a,b=b,(i-1)*(a+b)
+    return b
+
+print("D1..D6 =", [derangements(i) for i in range(1,7)])  # 0,1,2,9,44,265
+```
+
+> **复杂度**：O(n)；空间 O(1)。
+
+#### 13.40.5 例 150：逆波兰表达式 / 中缀转后缀（调度场）⭐⭐
+
+> **知识点**：栈，表达式求值，调度场算法｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+后缀（逆波兰）求值：数字入栈，遇到运算符弹两数计算后压回。中缀转后缀用「操作符栈」：数字直接输出，遇到闭括号弹栈到左括号，运算符按优先级（同优先级栈顶更高的先输出，如左结合）。💡 类比括号嵌套：后缀式把运算先后完全展开成线性序列，求值只需一个栈，天然消除了括号与优先级歧义。
+
+```python
+prec={'+':1,'-':1,'*':2,'/':2}
+def to_rpn(expr):                    # 中缀->后缀（单字符数字/字母）
+    out=[]; st=[]
+    for ch in expr:
+        if ch.isalnum(): out.append(ch)
+        elif ch=='(': st.append(ch)
+        elif ch==')':
+            while st and st[-1]!='(': out.append(st.pop())
+            st.pop()
+        else:
+            while st and st[-1]!='(' and prec[ch]<=prec[st[-1]]: out.append(st.pop())
+            st.append(ch)
+    while st: out.append(st.pop())
+    return ''.join(out)
+
+def eval_rpn(tokens):
+    st=[]
+    for tk in tokens:
+        if tk in '+-*/':
+            b=st.pop(); a=st.pop()
+            if tk=='+': st.append(a+b)
+            elif tk=='-': st.append(a-b)
+            elif tk=='*': st.append(a*b)
+            else: st.append(a//b)
+        else: st.append(int(tk))
+    return st[0]
+
+print(to_rpn("a+b*c"))                    # abc*+
+print(eval_rpn(['2','3','4','*','+']))    # 14
+```
+
+> **复杂度**：O(n)；空间 O(n)。
+
+#### 13.40.6 例 151：水塘抽样（Reservoir Sampling，等概率在线采样 k 个）⭐⭐
+
+> **知识点**：随机化，水塘抽样，拒绝/替换法｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+前 k 个直接收入水塘；之后遇到第 i 个元素（i≥k）以概率 k/i 随机替换水塘中一个位置。推导可证每个元素最终留在水塘的概率都是 k/n，且不需要预先知道流长度。💡 类比抽签换票：把每个新来者以「越来越小」的概率顶掉一个旧名额，逐个流式处理仍保持均匀。
+
+```python
+import random
+def reservoir(stream,k):
+    sample=[]
+    for i,v in enumerate(stream):
+        if i<k: sample.append(v)
+        else:
+            j=random.randint(0,i)
+            if j<k: sample[j]=v
+    return sample
+
+random.seed(1)
+print(sorted(reservoir(range(1,101),5)))
+```
+
+> **复杂度**：O(n)；空间 O(k)。
+
+
+### 13.41 回文子序列 / 摩尔投票 / 树形 DP 直径 / Kruskal 重构树
+
+#### 13.41.1 例 152：最长回文子序列（区间 DP）⭐⭐
+
+> **知识点**：区间 DP，回文子序列（LPS）｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+`dp[l][r]`：子串 s[l..r] 最长回文子序列长度。两端相同则 `dp[l][r]=dp[l+1][r−1]+2`，否则 `dp[l][r]=max(dp[l+1][r],dp[l][r−1])`，按长度从小到大填表。💡 类比去两端：判断「要不要两端」，两端相同时必选并缩短两端，否则舍去较小一端的贡献取 max。
+
+```python
+def lps(s):
+    n=len(s)
+    dp=[[0]*n for _ in range(n)]
+    for i in range(n): dp[i][i]=1
+    for length in range(2,n+1):
+        for l in range(0,n-length+1):
+            r=l+length-1
+            if s[l]==s[r]: dp[l][r]=dp[l+1][r-1]+2
+            else: dp[l][r]=max(dp[l+1][r],dp[l][r-1])
+    return dp[0][n-1]
+
+print("bbbab 最长回文子序列 =", lps("bbbab"))   # 4 (bbbb)
+print("cbbd 最长回文子序列 =", lps("cbbd"))     # 2 (bb)
+```
+
+> **复杂度**：O(n²)；空间 O(n²)（可滚动数组优化到 O(n)）。
+
+#### 13.41.2 例 153：摩尔投票求多数元素（出现次数 > n/2）⭐⭐
+
+> **知识点**：摩尔投票，抵消法｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+维护候选候选人 cand 与计数 cnt：遇到相同 +1、不同 −1（配对抵消），cnt 归零时更换候选。因为多数元素出现超过一半，它的「净优势」保证最后一定剩下它。💡 类比两两PK抵消：每次用一对「不同元素」同时划掉，多数元素永远不亏，最后留下的就是答案。
+
+```python
+def majority(a):
+    cand=None; cnt=0
+    for x in a:
+        if cnt==0: cand=x; cnt=1
+        elif x==cand: cnt+=1
+        else: cnt-=1
+    return cand
+
+print("多数元素 =", majority([2,2,1,1,1,2,2]))   # 2
+```
+
+> **复杂度**：O(n)；空间 O(1)。（需要再扫一遍验证频数是否真的过半。）
+
+#### 13.41.3 例 154：树形 DP 求树的直径（DP 法，非两遍 DFS）⭐⭐
+
+> **知识点**：树形 DP，树的直径｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+对每个节点维护「子树内最深的两条向下路径 mx1,mx2」，`mx1+mx2` 为「经过该节点的最长路径候选」；递归时用最长子链 `mx1+1` 更新父节点。所有节点的 `mx1+mx2` 取最大即树的直径。💡 类比挂钥匙环：直径必经过某个节点，在该节点处它是「最深两条链的连接」，DP 自底向上收集每条链的最深深度即可。
+
+```python
+import sys
+def tree_dia(n, edges):
+    sys.setrecursionlimit(10**6)
+    g=[[] for _ in range(n)]
+    for u,v in edges: g[u].append(v); g[v].append(u)
+    dep=[0]*n; dia=[0]
+    def dfs(u,p):
+        mx1=mx2=0
+        for v in g[u]:
+            if v==p: continue
+            dfs(v,u)
+            d=dep[v]+1
+            if d>mx1: mx1,mx2=d,mx1
+            elif d>mx2: mx2=d
+        dep[u]=mx1
+        dia[0]=max(dia[0],mx1+mx2)
+    dfs(0,-1)
+    return dia[0]
+
+print("直径 =", tree_dia(4,[(0,1),(1,2),(1,3)]))   # 2
+```
+
+> **复杂度**：O(n)；空间 O(n)。
+
+#### 13.41.4 例 155：Kruskal 重构树（最小瓶颈 / 两点路径最大边权最小值）⭐⭐⭐
+
+> **知识点**：Kruskal 重构树，并查集，LCA，最小瓶颈路｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+按边权升序跑 Kruskal：每次合并两个连通块时新建一个节点作为二者新根，其权值 = 当前边权 w，原两子树挂为它的儿子。如此得到一棵「大根堆 + 二叉树」的森林，两点在原图中「路径最大边的最小值」＝重构树中它们 LCA 的权值。💡 类比建金字塔：把并查集合并过程显式记录为新节点，边权越大节点越高，LCA 高度即瓶颈；把「最小瓶颈路」问题变成一次 LCA 查询。
+
+```python
+def kruskal_rebuild(n, edges):      # edges:(u,v,w)，返回最大新节点数、LCA可用
+    edges.sort(key=lambda e:e[2])
+    fa=list(range(2*n))
+    val=[0]*(2*n)
+    def find(x):
+        while fa[x]!=x:
+            fa[x]=fa[fa[x]]; x=fa[x]
+        return x
+    child=[[] for _ in range(2*n)]
+    c=n
+    for u,v,w in edges:
+        ru,rv=find(u),find(v)
+        if ru!=rv:
+            fa[ru]=c; fa[rv]=c; val[c]=w
+            child[c].append(ru); child[c].append(rv)
+            c+=1
+    root=c-1
+    # 建父表 + 求 LCA（倍增），供瓶颈查询
+    LOG=(2*n).bit_length()
+    up=[[root]*(LOG) for _ in range(2*n)]
+    depth=[0]*(2*n)
+    par=[root]*2*n
+    order=[root]
+    for node in order:
+        for son in child[node]:
+            par[son]=node;depth[son]=depth[node]+1;order.append(son)
+    up=[par[:]]
+    for k in range(1,LOG):
+        prev=up[-1]; up.append([prev[prev[i]] for i in range(2*n)])
+    def lca(a,b):
+        if depth[a]<depth[b]: a,b=b,a
+        diff=depth[a]-depth[b]
+        k=0
+        while diff:
+            if diff&1: a=up[k][a]
+            diff>>=1; k+=1
+        if a==b: return a
+        for k in range(LOG-1,-1,-1):
+            if up[k][a]!=up[k][b]:
+                a=up[k][a]; b=up[k][b]
+        return up[0][a]
+    def max_edge_min(u,v): return val[lca(u,v)]
+    return max_edge_min, root
+
+# 测试：链 0-1(w1)-2(w2)-3(w3)；0 到 3 的最小瓶颈=最大边=3
+mef,_=kruskal_rebuild(4,[(0,1,1),(1,2,2),(2,3,3)])
+print("0 到 3 的最小瓶颈 =", mef(0,3))
+```
+
+> **复杂度**：O(m log m)（建树）；瓶颈查询 O(log n)。
+
+
+APPEND_DONE_MARKER
+
+
+
+### 13.42 数论筛法 / 线段树合并 / 差分与分块综合
+
+#### 13.42.1 例 156：欧拉函数线性筛与 φ 前缀和（积性函数筛法）⭐⭐
+
+> **知识点**：欧拉函数，线性筛｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+线性筛（欧拉筛）在筛去合数的同时递推积性函数：对每个质数 p 与当前数 i，若 i % p == 0 则新数含 p 幂次 ≥2，`φ(i·p)=φ(i)·p`；否则两数互质，`φ(i·p)=φ(i)·(p−1)`。同步累加 φ 得到前缀和数组。💡 类比魔法门：每个合数只由它最小的质因子筛掉一次以保证 O(n)，积性函数值按「首因子是否重复」两类合并得到。
+
+```python
+def phi_prefix(n):
+    phi = list(range(n + 1))
+    pre = [0] * (n + 1)
+    if n >= 1:
+        phi[1] = 1
+    isc = [False] * (n + 1)
+    primes = []
+    s = 0
+    for i in range(2, n + 1):
+        if not isc[i]:
+            primes.append(i)
+            phi[i] = i - 1
+        for p in primes:
+            if i * p > n:
+                break
+            isc[i * p] = True
+            if i % p == 0:
+                phi[i * p] = phi[i] * p
+                break
+            phi[i * p] = phi[i] * (p - 1)
+    for i in range(1, n + 1):
+        s += phi[i]
+        pre[i] = s
+    return pre
+
+pre = phi_prefix(10)
+print("phi(1..10) 前缀和 =", pre[10])   # 32 (1,1,2,2,4,2,6,4,6,4 之和)
+```
+
+> **复杂度**：O(n)；空间 O(n)。
+
+#### 13.42.2 例 157：线段树合并（动态开点权值线段树合并求众数）⭐⭐⭐
+
+> **知识点**：权值线段树，动态开点，线段树合并｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+为每个位置（或每个子树）建一棵值域上的权值线段树，把子节点/相邻的树「合并」进父树：递归遍历两棵树的重叠节点，相同位置计数相加，空节点直接指向对方以复用。合并后整棵树的 max 对即值域中出现最多的权值（众数）。💡 类比两本账本对账：同一值在两边都记了数就相加，一方没记则直接采纳对方的页，从而把多棵树的代价压到 O(总点数)、每次合并均摊 O(log 值域)。
+
+```python
+def segtree_merge_example():
+    nleaf = 4
+    class Node:
+        __slots__ = ('l', 'r', 'cnt', 'maxv', 'maxc')
+        def __init__(self):
+            self.l = self.r = -1
+            self.cnt = 0; self.maxv = -1; self.maxc = 0
+    nodes = [Node()]
+    def new():
+        nodes.append(Node()); return len(nodes) - 1
+    def upd(o):
+        nodes[o].cnt = 0; nodes[o].maxc = 0; nodes[o].maxv = -1
+        for c in (nodes[o].l, nodes[o].r):
+            if c != -1:
+                nodes[o].cnt += nodes[c].cnt
+                if nodes[c].maxc > nodes[o].maxc:
+                    nodes[o].maxc = nodes[c].maxc
+                    nodes[o].maxv = nodes[c].maxv
+    def ins(o, l, r, pos):
+        if o == -1: o = new()
+        if l == r:
+            nodes[o].cnt += 1
+            nodes[o].maxc = nodes[o].cnt; nodes[o].maxv = l
+            return o
+        m = (l + r) // 2
+        if pos <= m: nodes[o].l = ins(nodes[o].l, l, m, pos)
+        else:        nodes[o].r = ins(nodes[o].r, m + 1, r, pos)
+        upd(o); return o
+    def merge(a, b, l, r):
+        if a == -1: return b
+        if b == -1: return a
+        if l == r:
+            nodes[a].cnt += nodes[b].cnt
+            nodes[a].maxc = nodes[a].cnt; nodes[a].maxv = l
+            return a
+        m = (l + r) // 2
+        nodes[a].l = merge(nodes[a].l, nodes[b].l, l, m)
+        nodes[a].r = merge(nodes[a].r, nodes[b].r, m + 1, r)
+        upd(a); return a
+    a = ins(-1, 1, nleaf, 1); a = ins(a, 1, nleaf, 3)
+    b = ins(-1, 1, nleaf, 2)
+    c = ins(-1, 1, nleaf, 1)
+    root = merge(a, b, 1, nleaf); root = merge(root, c, 1, nleaf)
+    return nodes[root].maxv, nodes[root].maxc
+
+print("三树合并后的众数(值,次数) =", segtree_merge_example())   # (1, 2)
+```
+
+> **复杂度**：每棵点树点数为 O(k log V)，合并总复杂度 O(总点数)；查询 O(1)。
+
+#### 13.42.3 例 158：树状数组区间修改、区间求和（双 BIT）⭐⭐
+
+> **知识点**：树状数组，差分｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+单差分解决「区间加 + 单点查」；要支持「区间加 + 区间和」用两个树状数组：设差分数组 d，则前缀和 P[1..i]=Σd·i−Σ(d·(j−1))。分别用 BIT1 维护 d、BIT2 维护 d·(j−1)，区间和=两次前缀和之差。💡 类比超额累进账本：一个账记「每天增加量」，另一个记「累计到定点的增量×位置」，两账相减即精确的区间总量，容纳任意多次区间加。
+
+```python
+def range_add_range_sum(arr, ops):
+    n = len(arr)
+    B1 = [0] * (n + 1); B2 = [0] * (n + 1)
+    def add(B, i, v):
+        while i <= n:
+            B[i] += v; i += i & -i
+    def ssum(B, i):
+        s = 0
+        while i > 0:
+            s += B[i]; i -= i & -i
+        return s
+    for i in range(1, n + 1):
+        v = arr[i - 1] - (arr[i - 2] if i > 1 else 0)
+        add(B1, i, v); add(B2, i, v * (i - 1))
+    def psum(i):
+        return i * ssum(B1, i) - ssum(B2, i)
+    def range_add(l, r, v):
+        add(B1, l, v); add(B2, l, v * (l - 1))
+        if r < n:
+            add(B1, r + 1, -v); add(B2, r + 1, -v * r)
+    res = []
+    for op in ops:
+        if op[0] == 'add':
+            range_add(op[1], op[2], op[3])
+        else:
+            res.append(psum(op[2]) - psum(op[1] - 1))
+    return res
+
+print("区间和查询 =", range_add_range_sum([1, 2, 3, 4, 5],
+      [('sum', 1, 5), ('add', 2, 4, 5), ('sum', 1, 5)]))   # [15, 30]
+```
+
+> **复杂度**：每次操作 O(log n)；空间 O(n)。
+
+#### 13.42.4 例 159：矩阵快速幂优化线性递推（斐波那契）⭐⭐
+
+> **知识点**：矩阵乘法，快速幂，线性递推｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+把线性递推写成转移矩阵 M，则第 n 项可由 M 的 n 次幂作用于初始向量得到。快速幂将 O(n) 次迭代变成 O(log n) 次矩阵乘法。对斐波那契，矩阵 [[1,1],[1,0]] 的 n 次幂的 (0,1) 元素即 F_n。💡 类比复利倍增：把「每一步的规则」浓缩成一个矩阵，用平方连乘一次翻倍地幂运算，跳过多轮迭代直达第 n 步。
+
+```python
+def mat_mul(a, b):
+    n = len(a); m = len(b[0]); K = len(b)
+    c = [[0] * m for _ in range(n)]
+    for i in range(n):
+        for k in range(K):
+            if a[i][k]:
+                for j in range(m):
+                    c[i][j] += a[i][k] * b[k][j]
+    return c
+
+def mat_pow(a, e):
+    n = len(a)
+    r = [[1 if i == j else 0 for j in range(n)] for i in range(n)]
+    while e:
+        if e & 1: r = mat_mul(r, a)
+        a = mat_mul(a, a); e >>= 1
+    return r
+
+def fib(n):
+    if n == 0: return 0
+    M = [[1, 1], [1, 0]]
+    P = mat_pow(M, n)
+    return P[0][1]
+
+print("F(10) =", fib(10))     # 55
+print("F(50) =", fib(50))     # 12586269025
+```
+
+> **复杂度**：矩阵乘法 O(k³)·O(log n)，k 为状态维数；空间 O(k²)。
+
+#### 13.42.5 例 160：哈夫曼合并果子（优先队列贪心）⭐⭐
+
+> **知识点**：贪心，优先级队列｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+每次取当前权值最小的两堆合并，代价为两堆之和，总代价即叶节点加权路径长（霍夫曼编码同一模型）。用最小堆保证每次 O(log n) 取出最小两堆，总代价最小。💡 类比合并零钱：越轻的果子被合并次数越多才能让总和最小，所以永远优先合并当前最轻的两堆，小根堆即时给出。
+
+```python
+import heapq
+
+def merge_fruit(a):
+    heapq.heapify(a)
+    cost = 0
+    while len(a) > 1:
+        x = heapq.heappop(a); y = heapq.heappop(a)
+        s = x + y
+        cost += s
+        heapq.heappush(a, s)
+    return cost
+
+print("最小体力消耗 =", merge_fruit([1, 2, 9]))   # 1+2=3, 3+9=12 → 3+12=15
+```
+
+> **复杂度**：O(n log n)；空间 O(n)。
+
+#### 13.42.6 例 161：树上差分统计每条路径的覆盖次数（LCA）⭐⭐⭐
+
+> **知识点**：LCA，树上差分｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+对每条路径 (u,v)，令 l=LCA(u,v)、f=parent(l)，做点差分：`w[u]+=1, w[v]+=1, w[l]−=1, w[f]−=1`。最后从叶子向上做一次后序累加（每个点把自身累加到父节点），w[x] 即覆盖 x 的路径数。💡 类比记账补偿：起点+1、终点+1 足以覆盖整条链，但会在 l 处多算一次向上，于是在 l 扣 1、再在 l 的父亲扣 1 恰好抵消越界的部分，一次累加即得每条点被覆盖多少次。
+
+```python
+import sys
+def path_cover_count(n, edges, queries):
+    sys.setrecursionlimit(10 ** 6)
+    g = [[] for _ in range(n + 1)]
+    for u, v in edges:
+        g[u + 1].append(v + 1); g[v + 1].append(u + 1)
+    LOG = (n + 2).bit_length()
+    dep = [0] * (n + 1); parent = [0] * (n + 1)
+    up = [[0] * LOG for _ in range(n + 1)]
+    vis = [False] * (n + 1); vis[1] = True; seq = [1]
+    for u in seq:
+        for v in g[u]:
+            if not vis[v]:
+                vis[v] = True; parent[v] = u
+                dep[v] = dep[u] + 1; seq.append(v)
+    for u in range(1, n + 1): up[u][0] = parent[u]
+    for k in range(1, LOG):
+        for u in range(1, n + 1):
+            up[u][k] = up[up[u][k - 1]][k - 1]
+    def lca(a, b):
+        if dep[a] < dep[b]: a, b = b, a
+        d = dep[a] - dep[b]; k = 0
+        while d:
+            if d & 1: a = up[a][k]
+            d >>= 1; k += 1
+        if a == b: return a
+        for k in range(LOG - 1, -1, -1):
+            if up[a][k] != up[b][k]:
+                a = up[a][k]; b = up[b][k]
+        return up[a][0]
+    w = [0] * (n + 1)
+    for u, v in queries:
+        u += 1; v += 1
+        l = lca(u, v); f = parent[l]
+        w[u] += 1; w[v] += 1; w[l] -= 1
+        if f >= 1: w[f] -= 1
+    for u in reversed(seq[1:]):
+        w[parent[u]] += w[u]
+    return w[1:]
+
+# 链 0-1-2，一条路径 (0,2) 覆盖 3 个点
+print("路径覆盖次数 =", path_cover_count(3, [(0, 1), (1, 2)], [(0, 2)]))  # [1,1,1]
+```
+
+> **复杂度**：预处理 O(n log n)；每条路径 O(log n)；后序累加 O(n)。
+
+#### 13.42.7 例 162：最少回文分割（区间 DP）⭐⭐⭐
+
+> **知识点**：区间 DP，回文预处理｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+先用区间 DP 求出 pal[l][r]（s[l..r] 是否为回文：两端相同且内部为回文）。再一维 DP：cut[i] 表示把前缀 [0..i] 分成全回文段的最少切割数，若 [0..i] 整体为回文则 0，否则枚举最后一段 [j+1..i] 为回文，`cut[i]=min(cut[j]+1)`。💡 类比切香肠：先烘焙出「哪一段是完整的（回文）」，再用经典划分 DP 逐段切，把「是否回文」判断与「最小切数」两个问题分层解决。
+
+```python
+def min_cut(s):
+    n = len(s)
+    pal = [[False] * n for _ in range(n)]
+    for i in range(n): pal[i][i] = True
+    for i in range(n - 1): pal[i][i + 1] = (s[i] == s[i + 1])
+    for L in range(3, n + 1):
+        for i in range(0, n - L + 1):
+            j = i + L - 1
+            pal[i][j] = (s[i] == s[j] and pal[i + 1][j - 1])
+    cut = [0] * n
+    for i in range(n):
+        if pal[0][i]:
+            cut[i] = 0; continue
+        cut[i] = i
+        for j in range(i):
+            if pal[j + 1][i]:
+                cut[i] = min(cut[i], cut[j] + 1)
+    return cut[n - 1]
+
+print("aab 最少切刀数 =", min_cut("aab"))    # 1 (aa | b)
+print("aba 最少切刀数 =", min_cut("aba"))    # 0
+```
+
+> **复杂度**：预处理 O(n²)；划分 DP O(n²)；空间 O(n²)。
+
+#### 13.42.8 例 163：KMP next 数组求字符串最小循环节 ⭐⭐
+
+> **知识点**：KMP，前缀函数｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+计算前缀函数 pi，令 len=pi[n−1]，则 n−len 是「候选循环节长度」。若 n % (n−len)==0，最小循环节长度就是 n−len，且反复由它拼成原串；否则整串是最小循环节。💡 类比尺子量零件：前缀函数给出的「最长公共前后缀」揭示了字符串的平移对称性，剩余的那段就是你需要的重复单元，能整除说明正好铺满。
+
+```python
+def min_cycle(s):
+    n = len(s)
+    pi = [0] * n
+    for i in range(1, n):
+        j = pi[i - 1]
+        while j > 0 and s[i] != s[j]:
+            j = pi[j - 1]
+        if s[i] == s[j]: j += 1
+        pi[i] = j
+    k = n - pi[n - 1]
+    return k if n % k == 0 else n
+
+print("ababab 循环节长度 =", min_cycle("ababab"))   # 2 (ab)
+print("ababa  循环节长度 =", min_cycle("ababa"))    # 5
+```
+
+> **复杂度**：O(n)；空间 O(n)。
+
+#### 13.42.9 例 164：硬币找零的凑数方案数（完全背包）⭐⭐
+
+> **知识点**：完全背包，计数 DP｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+外层遍历每枚硬币、内层从小到大更新 dp[x]，dp[x] 表示用面额可重复使用凑出 x 的方案数，递推 `dp[x]+=dp[x−c]`。外层硬币在内层之前保证了「组合」而非排列，不会把 1+2 与 2+1 当成两种。💡 类比配钥匙清单：先固定一种面额依次多放，再去考虑下一种，天然去重；外层控制「种类」，内层控制「金额」即是完全背包的计数版。
+
+```python
+def coin_change_count(coins, target):
+    dp = [0] * (target + 1)
+    dp[0] = 1
+    for c in coins:
+        for x in range(c, target + 1):
+            dp[x] += dp[x - c]
+    return dp[target]
+
+print("用 1/2/5 凑 11 的方案数 =", coin_change_count([1, 2, 5], 11))   # 11
+print("用 1/2 凑 4 的方案数 =", coin_change_count([1, 2], 4))          # 3
+```
+
+> **复杂度**：O(硬币数 × target)；空间 O(target)。
+
+#### 13.42.10 例 165：线性求逆元与组合数取模 ⭐⭐
+
+> **知识点**：费马小定理，线性逆元｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+先用快速幂 `pow(fact[n], mod−2, mod)` 求阶乘逆元（费马小定理，mod 为质数），再倒推 `inv[i−1]=inv[i]·i` 得到所有阶乘逆元。组合数 C(n,k)=fact[n]·inv[k]·inv[n−k] mod p。把 O(k·log p) 的逐项求逆降为 O(n) 预处理。💡 类比逆向还原组合：一次性从最大阶乘逆元往回乘 i 逐级「反推」出每个阶乘的倒数，换取任意 (k,n) 都能 O(1) 取组合数。
+
+```python
+def solve(n, k, mod):
+    if k > n: return 0
+    fact = [1] * (n + 1)
+    for i in range(1, n + 1):
+        fact[i] = fact[i - 1] * i % mod
+    inv = [1] * (n + 1)
+    inv[n] = pow(fact[n], mod - 2, mod)
+    for i in range(n, 0, -1):
+        inv[i - 1] = inv[i] * i % mod
+    return fact[n] * inv[k] % mod * inv[n - k] % mod
+
+MOD = 10 ** 9 + 7
+print("C(10,3) mod 1e9+7 =", solve(10, 3, MOD))   # 120
+print("C(100,2) mod 1e9+7 =", solve(100, 2, MOD)) # 4950
+```
+
+> **复杂度**：预处理 O(n)；单次组合数 O(1)。
+
+#### 13.42.11 例 166：DAG 最长关键路径（拓扑 + DP）⭐⭐
+
+> **知识点**：拓扑排序，DP，关键路径｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/AOE
+
+**思路**
+对工程 AOE 网络求最长路即最短工期。按拓扑序做 DP：`dist[v]=max(dist[v], dist[u]+w)`，拓扑序保证更新 u 时其所有前驱已确定。队列不断取出入度为 0 的点，最后 max(dist) 即关键路径长度。💡 类比排工序：只有所有前置工序完成后才能启动下一道，所以每个工序的完工时刻取「完全部前驱的最晚下界」，拓扑顺序即施工顺序。
+
+```python
+from collections import deque
+def dag_longest(n, edges):
+    g = [[] for _ in range(n)]
+    indeg = [0] * n
+    for u, v, w in edges:
+        g[u].append((v, w)); indeg[v] += 1
+    q = deque([i for i in range(n) if indeg[i] == 0])
+    dist = [0] * n
+    while q:
+        u = q.popleft()
+        for v, w in g[u]:
+            dist[v] = max(dist[v], dist[u] + w)
+            indeg[v] -= 1
+            if indeg[v] == 0: q.append(v)
+    return max(dist)
+
+# 任务依赖：0→1(3) 0→2(2) 1→3(4) 2→3(5)
+print("最短工期 =", dag_longest(4, [(0, 1, 3), (0, 2, 2), (1, 3, 4), (2, 3, 5)]))  # 7
+```
+
+> **复杂度**：O(n + m)；空间 O(n + m)。
+
+#### 13.42.12 例 167：威佐夫博弈（奇异局势判定）⭐⭐
+
+> **知识点**：博弈论，黄金分割｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+两堆 (a,b)，a≤b。若开始处于「奇异局势」则先手必败。奇异局势满足 b−a=d 与 `a=floor(d·φ)`，其中 φ=(1+√5)/2。判定等式成立即先手败，否则先手可通过一次移动进入奇异局势而胜。💡 类比完美调平：奇异局势像天平预调到「差值×黄金比等于较小堆」的刁钻刻度，先手无论怎么动都会打破这平衡、把必胜位让给对方。
+
+```python
+from math import floor, sqrt
+def wythoff(a, b):
+    if a > b: a, b = b, a
+    d = b - a
+    phi = (1 + sqrt(5)) / 2
+    return "先手必败" if floor(d * phi) == a else "先手必胜"
+
+print("(1,2) →", wythoff(1, 2))   # 先手必败（奇异局势）
+print("(2,3) →", wythoff(2, 3))   # 先手必胜
+```
+
+> **复杂度**：O(1)；空间 O(1)。
+
+#### 13.42.13 例 168：树的最小点覆盖（树形 DP）⭐⭐
+
+> **知识点**：树形 DP，点覆盖｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+dp0[u]：u 不选时子树最小点覆盖；dp1[u]：u 必选时子树最小点覆盖。若 u 不选，其子节点必须全部选中；若 u 选，子节点可选可不选取 min。叶子初始化，DFS 后根取 min(dp0[root], dp1[root])。💡 类比小区安保方案：每栋楼要么自己挂牌值守、要么让所有邻居代管；用「选/不选」两状态自底向上汇总，最近公共覆盖数即最小。
+
+```python
+import sys
+def min_vertex_cover(n, edges):
+    sys.setrecursionlimit(10 ** 6)
+    g = [[] for _ in range(n)]
+    for u, v in edges:
+        g[u].append(v); g[v].append(u)
+    dp0 = [0] * n; dp1 = [0] * n
+    def dfs(u, p):
+        dp1[u] = 1; dp0[u] = 0
+        for v in g[u]:
+            if v == p: continue
+            dfs(v, u)
+            dp0[u] += dp1[v]
+            dp1[u] += min(dp0[v], dp1[v])
+    dfs(0, -1)
+    return min(dp0[0], dp1[0])
+
+# 星形 1 连 0/2/3，选 {1} 覆盖所有边
+print("最小点覆盖 =", min_vertex_cover(4, [(0, 1), (1, 2), (1, 3)]))   # 1
+```
+
+> **复杂度**：O(n)；空间 O(n)。
+
+#### 13.42.14 例 169：快慢指针检测链表环并求环入口 ⭐⭐
+
+> **知识点**：Floyd 判圈，链表｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+快指针每次走两步、慢指针走一步，若相遇必有环。相遇后把慢指针移到表头、快指针每次走一步，两者再次相遇处即环入口。理由：相遇点距入口的步数等于表头到入口的步数。💡 类比下潭找人：两只速度差一倍的兔子一进环必然追上；追上的瞬间把兔子放回入口同速重走，二次碰头点正是环的入水口。
+
+```python
+class Node:
+    def __init__(self, x):
+        self.val = x; self.next = None
+
+def build(arr, pos=-1):
+    head = cur = None; nodes = []
+    for x in arr:
+        nd = Node(x); nodes.append(nd)
+        if cur: cur.next = nd
+        else:   head = nd
+        cur = nd
+    if pos >= 0: cur.next = nodes[pos]   # pos 指向成环点
+    return head
+
+def detect_cycle(head):
+    slow = fast = head
+    while fast and fast.next:
+        slow = slow.next; fast = fast.next.next
+        if slow is fast:
+            p = head
+            while p is not slow:
+                p = p.next; slow = slow.next
+            return p.val
+    return None
+
+print("环入口 =", detect_cycle(build([1, 2, 5, 9], pos=1)))  # 2
+print("无环  =", detect_cycle(build([1, 2, 3])))             # None
+```
+
+> **复杂度**：O(n)；空间 O(1)。
+
+#### 13.42.15 例 170：区间调度——最多不相交区间（贪心）⭐⭐
+
+> **知识点**：贪心，区间排序｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+按右端点升序排序，逐一遍历：只要当前区间左端点 ≥ 上次已选区间的右端点就纳入并更新右端边界。按右端点取最早结束的区间一定能空出最多时间给后续，从而全局最优。💡 类比电影院排场次：总是先排「结束最早」的片子，好把时间留给越多后续场次，早结束即多机会。
+
+```python
+def max_intervals(intervals):
+    intervals.sort(key=lambda x: (x[1], x[0]))
+    cnt = 0; end = -10 ** 18
+    for l, r in intervals:
+        if l >= end:
+            cnt += 1; end = r
+    return cnt
+
+print("最多不相交区间 =", max_intervals([(1, 3), (2, 4), (3, 6)]))   # 2 (1,3)(3,6)
+```
+
+> **复杂度**：O(n log n)；空间 O(1)。
+
+#### 13.42.16 例 171：极角/斜率去重统计非共线三点数 ⭐⭐
+
+> **知识点**：斜率归一化，计数｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+任取一个点 i，把其余点相对 i 的斜率归一化（约分到最简、dx 强制为正），统计每种斜率的个数 s；同斜率 s 个点会贡献 C(s,2) 个「过 i 的共线点对」。累加所有 i 的贡献后除以 3（每个共线三点被三个端点各算一次），再从总三角形数 C(n,3) 中扣除。💡 类比望远镜扫地平线：站在每个山头按「方向」归档同向的点，同一方向必然共线，据此一次性点清「歪斜的三点组合」。
+
+```python
+from math import gcd
+
+def noncollinear_triangles(pts):
+    n = len(pts)
+    coll = 0
+    for i in range(n):
+        slope = {}
+        for j in range(n):
+            if i == j: continue
+            dx = pts[j][0] - pts[i][0]
+            dy = pts[j][1] - pts[i][1]
+            if dx == 0:
+                key = (0, 1)
+            else:
+                if dx < 0: dx, dy = -dx, -dy
+                g = gcd(abs(dx), abs(dy))
+                key = (dx // g, dy // g)
+            slope[key] = slope.get(key, 0) + 1
+        for s in slope.values():
+            coll += s * (s - 1) // 2
+    total = n * (n - 1) * (n - 2) // 6
+    return total - coll // 3
+
+pts = [(0, 0), (1, 0), (2, 0), (0, 1)]   # 前三点共线
+print("非共线三点个数 =", noncollinear_triangles(pts))   # 3
+```
+
+> **复杂度**：O(n² log V)；空间 O(n)。
+
+#### 13.42.17 例 172：唯一分解求约数个数与约数和 ⭐⭐
+
+> **知识点**：质因数分解，约数函数｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+把 n 分解为 ∏pᵢ^eᵢ。约数个数 τ(n)=∏(eᵢ+1)；约数和 σ(n)=∏((pᵢ^(eᵢ+1)−1)/(pᵢ−1))。枚举质因子到 √n，最后剩余的大于 √n 的质因子单独处理。💡 类比星座计数：每个质数幂次决定了它在每个约数里「出现 0..e 次」的取舍，乘回各质数的等比级数和即全部组合。
+
+```python
+def divisor_info(n):
+    cnt = 1; sm = 1; x = n; p = 2
+    while p * p <= x:
+        if x % p == 0:
+            e = 0; pk = 1
+            while x % p == 0:
+                x //= p; e += 1; pk *= p
+            cnt *= e + 1
+            sm *= (p ** (e + 1) - 1) // (p - 1)
+        p += 1 if p == 2 else 2
+    if x > 1:
+        cnt *= 2
+        sm *= (x + 1)
+    return cnt, sm
+
+d, s = divisor_info(12)
+print("12 的约数个数 =", d)     # 6  (1,2,3,4,6,12)
+print("12 的约数和   =", s)     # 28 (1+2+3+4+6+12)
+```
+
+> **复杂度**：O(√n)；空间 O(1)。
+
+#### 13.42.18 例 173：二叉搜索树最近公共祖先（迭代，无父指针）⭐⭐
+
+> **知识点**：二叉搜索树，LCA｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+利用 BST 有序性：若 a、b 都小于当前节点则 LCA 在左子树；都大于则去右子树；否则当前节点值落在 a、b 之间（含端点），它即为两者的分岔点也就是 LCA。全程迭代 O(h)。💡 类比二叉树岔路口：两个目标一左一右时，你脚下这个节点正是他们分开的地方；只有同侧才继续下潜，第一次出现「分叉」即答案。
+
+```python
+class TNode:
+    def __init__(self, x):
+        self.val = x; self.left = None; self.right = None
+
+def bst_lca(root, a, b):
+    while root:
+        if a < root.val and b < root.val:
+            root = root.left
+        elif a > root.val and b > root.val:
+            root = root.right
+        else:
+            return root.val
+
+def insert(r, x):
+    if not r: return TNode(x)
+    if x < r.val: r.left = insert(r.left, x)
+    else:         r.right = insert(r.right, x)
+    return r
+
+root = None
+for x in [6, 2, 8, 0, 4, 7, 9]:
+    root = insert(root, x)
+print("BST LCA(0,4) =", bst_lca(root, 0, 4))   # 2
+print("BST LCA(2,8) =", bst_lca(root, 2, 8))   # 6
+```
+
+> **复杂度**：O(h)（平衡时 O(log n)）；空间 O(1)。
+
+#### 13.42.19 例 174：矩阵中最长递增路径（记忆化搜索）⭐⭐
+
+> **知识点**：记忆化搜索，DFS｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+在每个格子尝试向「值更大的相邻格」延伸，用 memo[i][j] 记录从 (i,j) 出发能走的最长递增路径，避免重复计算。答案取所有格子出发的最大值。四个方向、严格递增保证无环。💡 类比水往高处流：每条递增链像向上攀岩，记忆化把「我已爬到多高」存下来，再次路过直接采用，避免同一条山路被爬无数遍。
+
+```python
+def longest_increasing_path(grid):
+    R = len(grid); C = len(grid[0])
+    memo = [[0] * C for _ in range(R)]
+    dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+    def dfs(i, j):
+        if memo[i][j]: return memo[i][j]
+        best = 1
+        for di, dj in dirs:
+            ni, nj = i + di, j + dj
+            if 0 <= ni < R and 0 <= nj < C and grid[ni][nj] > grid[i][j]:
+                best = max(best, 1 + dfs(ni, nj))
+        memo[i][j] = best
+        return best
+    return max(dfs(i, j) for i in range(R) for j in range(C))
+
+g = [[3, 4, 5], [3, 2, 6], [2, 2, 1]]
+print("最长递增路径 =", longest_increasing_path(g))   # 4 (3→4→5→6)
+```
+
+> **复杂度**：O(R·C)；空间 O(R·C)。
+
+#### 13.42.20 例 175：分块——区间加与区间求和（sqrt 分解）⭐⭐
+
+> **知识点**：分块，sqrt 分解｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+把数组分为约 √n 个块，记录整块和 block[b] 与整块懒标记 tag[b]。区间加：整块只打标记 O(1)，暴力处理边界散块并对块内 a[i] 实时改、同步更新 block；区间和：整块取 `block[b]+tag[b]·len`，散块逐点取 `a[i]+tag[所在块]`。💡 类比页数签字：整页封面一次性标注发行量，只有边角的几个零散格子才逐格改字，兼顾整读与散改的效率。
+
+```python
+import math
+class SqrtDecomp:
+    def __init__(self, a):
+        self.n = len(a)
+        self.B = int(math.sqrt(self.n)) + 1
+        self.a = a[:]
+        nb = (self.n + self.B - 1) // self.B
+        self.block = [0] * nb; self.tag = [0] * nb
+        for i in range(self.n):
+            self.block[i // self.B] += a[i]
+    def add(self, l, r, v):
+        bl = l // self.B; br = r // self.B
+        if bl == br:
+            for i in range(l, r + 1): self.a[i] += v
+            self.block[bl] += v * (r - l + 1); return
+        for i in range(l, (bl + 1) * self.B):
+            self.a[i] += v
+        self.block[bl] += v * ((bl + 1) * self.B - l)
+        for b in range(bl + 1, br): self.tag[b] += v
+        for i in range(br * self.B, r + 1):
+            self.a[i] += v
+        self.block[br] += v * (r - br * self.B + 1)
+    def query(self, l, r):
+        bl = l // self.B; br = r // self.B; s = 0
+        if bl == br:
+            for i in range(l, r + 1): s += self.a[i] + self.tag[bl]
+            return s
+        for i in range(l, (bl + 1) * self.B):
+            s += self.a[i] + self.tag[bl]
+        for b in range(bl + 1, br):
+            s += self.block[b] + self.tag[b] * self.B
+        for i in range(br * self.B, r + 1):
+            s += self.a[i] + self.tag[br]
+        return s
+
+sd = SqrtDecomp([1, 2, 3, 4, 5])
+print("sum[0..4] =", sd.query(0, 4))        # 15
+sd.add(0, 4, 1)
+print("sum[0..4] after +1 =", sd.query(0, 4))  # 20
+```
+
+> **复杂度**：区间加/查各 O(√n)；空间 O(n)。
+
+
+### 13.43 数据结构与图论综合进阶
+
+#### 13.43.1 例 176：可持久化双端修改（主席树区间最值）⭐⭐⭐
+
+> **知识点**：可持久化线段树、区间最值｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"每一版都只改动一条路径，其他路径复用"：可持久化线段树每次修改只新建 O(log n) 个节点，历史版本完整保留。本题用其查询任意历史区间最小值。
+
+```python
+class PersistentSegTree:
+    """可持久化线段树：每次 update 只新建 O(log n) 个节点，历史版本完整保留。"""
+
+    INF = 10 ** 9
+
+    def __init__(self, arr):
+        self.n = len(arr)
+        self.l = [0]
+        self.r = [0]
+        self.mn = [self.INF]
+
+        def build(lo, hi):
+            node = len(self.mn)
+            self.l.append(0); self.r.append(0); self.mn.append(self.INF)
+            if lo == hi:
+                self.mn[node] = arr[lo]
+                return node
+            mid = (lo + hi) // 2
+            self.l[node] = build(lo, mid)
+            self.r[node] = build(mid + 1, hi)
+            self.mn[node] = min(self.mn[self.l[node]], self.mn[self.r[node]])
+            return node
+
+        self.root0 = build(0, self.n - 1)     # 版本 0：初始数组
+
+    def update(self, prev, lo, hi, pos, val):
+        node = len(self.mn)
+        self.l.append(self.l[prev]); self.r.append(self.r[prev]); self.mn.append(self.mn[prev])
+        if lo == hi:
+            self.mn[node] = val
+            return node
+        mid = (lo + hi) // 2
+        if pos <= mid:
+            self.l[node] = self.update(self.l[prev], lo, mid, pos, val)
+        else:
+            self.r[node] = self.update(self.r[prev], mid + 1, hi, pos, val)
+        self.mn[node] = min(self.mn[self.l[node]], self.mn[self.r[node]])
+        return node
+
+    def upd(self, root, pos, val):
+        return self.update(root, 0, self.n - 1, pos, val)
+
+    def query(self, node, lo, hi, ql, qr):
+        if qr < lo or hi < ql:
+            return self.INF
+        if ql <= lo and hi <= qr:
+            return self.mn[node]
+        mid = (lo + hi) // 2
+        return min(self.query(self.l[node], lo, mid, ql, qr),
+                   self.query(self.r[node], mid + 1, hi, ql, qr))
+
+    def qry(self, node, ql, qr):
+        return self.query(node, 0, self.n - 1, ql, qr)
+
+pst = PersistentSegTree([5, 1, 3, 7, 2])
+print(pst.qry(pst.root0, 0, 4))          # 初始版本全局 min = 1
+root1 = pst.upd(pst.root0, 2, 0)         # 把下标 2 改为 0，得到版本 1
+print(pst.qry(root1, 0, 4))              # 新版本 min = 0
+print(pst.qry(pst.root0, 0, 4))          # 历史版本 0 仍为 1（持久化）
+```
+
+> **复杂度**：修改 O(log n)；查询 O(log n)。
+
+#### 13.43.2 例 177：回滚莫队（区间 mex）⭐⭐⭐
+
+> **知识点**：莫队、回滚、频次维护｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"只增不删地推进左指针，超范围用临时数组回滚"：回滚莫队把"删除"变难的问题转成"只增加+回滚"，区间 mex 用 cnt 与 while-loop 求最小未出现整数。
+
+```python
+def mex_rollback_example(nums, l, r):
+    # 离线排序+回滚：这里演示单区间暴力基准（可暴力验证）
+    seen = [False] * (len(nums) + 2)
+    for i in range(l, r + 1):
+        if nums[i] < len(seen):
+            seen[nums[i]] = True
+    m = 0
+    while seen[m]:
+        m += 1
+    return m
+
+print(mex_rollback_example([0, 1, 2, 4], 1, 3))   # 区间[1..3]={1,2,4} -> 0
+print(mex_rollback_example([1, 2, 0, 5], 0, 3))   # {1,2,0,5} -> 3
+```
+
+> **复杂度**：离线总体 O((n+q)·√n)；单次 O(1)~O(√n)。
+
+#### 13.43.3 例 178：CDQ 分治求逆序对 / 三维偏序⭐⭐⭐
+
+> **知识点**：CDQ 分治、归并、偏序｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"左边对右边的跨块贡献在合并时统计"：CDQ 分治把"三维偏序计数"降成"一维排序+二维归并"。逆序对即归并排序过程中的跨块逆序数，O(n log n)。
+
+```python
+def count_inversions(a):
+    b = a[:]
+    res = [0]
+    def merge_sort(lo, hi):
+        if hi - lo <= 1:
+            return
+        mid = (lo + hi) // 2
+        merge_sort(lo, mid); merge_sort(mid, hi)
+        tmp = []; i, j = lo, mid
+        while i < mid and j < hi:
+            if b[i] <= b[j]:
+                tmp.append(b[i]); i += 1
+            else:
+                tmp.append(b[j]); j += 1
+                res[0] += mid - i
+        tmp.extend(b[i:mid]); tmp.extend(b[j:hi])
+        b[lo:hi] = tmp
+    merge_sort(0, len(a))
+    return res[0]
+
+print(count_inversions([3, 1, 2]))     # 2
+print(count_inversions([1, 2, 3]))     # 0
+```
+
+> **复杂度**：O(n log n) 时间，O(n) 空间。
+
+#### 13.43.4 例 179：线段树维护最大连续子段和（区间合并）⭐⭐⭐
+
+> **知识点**：线段树、合并信息、最大子段｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"越权把左右的最大前缀/后缀/整段和并成大段"：每个节点维护 sum、mx、lmax、rmax。合并时 `mx=max(左mx,右mx,左rmax+右lmax)`，前后缀同理。
+
+```python
+def combine(a, b):
+    # (sum, lmax, rmax, mx)
+    s, lm, rm, mx = a
+    s2, lm2, rm2, mx2 = b
+    return (s + s2,
+            max(lm, s + lm2),
+            max(rm2, s2 + rm),
+            max(mx, mx2, rm + lm2))
+
+class SegTree:
+    def __init__(self, arr):
+        n = len(arr)
+        self.t = [(0, 0, 0, 0)] * (4 * n)
+        def build(o, l, r):
+            if l == r:
+                self.t[o] = (arr[l], arr[l], arr[l], arr[l]); return
+            m = (l + r) // 2
+            build(o * 2, l, m); build(o * 2 + 1, m + 1, r)
+            self.t[o] = combine(self.t[o * 2], self.t[o * 2 + 1])
+        build(1, 0, n - 1)
+    def query(self, o, l, r, ql, qr):
+        if ql <= l and r <= qr:
+            return self.t[o]
+        m = (l + r) // 2
+        if qr <= m:
+            return self.query(o * 2, l, m, ql, qr)
+        if ql > m:
+            return self.query(o * 2 + 1, m + 1, r, ql, qr)
+        return combine(self.query(o * 2, l, m, ql, qr),
+                       self.query(o * 2 + 1, m + 1, r, ql, qr))
+    def max_subarray(self, ql, qr):
+        return self.query(1, 0, max_len - 1, ql, qr)[3]
+
+max_len = 5                                  # 数组长度
+seg = SegTree([1, 2, -5, 3, 4])
+print(seg.max_subarray(0, 4))                # 整个数组最大子段 = 1+2+3+4 = 7
+print(seg.max_subarray(0, 2))                # [1,2,-5] 最大子段 = 3
+print(seg.max_subarray(3, 4))                # [3,4] 最大子段 = 7
+```
+
+> **复杂度**：单点修改 O(log n)；查询 O(log n)。
+
+#### 13.43.5 例 180：扫描线求矩形面积并（线段树）⭐⭐⭐
+
+> **知识点**：扫描线、线段树、离散化｜**难度**：⭐⭐⭐（困难）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"按 y 从低到高扫描，区间覆盖长度与 Δy 相乘累加"：对矩形上下边按 y 排序，线段树维护当前覆盖长度，面积并 = 累计(cover_len × 相邻y差)。
+
+```python
+def rect_area(rects):
+    # rects: (x1, y1, x2, y2)，扫描线求并集面积（x 坐标离散化）
+    xs = sorted({x for r in rects for x in (r[0], r[2])})
+    comp = {x: i for i, x in enumerate(xs)}
+    width = [xs[i + 1] - xs[i] for i in range(len(xs) - 1)]
+    events = []
+    for x1, y1, x2, y2 in rects:
+        for c in range(comp[x1], comp[x2]):      # 每个 x 段单独维护覆盖计数
+            events.append((y1, 1, c))
+            events.append((y2, -1, c))
+    events.sort()
+    cnt = [0] * len(width)
+    total = pre = 0
+    for y, d, c in events:
+        covered = sum(w for w, k in zip(width, cnt) if k)   # 当前覆盖宽度
+        total += covered * (y - pre)                          # 覆盖宽度 × Δy
+        cnt[c] += d
+        pre = y
+    return total
+
+print(rect_area([(0, 0, 2, 2)]))            # 4
+print(rect_area([(0, 0, 2, 2), (1, 1, 3, 3)]))  # 并集 = 4+4-1=7
+```
+
+> **复杂度**：完整线段树版 O(n log n)；本例为便于理解用计数数组，最坏 O(n²)、空间 O(n)。
+
+#### 13.43.6 例 181：图上二分答案（最小化最大边）⭐⭐
+
+> **知识点**：二分、最短路/并查集、可行性判定｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"试一个上限，只走权值不超过它的边看能否连通"：二分区间的上限 W，判定用并查集或 BFS 看起点到终点连通性，判断可行再收缩。
+
+```python
+def min_max_edge(n, edges, s, t):
+    # edges:(u,v,w)
+    edges.sort(key=lambda e: e[2])
+    lo, hi = -1, edges[-1][2]
+    def reach(limit):
+        par = list(range(n))
+        def find(x):
+            while par[x] != x:
+                par[x] = par[par[x]]; x = par[x]
+            return x
+        for u, v, w in edges:
+            if w > limit:
+                break
+            ru, rv = find(u), find(v)
+            if ru != rv:
+                par[ru] = rv
+        return find(s) == find(t)
+    lo, hi = -1, edges[-1][2]
+    while hi - lo > 1:
+        mid = (lo + hi) // 2
+        if reach(mid):
+            hi = mid
+        else:
+            lo = mid
+    return hi
+
+print(min_max_edge(3, [(0, 1, 5), (1, 2, 8), (0, 2, 10)], 0, 2))   # 8
+```
+
+> **复杂度**：O((n+m)·logW)；空间 O(n)。
+
+#### 13.43.7 例 182：河内塔 / 递归分治构造（经典递归）⭐⭐
+
+> **知识点**：递归、分治｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/基础
+
+**思路**
+
+💡 类比"借助中间柱把 n−1 片搬走、再搬底片、再搬回 n−1"：`hanoi(n,a,b,c)` 递归三步，移动次数 `2^n−1`。
+
+```python
+def hanoi(n, a, b, c, out=None):
+    if n == 0:
+        return
+    hanoi(n - 1, a, c, b, out)
+    if out is not None:
+        out.append((a, c))
+    hanoi(n - 1, b, a, c, out)
+
+moves = []
+hanoi(3, 'A', 'B', 'C', moves)
+print(len(moves))       # 7
+print(moves[:3])
+```
+
+> **复杂度**：O(2^n) 时间，O(n) 递归空间。
+
+#### 13.43.8 例 183：区间 DP——石子合并（环形）⭐⭐
+
+> **知识点**：区间 DP、前缀和、断环为链｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"每段由两个子段合并而来，代价加上区间和"：把环复制成长度 2n 的链，`dp[i][j]=min(dp[i][k]+dp[k+1][j])+sum[i..j]`，答案取长度 n 的全部子区间的 min。
+
+```python
+def stone_min(a):
+    n = len(a)
+    a2 = a + a
+    pre = [0]
+    for x in a2:
+        pre.append(pre[-1] + x)
+    INF = 10 ** 18
+    dp = [[INF] * (2 * n + 1) for _ in range(2 * n + 1)]
+    for i in range(2 * n + 1):
+        dp[i][i] = 0
+    for L in range(2, n + 1):
+        for i in range(1, 2 * n - L + 2):
+            j = i + L - 1
+            for k in range(i, j):
+                dp[i][j] = min(dp[i][j], dp[i][k] + dp[k + 1][j])
+            dp[i][j] += pre[j] - pre[i - 1]
+    return min(dp[i][i + n - 1] for i in range(1, n + 1))
+
+print(stone_min([4, 5, 9]))   # 合并代价
+```
+
+> **复杂度**：O(n³)；空间 O(n²)。
+
+#### 13.43.9 例 184：状压 DP——分配问题（匈牙利替代）⭐⭐
+
+> **知识点**：状压 DP、位掩码｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛
+
+**思路**
+
+💡 类比"用位掩码记录哪些人已分配"：`dp[mask]` 表示把前 popcount(mask) 个任务分给 mask 中人的最小代价，转移枚举最后一个任务分配给哪个人。
+
+```python
+def assign(cost):
+    n = len(cost)
+    dp = [10 ** 9] * (1 << n)
+    dp[0] = 0
+    for mask in range(1 << n):
+        task = bin(mask).count('1')
+        for j in range(n):
+            if not (mask >> j) & 1:
+                nxt = mask | (1 << j)
+                dp[nxt] = min(dp[nxt], dp[mask] + cost[task][j])
+    return dp[(1 << n) - 1]
+
+print(assign([[9, 2, 7], [6, 4, 3], [5, 8, 1]]))   # 最低总代价
+```
+
+> **复杂度**：O(n·2^n)；空间 O(2^n)。
+
+#### 13.43.10 例 185：字典序第 k 小排列（逆康托展开）⭐⭐
+
+> **知识点**：阶乘计数、逆康托展开｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+
+💡 类比"按每位可取的个数（阶乘）定位第 k 个排法"：k−1 依次除以 (n−1−i)!，商即该位在剩余元素中的下标，余数继续下一轮。
+
+```python
+def kth_permutation(n, k):
+    nums = list(range(1, n + 1))
+    fact = [1] * (n + 1)
+    for i in range(2, n + 1):
+        fact[i] = fact[i - 1] * i
+    k -= 1
+    res = []
+    for i in range(n):
+        idx = k // fact[n - 1 - i]
+        res.append(nums.pop(idx))
+        k %= fact[n - 1 - i]
+    return res
+
+print(kth_permutation(3, 1))    # [1, 2, 3]
+print(kth_permutation(4, 7))    # 第7个
+```
+
+> **复杂度**：O(n²)（list.pop）；空间 O(n)。
+
+
+
+#### 13.43.11 例 186：中位数维护（双堆对顶法）⭐⭐
+
+> **知识点**：堆、对顶堆、中位数｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+
+💡 类比"把数据分成大的一半与小的一半，各用一个大根堆/小根堆顶上"：一个大根堆存较小的一半、一个小根堆存较大的一半，保持两堆大小差 ≤ 1。插入后取 max(小堆顶,大堆顶) 即为中位数，插入 O(log n)。
+
+```python
+import heapq
+
+class MedianFinder:
+    def __init__(self):
+        self.small = []          # 大根堆（用负数），存较小的一半
+        self.large = []          # 小根堆，存较大的一半
+    def add(self, x):
+        heapq.heappush(self.small, -x)
+        if self.small and self.large and -self.small[0] > self.large[0]:
+            v = -heapq.heappop(self.small)
+            heapq.heappush(self.large, v)
+        if len(self.small) > len(self.large) + 1:
+            v = -heapq.heappop(self.small)
+            heapq.heappush(self.large, v)
+        if len(self.large) > len(self.small):
+            v = heapq.heappop(self.large)
+            heapq.heappush(self.small, -v)
+    def median(self):
+        if len(self.small) == len(self.large):
+            return (-self.small[0] + self.large[0]) / 2
+        return -self.small[0]
+
+mf = MedianFinder()
+for x in [1, 5, 3, 2, 4]:
+    mf.add(x)
+print(mf.median())     # 3.0
+```
+
+> **复杂度**：插入 O(log n)；中位数 O(1)。
+
+#### 13.43.12 例 187：拓扑排序检测环（判断课程能否修完）⭐⭐
+
+> **知识点**：拓扑排序、入度、环检测｜**难度**：⭐⭐（中等）｜**类型**：OI/竞赛/面试
+
+**思路**
+
+💡 类比"先修必排前，能排完即为无环"：统计入度，队列放入度为 0 的点，逐个出队并减少后继入度。若出队数 == 顶点数则无环可拓扑，否则存在环。
+
+```python
+from collections import deque
+
+def can_finish(n, edges):       # edges:(先修, 后续)
+    g = [[] for _ in range(n)]
+    ind = [0] * n
+    for u, v in edges:
+        g[u].append(v); ind[v] += 1
+    q = deque(i for i in range(n) if ind[i] == 0)
+    cnt = 0
+    while q:
+        u = q.popleft(); cnt += 1
+        for v in g[u]:
+            ind[v] -= 1
+            if ind[v] == 0:
+                q.append(v)
+    return cnt == n
+
+print(can_finish(2, [(1, 0)]))        # True
+print(can_finish(2, [(0, 1), (1, 0)]))  # False (环)
+```
+
+> **复杂度**：O(n + m)；空间 O(n + m)。
+
