@@ -1,5 +1,3 @@
-i
-
 # 算法学习教程 (Algorithm Learning Tutorial)
 
 > 从零开始，轻松掌握算法与数据结构！综合整理计算机数据结构与算法体系，覆盖信息学竞赛（OI/NOIP/ACM-ICPC）与 LeetCode 面试算法所需知识体系。
