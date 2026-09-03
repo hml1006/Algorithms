@@ -746,3 +746,12 @@ class DancingLinksX:
 5. **思考题**：为什么珂朵莉树需要"数据随机"才能保证复杂度？
 
 ---
+
+## 参考资源
+
+- [Link-Cut Tree - Wikipedia](https://en.wikipedia.org/wiki/Link-cut_tree)
+- [可持久化线段树（主席树） - OI Wiki](https://oi-wiki.org/ds/persistent-seg/)
+- [莫队算法 - OI Wiki](https://oi-wiki.org/misc/mo-algo/)
+- [珂朵莉树（ODT） - OI Wiki](https://oi-wiki.org/misc/odt/)
+- [舞蹈链（DLX） - OI Wiki](https://oi-wiki.org/search/dlx/)
+- [树链剖分 - OI Wiki](https://oi-wiki.org/graph/hld/)

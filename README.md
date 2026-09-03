@@ -19,7 +19,7 @@ i
 
 > **算法学习天梯图**：从基础到高级，每一步都踩在坚实的阶梯上。下图展示了完整的算法学习路径，帮助你明确当前所处阶段和下一步目标。
 
-![算法学习天梯图](images/algorithm_ladder.svg)
+![算法学习天梯图](src/images/algorithm_ladder.svg)
 
 ---
 
@@ -107,7 +107,7 @@ python3
 
 > **复杂度曲线图**：不同算法复杂度随数据规模增长的趋势一目了然，帮助你直观理解大 O 表示法的实际意义。
 
-![复杂度曲线图](images/complexity_graph.svg)
+![复杂度曲线图](src/images/complexity_graph.svg)
 
 ### 数据结构操作复杂度
 
@@ -1044,7 +1044,7 @@ def mat_pow(mat, exp, mod):
 | 14.3 AI 学习路径建议      | 入门→进阶→强化→大模型时代 4 阶段路线                          | [11e_学习路径与资源.md](./11e_学习路径与资源.md)                 |
 | 14.4 AI 领域常用资源      | 10 项推荐书籍、课程、平台、研究机构                              | [11e_学习路径与资源.md](./11e_学习路径与资源.md)                 |
 
-![AI 发展历程](images/ai_history.svg)
+![AI 发展历程](src/images/ai_history.svg)
 
 如果你发现任何错误或有改进建议，欢迎提交 Issue 或 Pull Request！
 
