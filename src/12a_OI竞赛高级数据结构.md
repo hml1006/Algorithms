@@ -1,4 +1,9 @@
-# 第十层 OI/ACM 竞赛：OI 竞赛高级数据结构
+# 第 12 章 OI/ACM 竞赛：OI 竞赛高级数据结构
+
+> **学习目标**：掌握 LCT、树链剖分、主席树、莫队、CDQ 分治、整体二分、珂朵莉树与舞蹈链等竞赛级数据结构。
+>
+> **先修知识**：第 4 章树/线段树/树状数组；第 5 章图论；第 11 章复杂度理论。
+
 
 ## 1. OI 竞赛级别高级数据结构
 
@@ -185,6 +190,8 @@ print(lct.query(1, 3))  # 1^2^3 = 0
 ```
 
 ### 1.2 树链剖分 (HLD)
+
+> **前置阅读**：HLD 的基础概念、复杂度推导与图论应用见 [05 图论算法](./05_图论算法.md) 的 5.4.18 节；本节侧重竞赛级实现与组合技巧。
 
 > 💡 **类比：把树"压平"**
 >
@@ -737,13 +744,258 @@ class DancingLinksX:
 # 约束：每个格子有数字、每行每列每个宫都有 1-9
 ```
 
-### 1.7 练习题
+### 1.7 CDQ 分治
+
+**用途**：离线解决多维偏序问题（如统计满足多个不等式约束的点对数量、三维偏序计数、归并排序求逆序对等）。
+
+> 💡 **类比：把三维排序问题拆成两两处理**
+> 想象要给一堆学生按"身高、体重、成绩"三维排序并统计"谁完全压过谁"。直接三维比较太复杂。CDQ 分治的思路是：先按第一维（身高）排好队，再用"归并排序"的方式一边合并一边清点——合并时，第二维（体重）用双指针归并保证有序，第三维（成绩）用树状数组统计。就这样把"三维偏序"逐层拆解成"一维排序 + 二维统计"。
+
+**核心思想**：
+1. 第一维先排序，消除第一维的影响。
+2. 对剩下的问题做分治：递归处理左右两半，再统计"左半对右半"的贡献（左半的点天然满足第一维约束）。
+3. 合并阶段用**归并排序式**双指针保证第二维有序，用**树状数组**维护第三维的计数。
+
+**复杂度**：$O(n \log^2 n)$（分治 $\log n$ × 每层树状数组 $\log n$）。
+
+```python
+def cdq_3d(points):
+    """CDQ 分治：统计三维偏序 (a_i<=a_j, b_i<=b_j, c_i<=c_j) 的点对数量
+    points = [(a, b, c), ...]
+    复杂度 O(n log^2 n)
+    """
+    class BIT:
+        def __init__(self, n):
+            self.n, self.c = n, [0] * (n + 1)
+        def add(self, i, v):
+            while i <= self.n:
+                self.c[i] += v
+                i += i & -i
+        def sum(self, i):
+            s = 0
+            while i > 0:
+                s += self.c[i]
+                i -= i & -i
+            return s
+
+    # 第一维排序，消除 a 的影响
+    points.sort()
+    # 第三维坐标压缩
+    cs = sorted(set(p[2] for p in points))
+    idx = {v: i + 1 for i, v in enumerate(cs)}
+    pts = [(p[0], p[1], idx[p[2]]) for p in points]
+    bit = BIT(len(cs))
+    ans = 0
+
+    def solve(l, r):
+        nonlocal ans
+        if l >= r:
+            return
+        mid = (l + r) // 2
+        solve(l, mid)
+        solve(mid + 1, r)
+        # 归并：左半的点作为"贡献源"，为右半的点计数
+        i, j, tmp = l, mid + 1, []
+        added = []                       # 只回滚真正插入过 BIT 的 c 值
+        while i <= mid or j <= r:
+            if j > r or (i <= mid and (pts[i][1], pts[i][2]) <= (pts[j][1], pts[j][2])):
+                bit.add(pts[i][2], 1)
+                added.append(pts[i][2])
+                tmp.append(pts[i]); i += 1
+            else:
+                ans += bit.sum(pts[j][2])
+                tmp.append(pts[j]); j += 1
+        for c in added:
+            bit.add(c, -1)
+        pts[l:r + 1] = tmp
+
+    solve(0, len(pts) - 1)
+    return ans
+
+# 示例
+points = [(1, 1, 1), (2, 2, 2), (3, 3, 3), (1, 1, 1)]
+print(cdq_3d(points))
+# 6：统计两两点对中"三维全被支配"的数量（含相等元素）
+```
+
+**复杂度**：$O(n \log^2 n)$。
+
+**适用场景**：三维偏序计数、逆序对推广、带修改的静态区间统计、动态逆序对等需要"多维约束 + 计数"的离线问题。
+
+---
+
+### 1.8 整体二分
+
+**用途**：将多个"求第 k 小/第 k 大"类查询**批量**处理，而不是对每个查询单独二分，从而把总复杂度从 $O(q \cdot f(n) \log V)$ 优化到 $O((n+q) \log V)$。
+
+> 💡 **类比：把所有查询一起二分，而不是每个单独二分**
+> 想象很多人同时要"猜一个数"，如果每人各自从头猜，非常低效。整体二分的做法是：所有人**共享一次二分**——先让大家都在 $(1,100)$ 这个区间里猜，猜完把"答案在中位数左边"的人分到左组、"在右边"的人分到右组，然后左右两组继续各自二分。这样所有查询一并推进，避免了重复的扫描开销。
+
+**核心思想**：值域分治。
+1. 设当前值域 $[vl, vr]$，把值落在左半 $[vl, mid]$ 的元素加入树状数组（按位置）。
+2. 对每个查询，统计其区间内 $\le mid$ 的元素个数 $\text{cnt}$：
+   - 若 $\text{cnt} \ge k$，答案在左半，把该查询归入左组；
+   - 否则答案在右半，把 $k$ 减去 $\text{cnt}$ 后归入右组。
+3. 递归左右两组，直到值域缩成一个点。
+
+**复杂度**：$O((n+q) \log V)$，$V$ 为值域。
+
+```python
+def overall_binary_answer(arr, queries):
+    """整体二分：批量求静态区间第 k 小
+    arr: 原数组；queries = [(l, r, k)]，l/r 为 0-indexed 闭区间
+    复杂度 O((n+q) log V)
+    """
+    n = len(arr)
+    qs = [list(q) for q in queries]   # 拷贝，避免修改调用方
+    ans = [0] * len(queries)
+
+    class BIT:
+        def __init__(self, n):
+            self.c = [0] * (n + 1)
+        def add(self, i, v):
+            i += 1
+            while i <= n:
+                self.c[i] += v
+                i += i & -i
+        def sum(self, i):
+            if i < 0:
+                return 0
+            i += 1
+            s = 0
+            while i > 0:
+                s += self.c[i]
+                i -= i & -i
+            return s
+
+    elems = sorted((v, i) for i, v in enumerate(arr))
+    lo, hi = elems[0][0], elems[-1][0]
+
+    def solve(vl, vr, el, qidx):
+        # el: 值在 [vl, vr] 的元素（按值升序）；qidx: 待回答的查询下标
+        if vl == vr:
+            for qi in qidx:
+                ans[qi] = vl
+            return
+        vmid = (vl + vr) // 2
+        bit = BIT(n)
+        el_l, el_r = [], []
+        for v, pos in el:
+            if v <= vmid:
+                bit.add(pos, 1)
+                el_l.append((v, pos))
+            else:
+                el_r.append((v, pos))
+        ql, qr = [], []
+        for qi in qidx:
+            l, r, k = qs[qi]
+            cnt = bit.sum(r) - bit.sum(l - 1)
+            if cnt >= k:
+                ql.append(qi)
+            else:
+                qs[qi][2] = k - cnt   # 减去左半的贡献
+                qr.append(qi)
+        solve(vl, vmid, el_l, ql)
+        solve(vmid + 1, vr, el_r, qr)
+
+    solve(lo, hi, elems, list(range(len(queries))))
+    return ans
+
+# 示例
+arr = [1, 5, 2, 6, 3, 7, 4]
+queries = [(2, 5, 3), (0, 6, 4), (1, 3, 1)]
+print(overall_binary_answer(arr, queries))
+# arr[2..5]=[2,6,3,7] 第3小=6；arr[0..6] 第4小=4；arr[1..3]=[5,2,6] 第1小=2
+# >> [6, 4, 2]
+```
+
+**复杂度**：$O((n+q) \log V)$，其中 $n$ 为数组长度、$q$ 为查询个数、$V$ 为值域大小。
+
+**适用场景**：静态区间第 k 小、带修改的第 k 小、二分答案类批量查询（如"求满足某条件的最值"的多组询问）。
+
+---
+
+### 11.5 可持久化线段树（主席树）
+
+**用途**：支持"历史版本"查询——最典型的是**静态区间第 k 小**，还可用于求区间内某值的出现次数、树上前缀统计等问题。
+
+> 💡 **类比：每次修改都复制一份历史，但只复制路径上的节点**
+> 想象给一本书的每次修改都留一份快照。如果整本复印，代价巨大。主席树的妙招是：每次修改只**复制从根到被改叶子这一条路径**上的 $O(\log n)$ 个节点，其余节点与旧版本**共享**。这样每个版本都像一本"加了批注的书"，不同版本之间共用大部分页面，既保留了历史，又只花很少的空间。查询区间 $[l, r]$ 时，用"第 r 个版本 − 第 l−1 个版本"的计数差，就能快速定位第 k 小。
+
+**核心思想**：动态开点 + 版本复用。
+1. 按数组顺序逐元素建树，每个元素产生一个新版本（根节点），新版本与原版本共享未修改的子树。
+2. 每个版本维护"值域上每个值出现次数"的线段树（值域先离散化）。
+3. 查询区间 $[l, r]$ 的第 k 小：用 $root[r]$ 与 $root[l-1]$ 两个版本同步下钻，两者计数之差即区间内该值域的个数，据此向左或向右走。
+
+**复杂度**：建树 $O(n \log n)$，单次查询 $O(\log n)$，空间 $O(n \log n)$。
+
+```python
+class PersistentSegTree:
+    """可持久化线段树（主席树）——静态区间第 k 小
+    核心：动态开点 + 版本复用，每次修改只复制 O(log n) 个节点
+    """
+    def __init__(self, arr):
+        vals = sorted(set(arr))
+        self.comp = {v: i for i, v in enumerate(vals)}
+        self.rev = vals
+        m = len(vals)
+        self.left, self.right, self.cnt = [0], [0], [0]  # 0 号节点表示空
+        self.roots = [0]                                # 版本 0 为空树
+        for x in arr:
+            self.roots.append(self._update(self.roots[-1], 0, m - 1, self.comp[x]))
+
+    def _new(self, l, r, c):
+        self.left.append(l); self.right.append(r); self.cnt.append(c)
+        return len(self.cnt) - 1
+
+    def _update(self, prev, l, r, pos):
+        node = self._new(self.left[prev], self.right[prev], self.cnt[prev] + 1)
+        if l != r:
+            mid = (l + r) // 2
+            if pos <= mid:
+                self.left[node] = self._update(self.left[prev], l, mid, pos)
+            else:
+                self.right[node] = self._update(self.right[prev], mid + 1, r, pos)
+        return node
+
+    def query(self, l, r, k):
+        """查询 arr[l..r] 中第 k 小（1-indexed）"""
+        return self.rev[self._query(self.roots[l], self.roots[r + 1], 0, len(self.rev) - 1, k)]
+
+    def _query(self, u, v, l, r, k):
+        if l == r:
+            return l
+        mid = (l + r) // 2
+        left_cnt = self.cnt[self.left[v]] - self.cnt[self.left[u]]
+        if k <= left_cnt:
+            return self._query(self.left[u], self.left[v], l, mid, k)
+        return self._query(self.right[u], self.right[v], mid + 1, r, k - left_cnt)
+
+# 示例
+arr = [1, 5, 2, 6, 3, 7, 4]
+pst = PersistentSegTree(arr)
+print(pst.query(2, 5, 3))   # arr[2..5]=[2,6,3,7] 第3小 = 6
+print(pst.query(0, 6, 4))   # arr[0..6] 第4小 = 4
+print(pst.query(1, 3, 1))   # arr[1..3]=[5,2,6] 第1小 = 2
+```
+
+**复杂度**：建树 $O(n \log n)$，单次查询 $O(\log n)$，总空间 $O(n \log n)$。
+
+**适用场景**：静态区间第 k 小、区间内数值分布统计、可持久化 Trie 求区间异或最大值等需要"历史版本 + 前缀做差"的查询问题。
+
+---
+
+---
+
+### 1.9 练习题
 
 1. **实现 LCT**：维护动态树的连通性
 2. **树链剖分 + 线段树**：树上路径求和
 3. **主席树**：静态区间第 K 大
 4. **莫队算法**：区间不同元素个数
-5. **思考题**：为什么珂朵莉树需要"数据随机"才能保证复杂度？
+5. **CDQ 分治**：三维偏序计数
+6. **整体二分**：静态区间第 K 小
+7. **思考题**：为什么珂朵莉树需要"数据随机"才能保证复杂度？
 
 ---
 
