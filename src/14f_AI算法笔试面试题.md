@@ -1,6 +1,6 @@
 # 14.5 AI 算法笔试面试题
 
-> 本文件是「AI 算法体系」子章节（与 14a~14e 平级）的高频笔试面试题库，覆盖传统机器学习、深度学习、Transformer 与大模型、强化学习、生成式模型五大主题，共 60+ 题，每题包含知识点、难度分级（⭐/⭐⭐/⭐⭐⭐）与完整答案（含推导、公式与关键代码）。题目在主题内按难度从低到高排列，适合求职刷题与面试自查。
+> 本文件是「AI 算法体系」子章节（与 14a～14e 平级）的高频笔试面试题库，覆盖传统机器学习、深度学习、Transformer 与大模型、强化学习、生成式模型五大主题，共 60+ 题，每题包含知识点、难度分级（⭐/⭐⭐/⭐⭐⭐）与完整答案（含推导、公式与关键代码）。题目在主题内按难度从低到高排列，适合求职刷题与面试自查。
 
 - [一、机器学习笔试面试题](#一机器学习笔试面试题)
 - [二、深度学习笔试面试题](#二深度学习笔试面试题)
@@ -140,7 +140,7 @@ $$
 2. **从指数族/广义线性模型（GLM）导出**：逻辑回归假设 $y \mid x$ 服从伯努利分布，其自然参数恰为 $\theta^T x$，对应链接函数为 logit：$\log\frac{p}{1-p}=\theta^T x$，反解即得 Sigmoid。
 3. **光滑可导**：Sigmoid 处处可导，利于梯度下降。
 
-> 💡 **类比**：线性回归量"温度"（连续），逻辑回归判"及格与否"（离散），Sigmoid 相当于把无限的分数"挤压"成 0~1 的置信度。
+> 💡 **类比**：线性回归量"温度"（连续），逻辑回归判"及格与否"（离散），Sigmoid 相当于把无限的分数"挤压"成 0～1 的置信度。
 
 ---
 
@@ -293,7 +293,7 @@ $$
 
 > 💡 **类比**：最大间隔像在两群点之间修一条"最宽的隔离带"，隔离带边界上的桩子就是支持向量；软间隔则允许个别"越界"的点，用 $C$ 决定多宽容。
 
-> **复杂度**：训练为 QP 优化，朴素实现 $O(m^3)$~$O(m^4)$；预测复杂度只与**支持向量个数**有关。
+> **复杂度**：训练为 QP 优化，朴素实现 $O(m^3)$～$O(m^4)$；预测复杂度只与**支持向量个数**有关。
 
 ---
 
@@ -443,7 +443,7 @@ def linear_regression_gd(X, y, lr=0.01, n_iter=1000, tol=1e-6):
 X = np.array([[1], [2], [3], [4]])
 y = np.array([2.1, 4.0, 6.2, 7.9])
 theta = linear_regression_gd(X, y, lr=0.05, n_iter=5000)
-print("theta:", theta)          # 接近 [b, w] = [~0.3, ~1.9]
+print("theta:", theta)          # 接近 [b, w] = [～0.3, ～1.9]
 ```
 
 **要点说明**：
@@ -829,8 +829,8 @@ $$
 \begin{aligned}
 \text{遗忘门 }&\boldsymbol{f}_t=\sigma(\boldsymbol{W}_f[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_f)\\
 \text{输入门 }&\boldsymbol{i}_t=\sigma(\boldsymbol{W}_i[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_i)\\
-\text{候选 }&\tilde{\boldsymbol{c}}_t=\tanh(\boldsymbol{W}_c[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_c)\\
-\text{更新细胞 }&\boldsymbol{c}_t=\boldsymbol{f}_t\odot\boldsymbol{c}_{t-1}+\boldsymbol{i}_t\odot\tilde{\boldsymbol{c}}_t\\
+\text{候选 }&\hat{\boldsymbol{c}}_t=\tanh(\boldsymbol{W}_c[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_c)\\
+\text{更新细胞 }&\boldsymbol{c}_t=\boldsymbol{f}_t\odot\boldsymbol{c}_{t-1}+\boldsymbol{i}_t\odot\hat{\boldsymbol{c}}_t\\
 \text{输出门 }&\boldsymbol{o}_t=\sigma(\boldsymbol{W}_o[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_o)\\
 \text{隐藏态 }&\boldsymbol{h}_t=\boldsymbol{o}_t\odot\tanh(\boldsymbol{c}_t)
 \end{aligned}
@@ -839,7 +839,7 @@ $$
 **三个门的职责**：
 
 1. **遗忘门 $\boldsymbol{f}_t$**：决定保留多少旧细胞状态 $\boldsymbol{c}_{t-1}$（"哪些记忆要忘掉"）；
-2. **输入门 $\boldsymbol{i}_t$**：决定新信息 $\tilde{\boldsymbol{c}}_t$ 写入多少（"哪些新知识要记住"）；
+2. **输入门 $\boldsymbol{i}_t$**：决定新信息 $\hat{\boldsymbol{c}}_t$ 写入多少（"哪些新知识要记住"）；
 3. **输出门 $\boldsymbol{o}_t$**：决定从细胞状态输出多少给当前隐藏态（"输出什么"）。
 
 **为何能解决长期依赖**：$\boldsymbol{c}_t=\boldsymbol{f}_t\odot\boldsymbol{c}_{t-1}+\cdots$ 是**加法/门控式**更新，梯度 $\frac{\partial \boldsymbol{c}_t}{\partial \boldsymbol{c}_{t-1}}\approx \text{diag}(\boldsymbol{f}_t)$。只要让遗忘门接近 1，梯度就能近乎"恒等"地穿过很长的序列，避免连乘指数衰减——这就是 LSTM 相对 RNN 的核心改进。
@@ -860,8 +860,8 @@ $$
 \begin{aligned}
 \text{重置门 }&\boldsymbol{r}_t=\sigma(\boldsymbol{W}_r[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_r)\\
 \text{更新门 }&\boldsymbol{z}_t=\sigma(\boldsymbol{W}_z[\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_z)\\
-\text{候选 }&\tilde{\boldsymbol{h}}_t=\tanh\big(\boldsymbol{W}_h[\boldsymbol{r}_t\odot\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_h\big)\\
-\text{隐藏态 }&\boldsymbol{h}_t=(1-\boldsymbol{z}_t)\odot\boldsymbol{h}_{t-1}+\boldsymbol{z}_t\odot\tilde{\boldsymbol{h}}_t
+\text{候选 }&\hat{\boldsymbol{h}}_t=\tanh\big(\boldsymbol{W}_h[\boldsymbol{r}_t\odot\boldsymbol{h}_{t-1},\boldsymbol{x}_t]+\boldsymbol{b}_h\big)\\
+\text{隐藏态 }&\boldsymbol{h}_t=(1-\boldsymbol{z}_t)\odot\boldsymbol{h}_{t-1}+\boldsymbol{z}_t\odot\hat{\boldsymbol{h}}_t
 \end{aligned}
 $$
 
@@ -870,7 +870,7 @@ $$
 1. **门更少**：用法为 $\{\boldsymbol{i}_t,\boldsymbol{f}_t\}\to\{\boldsymbol{z}_t\}$，用单一更新门 $\boldsymbol{z}_t$ 同时扮演"写入"与"保持"：$\boldsymbol{z}_t$ 大则多写候选新状态，$(1-\boldsymbol{z}_t)$ 自然保留旧态；
 2. **无独立细胞状态**：直接更新隐藏态 $\boldsymbol{h}_t$，结构更紧凑；
 3. **参数更少**：GRU 约 3 组权重 vs LSTM 4 组，训练更快、不易过拟合；
-4. **同样解决长期依赖**：$\boldsymbol{h}_t=(1-\boldsymbol{z}_t)\boldsymbol{h}_{t-1}+\boldsymbol{z}_t\tilde{\boldsymbol{h}}_t$ 是加法更新，$\frac{\partial \boldsymbol{h}_t}{\partial \boldsymbol{h}_{t-1}}=1-\boldsymbol{z}_t$，当 $\boldsymbol{z}_t\to0$ 时梯度近似恒等 1，可跨长程保持信息。
+4. **同样解决长期依赖**：$\boldsymbol{h}_t=(1-\boldsymbol{z}_t)\boldsymbol{h}_{t-1}+\boldsymbol{z}_t\hat{\boldsymbol{h}}_t$ 是加法更新，$\frac{\partial \boldsymbol{h}_t}{\partial \boldsymbol{h}_{t-1}}=1-\boldsymbol{z}_t$，当 $\boldsymbol{z}_t\to0$ 时梯度近似恒等 1，可跨长程保持信息。
 
 **选购建议**：数据量足够、追求表达力时 LSTM 常略优；数据不多/需要速度与紧凑时 GRU 更好。现代序列建模更主流的是 Transformer，但理解 GRU/LSTM 仍是面试对"门控解决长期依赖"的考查重点。
 
@@ -926,10 +926,10 @@ $$
 **GCN（图卷积网络，Kipf & Welling 2017）**——**固定权重聚合**：
 
 $$
-\boldsymbol{H}^{(l+1)}=\sigma\left(\tilde{\boldsymbol{D}}^{-\tfrac12}\tilde{\boldsymbol{A}}\tilde{\boldsymbol{D}}^{-\tfrac12}\,\boldsymbol{H}^{(l)}\,\boldsymbol{W}^{(l)}\right),
+\boldsymbol{H}^{(l+1)}=\sigma\left(\hat{\boldsymbol{D}}^{-\tfrac12}\hat{\boldsymbol{A}}\hat{\boldsymbol{D}}^{-\tfrac12}\,\boldsymbol{H}^{(l)}\,\boldsymbol{W}^{(l)}\right),
 $$
 
-其中 $\tilde{\boldsymbol{A}}=\boldsymbol{A}+\boldsymbol{I}_N$（加自环），$\tilde{\boldsymbol{D}}$ 为对应度矩阵。节点级写法：$\boldsymbol{h}_i^{(l+1)}=\sigma\Big( \sum_{j\in\mathcal{N}(i)\cup\{i\}}\tfrac{1}{\sqrt{\tilde d_i\tilde d_j}}\,\boldsymbol{W}\boldsymbol{h}_j^{(l)}\Big)$，即**对邻域做固定系数（$\tfrac{1}{\sqrt{\tilde d_i\tilde d_j}}$）的对称归一化加权平均**。系数取决于节点度、不可学习。
+其中 $\hat{\boldsymbol{A}}=\boldsymbol{A}+\boldsymbol{I}_N$（加自环），$\hat{\boldsymbol{D}}$ 为对应度矩阵。节点级写法：$\boldsymbol{h}_i^{(l+1)}=\sigma\Big( \sum_{j\in\mathcal{N}(i)\cup\{i\}}\tfrac{1}{\sqrt{\hat d_i\hat d_j}}\,\boldsymbol{W}\boldsymbol{h}_j^{(l)}\Big)$，即**对邻域做固定系数（$\tfrac{1}{\sqrt{\hat d_i\hat d_j}}$）的对称归一化加权平均**。系数取决于节点度、不可学习。
 
 **GAT（图注意力网络，Veličković 2018）**——**注意力加权聚合**：
 
@@ -1232,7 +1232,7 @@ $$
 **根本代价 → 显存**：缓存总量随**层数、头数、序列长度、批量**线性增长。显存成本估算：
 
 $$
-\text{每层每头每 token}:~2\,(\text{K}+\text{V}) \times d_k \times (2\text{ bytes, fp16})
+\text{每层每头每 token}:\ 2\,(\text{K}+\text{V}) \times d_k \times (2\text{ bytes, fp16})
 $$
 
 总显存约 $2 \times L \times H \times d_k \times n \times 2\,\text{B}$。
@@ -1283,7 +1283,7 @@ $$
 W = W_0 + \Delta W = W_0 + BA,\quad B\in\mathbb{R}^{d\times r},\ A\in\mathbb{R}^{r\times d},\ r\ll d
 $$
 
-**为什么用低秩**：观察发现大模型微调时权重更新的**有效秩（intrinsic rank）很低**，即真实有效信息的维度远小于 $d$。于是用一个很小的秩 $r$（如 4~64）的 $B\cdot A$ 就足以表达绝大多数微调信号，**可训练参数从 $d^2$ 降到 $2dr$，往往少 99% 以上**。前向计算：
+**为什么用低秩**：观察发现大模型微调时权重更新的**有效秩（intrinsic rank）很低**，即真实有效信息的维度远小于 $d$。于是用一个很小的秩 $r$（如 4～64）的 $B\cdot A$ 就足以表达绝大多数微调信号，**可训练参数从 $d^2$ 降到 $2dr$，往往少 99% 以上**。前向计算：
 
 $$
 h = W_0x + \frac{\alpha}{r}BAx
@@ -1951,7 +1951,7 @@ $$
 **DDIM（Denoising Diffusion Implicit Models）**针对 DDPM **采样慢**（需要走满 $T$ 步）的痛点：
 
 - DDPM 的逆向是随机采样（每一步都采样 $z$）；**DDIM**把逆向过程改写成**确定性**（去掉随机 $z$），将去噪轨迹变成对 $x_0$ 的隐式 ODE 离散化。
-- 收益：① 可在**更少的步数**（如 20~50 步）内生成近似质量的结果，显著加速；② 具有一致的隐变量，可实现图像插值、编辑等可解释操作。代价是生成多样性略降。
+- 收益：① 可在**更少的步数**（如 20～50 步）内生成近似质量的结果，显著加速；② 具有一致的隐变量，可实现图像插值、编辑等可解释操作。代价是生成多样性略降。
 
 **Stable Diffusion（潜空间扩散模型）**的要点：
 

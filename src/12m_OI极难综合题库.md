@@ -2,7 +2,9 @@
 
 ## 13. OI 极难综合题库
 
-本部分是第 12 章「OI/ACM 竞赛高级专题」的配套综合练习，覆盖 LCT、树链剖分、可持久化线段树（主席树）、莫队、珂朵莉树、舞蹈链/精确覆盖、差分约束、线性基、生成函数/多项式（FFT/NTT）、杜教筛/Min_25 筛、回文自动机、后缀自动机（SAM）等高级数据结构与算法，共 317 道代表性竞赛题，按难度从低到高排列，多为 ⭐⭐⭐（困难）级别。
+本部分是第 12 章「OI/ACM 竞赛高级专题」的配套综合练习，覆盖 LCT、树链剖分、可持久化线段树（主席树）、莫队、珂朵莉树、舞蹈链/精确覆盖、差分约束、线性基、生成函数/多项式（FFT/NTT）、杜教筛/Min_25 筛、回文自动机、后缀自动机（SAM）等高级数据结构与算法，共 317 道代表性竞赛题，按专题组织，以 ⭐⭐⭐（困难）级别为主。
+
+> **代码说明**：本题库以“关键代码 + 思路”为主，部分实现省略输入输出、边界处理或完整数据结构，不保证逐题可直接运行；需要完整模板时请回看对应章节或 OI Wiki。
 
 ---
 
@@ -60,7 +62,7 @@ class SegmentTree:
 
 
 def heavy_light(n, adj, root=1):
-    """返回父子关系、深度、重儿子、链顶与 DFS 序。这里给出核心思路代码骨架。"""
+    """返回父子关系、深度、重儿子、链顶与 DFS 序（两次 DFS 的完整关键实现）。"""
     parent = [0] * (n + 1)
     depth = [0] * (n + 1)
     size = [0] * (n + 1)
@@ -96,13 +98,38 @@ def heavy_light(n, adj, root=1):
     return parent, depth, size, son, top, dfn
 
 
-def path_adjust(seg, n, u, v, op, val=0):
+def path_adjust(seg, n, u, v, op, val=0, parent=None, depth=None, top=None, dfn=None):
     """把 u->v 路径拆成若干段连续 DFS 序区间并操作：
-       op=add 时调用 seg.add，op=query 时累加 seg.query。
-       通过 top[u] 深度更深的点逐段跳转，复杂度 O(log^2 n)。"""
-    s = 0
-    # 示意：对每条重链做一次区间操作；完整实现见线段树调用
-    return s
+       op="add" 时调用 seg.add，op="query" 时累加 seg.query 的结果。
+       借助链顶深度逐段跳转，复杂度 O(log^2 n)。"""
+    def apply_range(l, r):
+        if l > r:
+            l, r = r, l
+        if op == "add":
+            seg.add(1, 1, n, l, r, val)
+            return 0
+        return seg.query(1, 1, n, l, r)
+
+    ans = 0
+    while top[u] != top[v]:
+        if depth[top[u]] < depth[top[v]]:
+            u, v = v, u
+        ans += apply_range(dfn[top[u]], dfn[u])
+        u = parent[top[u]]
+    if depth[u] > depth[v]:
+        u, v = v, u
+    ans += apply_range(dfn[u], dfn[v])
+    return ans
+
+
+# 测试：树 1-2, 1-3, 2-4, 2-5，路径 4->3 加 5，再查询该路径
+adj = [[] for _ in range(6)]
+for a, b in [(1, 2), (1, 3), (2, 4), (2, 5)]:
+    adj[a].append(b); adj[b].append(a)
+parent, depth, size, son, top, dfn = heavy_light(5, adj)
+seg = SegmentTree(5)
+path_adjust(seg, 5, 4, 3, "add", 5, parent, depth, top, dfn)
+print(path_adjust(seg, 5, 4, 3, "query", 0, parent, depth, top, dfn))  # 20
 ```
 
 > **复杂度**：预处理 DFS O(n)，单次路径操作 O(log² n)，线段树操作 O(log n)。
@@ -6885,10 +6912,6 @@ print("0 到 3 的最小瓶颈 =", mef(0,3))
 ```
 
 > **复杂度**：O(m log m)（建树）；瓶颈查询 O(log n)。
-
-
-APPEND_DONE_MARKER
-
 
 
 ### 13.42 数论筛法 / 线段树合并 / 差分与分块综合

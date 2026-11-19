@@ -55,7 +55,7 @@
   - [5.5 Flamingo](#55-flamingo)
   - [5.6 ImageBind](#56-imagebind)
 - [六、AI Agent](#六ai-agent)
-  - [6.1 什么是 AI Agent](#61-什么是ai-agent)
+  - [6.1 什么是 AI Agent](#61-什么是-ai-agent)
   - [6.2 Agent 核心组件](#62-agent-核心组件)
   - [6.3 代表性范式](#63-代表性范式)
   - [6.4 典型应用](#64-典型应用)
@@ -2076,4 +2076,4 @@ $$\text{sim}(\text{audio}, \text{text}) = \text{sim}(E_{\text{audio}}(\text{audi
 ## 回到顶部
 
 - [返回 AI 算法体系索引](./14_人工智能.md)
-- [回到顶部](#生成式-ai-与大模型)
+- [回到顶部](#1424-生成式-ai-与大模型)

@@ -9036,45 +9036,45 @@ print(hopcroft_karp(3,3,[(0,0),(0,1),(1,1),(2,2)]))  # 3
 
 ```python
 def km_max(n, w):
-    INF=float('inf')
-    lx=[max(w[i]) for i in range(n)]
-    ly=[0]*n
-    mx=[-1]*n; my=[-1]*n
-    def dfs(u):
+    """左右各 n 点的带权完全二分图，返回最大权完美匹配的总权值。"""
+    INF = float('inf')
+    lx = [max(row) for row in w]      # 左部顶标
+    ly = [0] * n                      # 右部顶标
+    match_y = [-1] * n                # match_y[v] = 与右点 v 匹配的左点
+
+    def dfs(u, vis_x, vis_y, slack):
+        vis_x[u] = True
         for v in range(n):
-            if not vis_y[v]:
-                if lx[u]+ly[v]==w[u][v]:
-                    vis_y[v]=True
-                    if my[v]==-1 or dfs(my[v]):
-                        mx[u]=v; my[v]=u; return True
-                else:
-                    pass
+            if vis_y[v]:
+                continue
+            gap = lx[u] + ly[v] - w[u][v]
+            if gap == 0:              # 相等子图上的边，尝试增广
+                vis_y[v] = True
+                if match_y[v] == -1 or dfs(match_y[v], vis_x, vis_y, slack):
+                    match_y[v] = u
+                    return True
+            else:                     # 记录右点的最小松弛量
+                slack[v] = min(slack[v], gap)
         return False
-    # 简化 KM：逐左匹配+交错树
+
     for u in range(n):
         while True:
-            vis_y=[False]*n
-            if dfs(u): break
-            d=INF
-            for i in range(u+1):
-                for j in range(n):
-                    if not vis_y[j]:
-                        d=min(d,lx[i]+ly[j]-w[i][j])
-            for i in range(u+1):
-                lx[i]-=d
+            vis_x = [False] * n
+            vis_y = [False] * n
+            slack = [INF] * n
+            if dfs(u, vis_x, vis_y, slack):
+                break
+            d = min(slack[v] for v in range(n) if not vis_y[v])
+            for i in range(n):
+                if vis_x[i]:
+                    lx[i] -= d
             for j in range(n):
-                if vis_y[j]: ly[j]+=d
-    return sum(lx)+sum(ly)
+                if vis_y[j]:
+                    ly[j] += d
 
-def _km_dfs_holder():
-    return None
-w=[[3,4,6,2,5],[2,1,4,3,5],[3,2,2,1,3]]
-# 用构造修正：此处演示小 n
-w=[[3,4,6],[2,1,4],[3,2,2]]
-def dfs2(u):
-    vis_y=[
-    return True
-print("KM 最大权（简示例略）")
+    return sum(lx) + sum(ly)
+
+print(km_max(3, [[3,4,6],[2,1,4],[3,2,2]]))  # 11
 ```
 
 > **复杂度**：O(n³) 时间，O(n²) 空间
@@ -9374,59 +9374,57 @@ print(min_edge_cover(5, 2))  # 3
 
 ---
 
-#### 17.13.30 例 30：带权二分图最大匹配（KM 修正实现）⭐⭐⭐
+#### 17.13.30 例 30：带权二分图最大匹配（输出方案）⭐⭐⭐
 > **知识点**：KM、完全匹配、slack 加速 | **难度**：⭐⭐⭐｜**类型**：ACM/竞赛
-> **题目描述**：左右 n 点带权二分图（容或完全），求最大权匹配（可完美或自由），输出总权。n≤200。
+> **题目描述**：左右 n 点带权二分图，求最大权完美匹配的总权，并输出匹配方案。n≤200。
 
 **思路**
 
-💡 类比"用均衡差值表反复校准直到每人都配到最优搭档"：KM 顶标+vis+dfs 找完美匹配并调整顶标。
+💡 类比"用均衡差值表反复校准，直到每人都配到最优搭档"：在 17.13.19 的 KM 基础上，额外记录 `match_y`，匹配完成后按右点反查即可得到方案。
 
 ```python
-def km(n,w):
-    INF=float('inf')
-    lx=[max(w[i][j] for j in range(n)) for i in range(n)]
-    ly=[0]*n
-    match=[-1]*n
-    def dfs(i,vis,slack):
-        pass
-    # 标准 KM 实现（修正版）
-    def dfs2(i):
-        for j in range(n):
-            if not visx[i]: pass
+def km_matching(n, w):
+    """返回 (匹配列表 [(左,右)], 最大总权)。"""
+    INF = float('inf')
+    lx = [max(row) for row in w]
+    ly = [0] * n
+    match_y = [-1] * n
+
+    def dfs(u, vis_x, vis_y, slack):
+        vis_x[u] = True
+        for v in range(n):
+            if vis_y[v]:
+                continue
+            gap = lx[u] + ly[v] - w[u][v]
+            if gap == 0:
+                vis_y[v] = True
+                if match_y[v] == -1 or dfs(match_y[v], vis_x, vis_y, slack):
+                    match_y[v] = u
+                    return True
+            else:
+                slack[v] = min(slack[v], gap)
         return False
-    # 简化：用逐增广
-    mx=[-1]*n; my=[-1]*n
-    for i in range(n):
+
+    for u in range(n):
         while True:
-            visx=[False]*n; visy=[False]*n
-            if tryK(i,visx,visy,mx,my,n,w,lx,ly):
+            vis_x = [False] * n
+            vis_y = [False] * n
+            slack = [INF] * n
+            if dfs(u, vis_x, vis_y, slack):
                 break
-            delta=INF
-            for a in range(n):
-                if visx[a]:
-                    for b in range(n):
-                        if not visy[b]:
-                            delta=min(delta,lx[a]+ly[b]-w[a][b])
-            for a in range(n):
-                if visx[a]: lx[a]-=delta
-            for b in range(n):
-                if visy[b]: ly[b]+=delta
-    tot=0
-    for i in range(n):
-        if mx[i]!=-1: tot+=w[i][mx[i]]
-    return tot
+            d = min(slack[v] for v in range(n) if not vis_y[v])
+            for i in range(n):
+                if vis_x[i]:
+                    lx[i] -= d
+            for j in range(n):
+                if vis_y[j]:
+                    ly[j] += d
 
-def tryK(i,visx,visy,mx,my,n,w,lx,ly):
-    visx[i]=True
-    for j in range(n):
-        if not visy[j] and lx[i]+ly[j]==w[i][j]:
-            visy[j]=True
-            if my[j]==-1 or tryK(my[j],visx,visy,mx,my,n,w,lx,ly):
-                mx[i]=j; my[j]=i; return True
-    return False
+    pairs = [(u, v) for v, u in enumerate(match_y)]
+    return pairs, sum(lx) + sum(ly)
 
-print(km(3,[[3,4,6],[2,1,4],[3,2,2]]))
+print(km_matching(3, [[3,4,6],[2,1,4],[3,2,2]]))
+# ([(2, 0), (0, 1), (1, 2)], 11)
 ```
 
 > **复杂度**：O(n³) 时间，O(n²) 空间
@@ -9442,9 +9440,27 @@ print(km(3,[[3,4,6],[2,1,4],[3,2,2]]))
 💡 类比"送水后清点每根管道实际流量清单"：Dinic 后对比原容量与残余容量差即实际流量。
 
 ```python
-def flow_breakdown(n, edges, s, t, flow_val, cap):
-    return [ (u,v, cap[u][v]-flow_val) for ... ]  # 示意(见 Dinic residual)
-# 直接复用: 用原 cap 减 dinic 后残量
+def flow_breakdown(n, edges, s, t):
+    """返回 (最大流, [(u, v, 实际流量)])，要求 Dinic 已在本题环境中定义。"""
+    d = Dinic(n)
+    refs = []
+    for u, v, c in edges:
+        idx = len(d.g[u])        # 记录正向边在 g[u] 中的下标
+        d.add(u, v, c)
+        refs.append((u, idx, c))
+
+    flow = d.max_flow(s, t)
+    res = []
+    for u, idx, c in refs:
+        v = d.g[u][idx][0]
+        residual = d.g[u][idx][1]
+        res.append((u, v, c - residual))  # 原容量 - 残余容量
+    return flow, res
+
+
+edges = [(0,1,2),(0,2,2),(1,3,2),(2,3,2),(1,2,1)]
+print(flow_breakdown(4, edges, 0, 3))
+# (4, [(0, 1, 2), (0, 2, 2), (1, 3, 2), (2, 3, 2), (1, 2, 0)])
 ```
 
 > **复杂度**：与 Dinic 相同，O(n²) 空间
